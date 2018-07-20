@@ -1,0 +1,8 @@
+---
+
+- hosts: localhost
+  become: false
+  gather_facts: no
+
+  roles:
+     - aruba/create_branch
