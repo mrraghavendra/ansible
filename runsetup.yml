@@ -1,6 +1,6 @@
 ---
 - hosts: host1
   roles :
-  - velocloud
+  #- velocloud
   #- tutorial
- # - aruba
+  - aruba
