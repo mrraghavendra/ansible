@@ -1,0 +1,11 @@
+---
+# defaults file for /ansible/roles/tutorial
+customer_name: "ABC corp"
+customer_id: "12345"
+user: "tom"
+url: "URL:http://192.168.56.1:8089"
+device_serial_id: "DZ0005126"
+device_mac_address: "F0:5C:19:CA:13:1C"
+template_group: "a036000000l6hph_9789"
+group_pwd: "abc*1"
+tvar1: "testval"

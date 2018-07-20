@@ -1,0 +1,82 @@
+---
+- name: create customer
+  vars:
+    body: "{{ lookup('template','../files/create_customer.json') | to_json }}"
+  uri:
+    #url: "URL:http://services.groupkt.com/state/get/IND/KA"
+    url: "{{ url }}/msp_api/v1/customers"
+    method: POST
+    #user: "{{ username }}"
+    #password: "{{ password }}"
+    body: "{{ body }}"
+    #body: '{"customer_name":"{{ customer_name }}","group":{"id":"{{ customer_id }}","name":"{{ customer_name }}"},"users":[{"username":"{{ user }}","role":"admin"}]}'
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
+- debug:
+    msg: "MKA  {{ response.content }}"
+- name: Assign Device to Customer
+  uri:
+    url: "{{ url }}/msp_api/v1/customers/{{ customer_id }}/devices"
+    method: POST
+    #user: "{{ username }}"
+    #password: "{{ password }}"
+    #body: "{{ lookup('file','../files/create_customer.json') }}"
+    body: '{"devices":[{"serial":"{{ device_serial_id }}","mac":"{{ device_mac_address }}"}]}'
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
+- debug:
+    msg: "MKA  {{ response.content | to_json }}"
+- name: Create template group
+  uri:
+    url: "{{ url }}/configuration/v1/groups"
+    method: POST
+    #user: "{{ username }}"
+    #password: "{{ password }}"
+    #body: "{{ lookup('file','../files/create_customer.json') }}"
+    body: '{"group":"{{ template_group }}","group_attributes":{"group_password":"{{ group_pwd }}","template_group":true}}'
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
+- debug:
+    msg: "MKA  {{ response.content | to_json }}"
+- name: Move device to template group
+  uri:
+    url: "{{ url }}/configuration/v1/devices/move"
+    method: POST
+    #user: "{{ username }}"
+    #password: "{{ password }}"
+    #body: "{{ lookup('file','../files/create_customer.json') }}"
+    body: '{"group": "{{ template_group }}","serials":["{{ device_serial_id }}"]}'
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
+- debug:
+    msg: "MKA  {{ response.content | to_json }}"
+
+

@@ -1,0 +1,8 @@
+{
+  "enterpriseId": {{ "enterpriseId" }},
+  "configurationType": "NETWORK_BASED",
+  "with": [
+    "edges"
+  ]
+}
+

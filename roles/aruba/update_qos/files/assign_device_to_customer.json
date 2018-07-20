@@ -1,0 +1,2 @@
+{"devices":[{"serial": "{{ device_serial_id }}","mac": "{{ device_mac_address }}"}]}
+

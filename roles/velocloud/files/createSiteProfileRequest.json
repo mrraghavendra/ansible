@@ -1,0 +1,9 @@
+{
+  "configurationId": 1,
+  "networkId": 0,
+  "enterpriseId": "{{ entId }}",
+  "name": "{{ entName }}_VPN Profile",
+  "version": "string",
+  "description": "{{ entName }}_VPN Profile"
+}
+
