@@ -1,15 +1,15 @@
 ---
 - name: create customer
   vars:
-    body: "{{ lookup('template','../files/create_customer.json') | to_json }}"
+    #body: "{{ lookup('template','../files/create_customer.json') | to_json }}"
   uri:
     #url: "URL:http://services.groupkt.com/state/get/IND/KA"
     url: "{{ url }}/msp_api/v1/customers"
     method: POST
     #user: "{{ username }}"
     #password: "{{ password }}"
-    body: "{{ body }}"
-    #body: '{"customer_name":"{{ customer_name }}","group":{"id":"{{ customer_id }}","name":"{{ customer_name }}"},"users":[{"username":"{{ user }}","role":"admin"}]}'
+    #body: "{{ body }}"
+    body: '{"customer_name":"{{ customer_name }}","group":{"id":"{{ customer_id }}","name":"{{ customer_name }}"},"users":[{"username":"{{ user }}","role":"admin"}]}'
     force_basic_auth: yes
     status_code: 200
     body_format: json
