@@ -2,6 +2,8 @@
 - name: create customer
   vars:
     body: "{{ lookup('template','../files/create_customer.json') | to_json }}"
+    - debug:
+        msg: "request body  {{ body }}"
   uri:
     #url: "URL:http://services.groupkt.com/state/get/IND/KA"
     url: "{{ url }}/msp_api/v1/customers"
@@ -9,7 +11,6 @@
     #user: "{{ username }}"
     #password: "{{ password }}"
     body: "{{ body }}"
-    msg: "request body  {{ body }}"
     #body: '{"customer_name":"{{ customer_name }}","group":{"id":"{{ customer_id }}","name":"{{ customer_name }}"},"users":[{"username":"{{ user }}","role":"admin"}]}'
     force_basic_auth: yes
     status_code: 200
