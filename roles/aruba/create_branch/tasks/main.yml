@@ -2,8 +2,6 @@
 - name: create customer
   vars:
     body: "{{ lookup('template','../files/create_customer.json') | to_json }}"
-    debug: 
-        msg: "Request Body {{ body }}"
   uri:
     #url: "URL:http://services.groupkt.com/state/get/IND/KA"
     url: "{{ url }}/msp_api/v1/customers"
