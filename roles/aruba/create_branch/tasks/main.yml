@@ -9,6 +9,7 @@
     #user: "{{ username }}"
     #password: "{{ password }}"
     body: "{{ body }}"
+    msg: "request body  {{ body }}"
     #body: '{"customer_name":"{{ customer_name }}","group":{"id":"{{ customer_id }}","name":"{{ customer_name }}"},"users":[{"username":"{{ user }}","role":"admin"}]}'
     force_basic_auth: yes
     status_code: 200

@@ -1,2 +1,12 @@
 ---
 # defaults file for /ansible/roles/tutorial
+customer_name: "{{ customer_name }}"
+customer_id: "{{ id }}"
+user: "{{ username }}"
+role: "{{ role }}"
+url: "http://34.213.119.214:8080/aruba"
+device_serial_id: "DZ0005126"
+device_mac_address: "F0:5C:19:CA:13:1C"
+template_group: "a036000000l6hph_9789"
+group_pwd: "abc*1"
+tvar1: "testval"
