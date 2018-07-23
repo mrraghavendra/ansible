@@ -21,7 +21,7 @@
   register: response
 - debug:
     msg: "MKA  {{ response.content }}"
-     msg: "request body  {{ body }}"
+    msg: "request body  {{ body }}"
 - name: Assign Device to Customer
   uri:
     url: "{{ url }}/msp_api/v1/customers/{{ customer_id }}/devices"
