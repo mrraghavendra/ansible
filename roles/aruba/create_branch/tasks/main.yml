@@ -9,6 +9,7 @@
     #user: "{{ username }}"
     #password: "{{ password }}"
     body: "{{ body }}"
+    debug: "msg=Request Body: '{{ body }}'"
     #body: '{"customer_name":"{{ customer_name }}","group":{"id":"{{ customer_id }}","name":"{{ customer_name }}"},"users":[{"username":"{{ user }}","role":"admin"}]}'
     force_basic_auth: yes
     status_code: 200
@@ -21,7 +22,6 @@
   register: response
 - debug:
     msg: "MKA  {{ response.content }}"
-    msg: "request body  {{ body }}"
 - name: Assign Device to Customer
   uri:
     url: "{{ url }}/msp_api/v1/customers/{{ customer_id }}/devices"
