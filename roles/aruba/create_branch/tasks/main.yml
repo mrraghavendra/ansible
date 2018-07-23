@@ -1,6 +1,6 @@
 ---
 - name: create customer
-  vars:
+  #vars:
     #body: "{{ lookup('template','../files/create_customer.json') | to_json }}"
   uri:
     #url: "URL:http://services.groupkt.com/state/get/IND/KA"
