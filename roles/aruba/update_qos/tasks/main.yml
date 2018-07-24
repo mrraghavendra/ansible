@@ -1,9 +1,9 @@
 ---
 - name: Patch template
   vars:
-    bodys: '{"total":0,"variables":{"user_wlan":"{{ userwlan }}","corp_wlan":"{{ corpwlan }}","user_wlan_bw":"{{ userwlanbw }}","corp_wlan_bw":"{{ corpwlanbw }}","user_wlanqos":"{{ userwlanqos }}","corp_wlanqos":"{{ corpwlanqos }}" }}'
+    body: '{"total":0,"variables":{"user_wlan":"{{ userwlan }}","corp_wlan":"{{ corpwlan }}","user_wlan_bw":"{{ userwlanbw }}","corp_wlan_bw":"{{ corpwlanbw }}","user_wlanqos":"{{ userwlanqos }}","corp_wlanqos":"{{ corpwlanqos }}" }}'
 - set_fact:
-    requestBody: "{{ bodys }}" 
+    requestBody: "{{ body }}" 
   uri:
     url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
     method: POST
