@@ -2,11 +2,9 @@
 - name: Patch template
   vars:
     body: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}"
-- name: Patch template 1
   uri:
     url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
     method: POST
-    debug: var=body
     #user: "{{ username }}"
     #password: "{{ password }}"
     body: "{{ body }}"
@@ -20,7 +18,7 @@
       Accept: "application/json"
   register: response
   #register: request
-
-- name: Response out
-  debug:
-    msg: "Request:{{ body }} - Response: {{ response.content }} | to_json "
+- set_fact:
+    my: "{{ lookup('template','../files/patch_template_variables.json')  }}"
+- debug:
+    msg: "Request:{{ my }} - Response: {{ response.content }} | to_json "
