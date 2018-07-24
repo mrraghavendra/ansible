@@ -1,5 +1,5 @@
 ---
-- name: set API
+- name: set test
   vars:
     body: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}"
 - name: Patch template
