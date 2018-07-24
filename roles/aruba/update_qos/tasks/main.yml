@@ -1,14 +1,14 @@
 ---
 - name: Patch template
   vars:
-    body: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}"
+    bod: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}"
   uri:
     url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
     method: POST
     #user: "{{ username }}"
     #password: "{{ password }}"
     #body: "{{ lookup('file','../files/create_customer.json') }}"
-    body: "{{ body }}"
+    body: "{{ bod }}"
     force_basic_auth: yes
     status_code: 200
     body_format: json
@@ -17,7 +17,7 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-  register: body
+  register: bod
   #register: request
 - debug:
-    msg: "MKA {{ body }} | to_json "
+    msg: "MKA {{ bod }} | to_json "
