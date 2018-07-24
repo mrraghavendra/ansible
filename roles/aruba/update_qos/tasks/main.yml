@@ -17,7 +17,7 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-  register: response
+  register: body
   #register: request
 - debug:
     msg: "MKA {{ body }} -- {{ response.content }} | to_json "
