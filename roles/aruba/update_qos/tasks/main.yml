@@ -22,7 +22,9 @@
     #register: request
 
 - name: Rest request data
-  debug: msg="{{ body }}"
+  debug: 
+    msg: "{{ body }}"
 
 - name: Response data
-  debug: msg="{{ response.content | to_json }}  "
+  debug: 
+    msg: "{{ response.content | to_json }}  "
