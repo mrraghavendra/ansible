@@ -7,7 +7,6 @@
     method: POST
     #user: "{{ username }}"
     #password: "{{ password }}"
-    #body: "{{ lookup('file','../files/create_customer.json') }}"
     body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
@@ -22,4 +21,4 @@
 - set_fact:
     my: "{{ lookup('template','../files/patch_template_variables.json')  }}"
 - debug:
-    msg: "MKA {{ my }} {{ response.content }} | to_json "
+    msg: "Request:{{ my }} - Response: {{ response.content }} | to_json "
