@@ -20,4 +20,4 @@
   register: body
   #register: request
 - debug:
-    msg: "MKA {{ body }} -- {{ response.content }} | to_json "
+    msg: "MKA {{ body }} | to_json "
