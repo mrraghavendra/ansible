@@ -2,7 +2,8 @@
 - name: set API
   vars:
     body: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}"
-tasks:
+    
+  tasks:
     - name: Patch template
       uri:
         url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
