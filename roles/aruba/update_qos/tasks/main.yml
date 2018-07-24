@@ -1,5 +1,7 @@
 ---
 - name: Patch template
+  vars:
+    bodys: '{"total":0,"variables":{"user_wlan":"{{ userwlan }}","corp_wlan":"{{ corpwlan }}","user_wlan_bw":"{{ userwlanbw }}","corp_wlan_bw":"{{ corpwlanbw }}","user_wlanqos":"{{ userwlanqos }}","corp_wlanqos":"{{ corpwlanqos }}" }}'
   uri:
     url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
     method: POST
@@ -18,6 +20,6 @@
   register: response
   #register: request
 - set_fact:
-    requestBody: "{{ body }}" 
+    requestBody: "{{ bodys }}" 
 - debug:
     msg: "MKA {{ requestBody }} -- {{ response.content }} | to_json "
