@@ -1,0 +1,46 @@
+{
+  "id": "{{ vpnTemplateId }}",
+  "enterpriseId": "{{ entId }}",
+  "basic": false,
+  "_update": {
+    "id": 0,
+    "name": "deviceSettings",
+    "type": "ENTERPRISE",
+    "description": "Device Settings",
+    "configurationId": 0,
+    "data": {
+                    "vpn": {
+                        "edgeToEdge": true,
+                        "edgeToEdgeDetail": {
+                                	      "vpnHubs": [
+                                                           {}
+                                                          ],
+                                              "dynamic": {
+                                              "enabled": true
+                                             },
+                                             "profileIsolation": {
+                                              			    "enabled": true
+                                            			  },
+                                             "autoSelectVpnHubs": false,
+                                             "useCloudGateway": true
+                                           } ,
+                        "models":          {
+                                            "edge500": {
+                                                         "lan": {
+                                                                   "interfaces" : [
+                                                                                      {
+                                                                                       "name" : "LAN1",
+                                                                                       "portMode":"Trunk Port",
+                                                                                       "disabled": false,
+                                                                                       "vlanIds": [ "{{ guestVlanId }}", "{{ corpVlanId }}" ]
+                                                                                      }
+                                                                                   ]
+                                                                 }
+                                                       }
+                                            }   
+                          } 
+        },
+    "refs": {}
+  }
+}
+

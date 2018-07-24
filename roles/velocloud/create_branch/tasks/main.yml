@@ -1,0 +1,53 @@
+---
+# tasks file for velocloud "configurationId"
+- name: Get Config id from enterprise Profile
+  vars:
+    body: "{{ lookup('template','../files/getEnterpriseConfRequest.json') | to_json }}"
+  uri:
+    url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
+    method: POST
+    #user: "{{ username }}"
+    #password: "{{ password }}"
+    body: "{{ body }}"
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
+- set_fact:
+    # configurationId: "{{ response.json[2].id }}"
+    configurationId: "{{ item.id }}" 
+  with_items: "{{ response.json }}"
+  when: item.name == 'Acme VPN Profile'
+- debug:
+    msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
+- name: Provision Edge Device
+  vars:
+    body: "{{ lookup('template','../files/edgeProvisionRequest.json') | to_json }}"
+  uri:
+    url: "{{ veloURL }}/edge/edgeProvision"
+    method: POST
+    #user: "{{ username }}"
+    #password: "{{ password }}"
+    body: "{{ body }}"
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
+- set_fact:
+    velo_edge_id: "{{ response.json.id }}"
+- debug:
+    msg: "MKA  {{ velo_edge_id }} Provisioned "
+- name: Update Devicesetting Module data for Edge
+  debug:
+        #msg: "{{ 'test' | another_filter('one','two')}}"
+    msg: "{{ velo_edge_id | updateDeviceSettings(configurationId) }}"

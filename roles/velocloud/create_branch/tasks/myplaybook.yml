@@ -1,0 +1,8 @@
+---
+- hosts: 127.0.0.1
+  connection: local
+  tasks:
+    - name: Print a message
+      debug:
+        #msg: "{{ 'test' | another_filter('one','two')}}"
+         msg: "{{ '1' | updateDeviceSettings('2') }}"

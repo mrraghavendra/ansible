@@ -1,0 +1,31 @@
+{
+  "enterpriseId": "{{ enterpriseId }}",
+  "configurationId": "{{ configurationId }}",
+  "name": "{{ siteName }}",
+  "serialNumber": "{{ edgeDeviceSerialNumber }}",
+  "modelNumber": "{{ edgeDeviceModelNumber }}",
+  "description": "{{ siteName }}_Edge",
+  "site": {
+    "city": "{{ siteCity }}",
+    "contactEmail": "{{ siteContactEmail }}",
+    "contactMobile":"{{ siteContactMobile }}",
+    "contactName": "{{ siteContactName }}",
+    "contactPhone": "{{ siteContactPhone }}",
+    "country": "{{ siteCountry }}",
+    "lat": "{{ siteLat }}",
+    "lon": "{{ siteLon }}",
+    "name":"{{ siteName }}",
+    "postalCode": "{{ sitePostalCode}}",
+    "state": "{{ siteState }}",
+    "streetAddress": "{{ siteStreetAddress }}",
+    "streetAddress2": "{{ siteStreetAddress2 }}"
+  },
+  "hasEnabled": true,
+  "generateCertificate": true,
+  "subjectCN": "string",
+  "subjectO": "string",
+  "subjectOU": "string",
+  "challengePassword": "test123",
+  "privateKeyPassword": "test123"
+}
+

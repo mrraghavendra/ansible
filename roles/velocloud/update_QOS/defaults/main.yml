@@ -1,0 +1,10 @@
+---
+device_serial_id: "DZ0005126"
+tvar1: "testval"
+userwlan: "yes"
+corpwlan: "yes"
+userwlanbw: 100
+corpwlanbw: 200
+userwlanqos: "Bronz"
+corpwlanqos: "Gold"
+

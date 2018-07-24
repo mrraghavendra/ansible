@@ -4,6 +4,10 @@
 "veloURL": "http://192.168.56.1:8080/portal/rest"
 "enterpriseId": 123
 #"configurationId": 2
+"edgeDeviceName": "Site1_Edge"
+"edgeDeviceSerialNumber": "1245SD3214"
+"edgeDeviceModelNumber": "edge500"
+"edgeSitedescription": "Site1_Edge"
 #Default Site details
 "siteCity": "string"
 "siteContactEmail": "mat@abc.com"
@@ -20,8 +24,4 @@
 "siteStreetAddress2": "string"
 "edgeDeviceChallengePassword": "string"
 "edgeDevicePrivateKeyPassword": "string"
-"edgeDeviceName": "{{ siteName }}_Edge"
-"edgeDeviceSerialNumber": "1245SD3214"
-"edgeDeviceModelNumber": "edge500"
-"edgeSitedescription": "{{ siteName }}_Edge"
 

@@ -1,0 +1,54 @@
+{
+  "id": 3,
+  "enterpriseId": 123,
+  "basic": false,
+  "_update": {
+    "id": 0,
+    "name": "QOS",
+    "type": "ENTERPRISE",
+    "description": "string",
+    "configurationId": 0,
+    "data": {
+                             "edgeQOSData": {
+                                                           "cosMapping": {
+                                                                              "lsInputType": "weight",
+                                                                              "realtime": {
+                                                                                               "high":   { 
+                                                                                                                  "value": "35"
+                                                                                                          },
+                                                                                             "normal": {
+                                                                                                                    "value":"15"
+                                                                                                                  } ,
+                                                                                                "low"   : {
+                                                                                                                    "value":"1"
+                                                                                                                }
+                                                                                                },
+                                                                              "transactional":
+                                                                                                   {
+                                                                                                       "high":   { 
+                                                                                                                          "value": "20"
+                                                                                                                       },
+                                                                                                   "normal": {
+                                                                                                                          "value":"7"
+                                                                                                                        } , 
+                                                                                                     "low"   :   {
+                                                                                                                         "value":"1"
+                                                                                                                       }
+                                                                                                    },
+                                                                                  "bulk":     {
+                                                                                                      "high":   { 
+                                                                                                                         "value": "15"
+                                                                                                                 },
+                                                                                                   "normal": {
+                                                                                                                          "value":"5"
+                                                                                                                         } ,
+                                                                                                     "low"   : {
+                                                                                                                          "value":"1"
+                                                                                                                     }
+                                              }
+                              }
+                         }   
+                 },
+    "refs": {}
+  }
+}

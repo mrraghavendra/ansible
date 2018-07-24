@@ -20,4 +20,11 @@ customer_name: "{{ customerName }}"
 customer_id: "{{ id }}"
 user: "{{ user_name }}"
 role: "{{ roles }}"
+userWLAN: "{{ userWLAN }}"
+corpWLAN : "{{ corpWLAN }}"
+tvar1: "{{ tvar }}"
+qos: "{{ qos }}"
 url: "http://34.213.119.214:8080/aruba"
+
+#{"extra_vars": {"customerName":"test","id":"1234","user":"test","role":"admin","userWLAN":"yes","corpWLAN":"yes"}}
+#{"extra_vars":{{"tvar":"testval","qos":"gold"}}}

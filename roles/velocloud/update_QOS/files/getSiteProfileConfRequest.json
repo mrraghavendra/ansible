@@ -1,0 +1,8 @@
+{
+  "configurationId": "{{ velo_edge_id }}",
+  "enterpriseId": "{{ enterpriseId }}",
+  "noData": true,
+  "modules": [
+    "deviceSettings"
+  ]
+}

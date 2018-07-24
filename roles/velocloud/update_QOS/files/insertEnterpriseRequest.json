@@ -1,0 +1,28 @@
+{
+  "city": "{{ entCity }}",
+  "contactEmail": "{{ entContactEmail }}",
+  "contactMobile": "{{ entContactMobile }}",
+  "contactName": "{{ entContactName }}",
+  "contactPhone": "{{ entContactPhone }}",
+  "country": "{{ entCountry }}",
+  "lat": "{{ entLat }}",
+  "lon": "{{ entLon }}",
+  "name": "{{ entName }}",
+  "postalCode": "{{ entPostalCode }}",
+  "state": "{{ entState }}",
+  "streetAddress": "{{ entStreetAddress }}",
+  "streetAddress2": "{{ entStreetAddress2 }}",
+  "gatewayPoolId": 0,
+  "networkId": 1,
+  "returnData": true,
+  "user": {
+    "email": "{{ entUserEmail }}",
+    "password": "testpw",
+    "password2": "testpw",
+    "username": "Adminuser"
+  },
+  "configurationId": 1,
+  "enableEnterpriseDelegationToOperator": true,
+  "enableEnterpriseDelegationToProxy": true,
+  "enableEnterpriseUserManagementDelegationToOperator": true
+}
