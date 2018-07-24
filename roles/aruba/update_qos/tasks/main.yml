@@ -18,6 +18,6 @@
   register: response
   #register: request
 - set_fact:
-    requestBody: "{{ uri.body }}" 
+    requestBody: "{{ body }}" 
 - debug:
     msg: "MKA {{ requestBody }} -- {{ response.content }} | to_json "
