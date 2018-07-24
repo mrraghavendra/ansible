@@ -27,4 +27,4 @@
       debug: msg="{{ body }}"
     
     - name: Response data
-    - debug: msg="Response: {{ response.content | to_json }}  "
+    - debug: msg="{{ response.content | to_json }}  "
