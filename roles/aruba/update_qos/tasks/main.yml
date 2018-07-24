@@ -1,25 +1,29 @@
 ---
-- name: Patch template
+- name: set API
   vars:
     body: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}"
-  uri:
-    url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
-    method: POST
-    debug: var=body
-    #user: "{{ username }}"
-    #password: "{{ password }}"
-    body: "{{ body }}"
-    force_basic_auth: yes
-    status_code: 200
-    body_format: json
-    validate_certs: no
-    return_content: yes
-    headers:
-      Content-Type: "application/json"
-      Accept: "application/json"
-  register: response
-  #register: request
-- set_fact:
-    my: "{{ lookup('template','../files/patch_template_variables.json')  }}"
-- debug:
-    msg: "Request:{{ my }} - Response: {{ response.content }} | to_json "
+tasks:
+    - name: Patch template
+      uri:
+        url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
+        method: POST
+        debug: var=body
+        #user: "{{ username }}"
+        #password: "{{ password }}"
+        body: "{{ body }}"
+        force_basic_auth: yes
+        status_code: 200
+        body_format: json
+        validate_certs: no
+        return_content: yes
+        headers:
+          Content-Type: "application/json"
+          Accept: "application/json"
+        register: response
+        #register: request
+    
+    - name: Rest request data
+      debug: msg="{{ body }}"
+    
+    - name: Response data
+    - debug: msg: "Response: {{ response.content | to_json }}  "
