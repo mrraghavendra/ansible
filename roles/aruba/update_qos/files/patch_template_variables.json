@@ -1,1 +1,1 @@
-{"total":0,"variables":{"variable_name":"{{ tvar1 }}"}}
+{"total":0,"variables":{"user_wlan":"{{ userwlan }}","corp_wlan":"{{ corpwlan }}","user_wlan_bw":"{{ userwlanbw }}","corp_wlan_bw":"{{ corpwlanbw }}","user_wlanqos":"{{ userwlanqos }}","corp_wlanqos":"{{ corpwlanqos }}" }}

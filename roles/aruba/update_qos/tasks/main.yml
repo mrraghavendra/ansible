@@ -1,16 +1,14 @@
 ---
 - name: Patch template
   vars:
-    body: '{"total":0,"variables":{"user_wlan":"{{ userwlan }}","corp_wlan":"{{ corpwlan }}","user_wlan_bw":"{{ userwlanbw }}","corp_wlan_bw":"{{ corpwlanbw }}","user_wlanqos":"{{ userwlanqos }}","corp_wlanqos":"{{ corpwlanqos }}" }}'
-  set_fact:
-    requestBody: "{{ body }}" 
+    body: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}"
   uri:
     url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
     method: POST
     #user: "{{ username }}"
     #password: "{{ password }}"
     #body: "{{ lookup('file','../files/create_customer.json') }}"
-    body: '{"total":0,"variables":{"user_wlan":"{{ userwlan }}","corp_wlan":"{{ corpwlan }}","user_wlan_bw":"{{ userwlanbw }}","corp_wlan_bw":"{{ corpwlanbw }}","user_wlanqos":"{{ userwlanqos }}","corp_wlanqos":"{{ corpwlanqos }}" }}'
+    body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
     body_format: json
@@ -22,4 +20,4 @@
   register: response
   #register: request
 - debug:
-    msg: "MKA {{ requestBody }} -- {{ response.content }} | to_json "
+    msg: "MKA {{ body }} -- {{ response.content }} | to_json "
