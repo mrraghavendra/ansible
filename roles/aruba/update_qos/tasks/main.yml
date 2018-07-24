@@ -5,6 +5,7 @@
   uri:
     url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
     method: POST
+    debug: var=item.user_wlan
     #user: "{{ username }}"
     #password: "{{ password }}"
     body: "{{ body }}"
