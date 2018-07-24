@@ -22,7 +22,7 @@
       Accept: "application/json"
   register: response
 - debug:
-    msg: "MKA  {{ response.content }}"
+    msg: "MKA  {{ response.content | to_json }}"
 - name: Assign Device to Customer
   uri:
     url: "{{ url }}/msp_api/v1/customers/{{ customer_id }}/devices"
