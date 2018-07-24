@@ -1,12 +1,12 @@
 ---
 - name: Patch template
   uri:
-    url: "{{ url }}/configuration/v1/devices/DZ0005126/template_variables"
+    url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
     method: POST
     #user: "{{ username }}"
     #password: "{{ password }}"
     #body: "{{ lookup('file','../files/create_customer.json') }}"
-    body: '{"total":0,"variables":{"variable_name":"{{ tvar1 }}"}}'
+    body: '{"total":0,"variables":{"user_wlan":"{{ userwlan }}","corp_wlan":"{{ corpwlan }}","user_wlan_bw":"{{ userwlanbw }}","corp_wlan_bw":"{{ corpwlanbw }}","user_wlanqos":"{{ userwlanqos }}","corp_wlanqos":"{{ corpwlanqos }}" }}'
     force_basic_auth: yes
     status_code: 200
     body_format: json
@@ -17,6 +17,7 @@
       Accept: "application/json"
   register: response
   #register: request
+- set_fact:
+    requestBody: "{{ request.body }}" 
 - debug:
-    msg: "MKA {{ response.content }} | to_json "
-
+    msg: "MKA {{ requestBody }} -- {{ response.content }} | to_json "

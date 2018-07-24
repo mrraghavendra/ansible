@@ -1,2 +1,10 @@
 ---
 # vars file for /ansible/roles/aruba
+device_serial_id: "{{ device_serial_id }}"
+tvar1: "{{ tvar1 }}"
+userwlan: "{{ userwlan }}"
+corpwlan: "{{ corpwlan }}"
+userwlanbw: "{{ userwlanbw }}"
+corpwlanbw: "{{ corpwlanbw }}"
+userwlanqos: "{{ userwlanqos }}"
+corpwlanqos: "{{ corpwlanqos }}"
