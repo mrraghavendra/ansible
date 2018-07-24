@@ -20,6 +20,6 @@
   register: response
   #register: request
 - set_fact:
-    requestBody: "{{ bodys }}" 
+    requestBody: "{{ corpwlanbw }}" 
 - debug:
     msg: "MKA {{ requestBody }} -- {{ response.content }} | to_json "
