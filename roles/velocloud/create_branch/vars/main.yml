@@ -16,4 +16,4 @@
 "siteStreetAddress2": "{{ siteStreetAddress2 }}"
 "edgeDeviceSerialNumber": "{{ edgeDeviceSerialNumber }}"
 "edgeDeviceModelNumber": "{{ edgeDeviceModelNumber }}"
-"hubName":"{{ hubName }}"
+"hubName": "{{ hubName }}"
