@@ -1,18 +1,2 @@
 ---
 # vars file for velocloud
-"enterpriseId": "{{ enterpriseId }}"
-"siteCity": "{{ city }}"
-"siteContactEmail": "{{ contactEmail }}"
-"siteContactMobile": "{{ contactMobile }}"
-"siteContactName": "{{ contactName }}"
-"siteContactPhone": "{{ contactPhone }}"
-"siteCountry": "{{ country }}"
-"siteLat": "{{ lat }}"
-"siteLon": "{{ lon }}"
-"siteName": "{{ name }}"
-"siteState": "{{ state }}"
-"siteStreetAddress": "{{ streetAddress }}"
-"siteStreetAddress2": "{{ streetAddress2 }}"
-"edgeDeviceSerialNumber": "{{ deviceSerialNumber }}"
-"edgeDeviceModelNumber": "{{ deviceModelNumber }}"
-"hubName": "{{ hub_name }}"
