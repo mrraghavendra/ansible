@@ -1,14 +1,7 @@
 ---
 # defaults file for velocloud
-#defaults for edge Provisioning call
-"veloURL": "http://34.213.119.214:8080/veloCloud/portal/rest"
 "enterpriseId": 123
 #"configurationId": 2
-"edgeDeviceName": "Site1_Edge"
-"edgeDeviceSerialNumber": "1245SD3214"
-"edgeDeviceModelNumber": "edge500"
-"edgeSitedescription": "Site1_Edge"
-#Default Site details
 "siteCity": "string"
 "siteContactEmail": "mat@abc.com"
 "siteContactMobile": "67845632"
@@ -22,6 +15,14 @@
 "siteState": "string"
 "siteStreetAddress": "string"
 "siteStreetAddress2": "string"
-"edgeDeviceChallengePassword": "string"
-"edgeDevicePrivateKeyPassword": "string"
+"edgeDeviceSerialNumber": "1245SD3214"
+"edgeDeviceModelNumber": "edge500"
+"edgeDeviceChallengePassword": "test1"
+"edgeDevicePrivateKeyPassword": "test2"
+"edgeDeviceName": "{{ siteName }}_Edge"
+"edgeSitedescription": "{{ siteName }}_Edge"
+"hubName":"noHub"
+
+
+
 
