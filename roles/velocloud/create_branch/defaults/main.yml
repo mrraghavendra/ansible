@@ -1,7 +1,7 @@
 ---
 # defaults file for velocloud
 #defaults for edge Provisioning call
-"veloURL": "http://192.168.56.1:8080/portal/rest"
+"veloURL": "http://34.213.119.214:8080/veloCloud/portal/rest"
 "enterpriseId": 123
 #"configurationId": 2
 "edgeDeviceName": "Site1_Edge"

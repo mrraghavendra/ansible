@@ -21,4 +21,4 @@
 - set_fact:
     my: "{{ lookup('template','../files/patch_template_variables.json')  }}"
 - debug:
-    msg: "Request:{{ my }} - Response: {{ response.content }} | to_json "
+    msg: "Response: {{ response.content }} | to_json "
