@@ -21,4 +21,4 @@
 "edgeDevicePrivateKeyPassword": "test2"
 "edgeDeviceName": "{{ siteName }}_Edge"
 "edgeSitedescription": "{{ siteName }}_Edge"
-"hubName":"noHub"
+"hubName": "noHub"
