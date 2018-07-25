@@ -18,6 +18,7 @@ class FilterModule(object):
     def filters(self):
         return {
             'updateDeviceSettings': self.updateDeviceSettings,
+            'updateQOS': self.updateQOS
             #'another_filter': self.b_filter
         }
  
@@ -59,6 +60,49 @@ class FilterModule(object):
           print("Error in configuration_update_configuration_module")
 	  print(e)          
         return result
-   # def b_filter(self, a_variable, another_variable, yet_another_variable):
-    #      print("b filter")        
-     #   return "test" 
+		
+    def updateQOS(self, enterpriseID,configurationId,QOS):
+        velocloud.configuration.verify_ssl=False
+        client = velocloud.ApiClient()
+        client.authenticate("user@velocloud.net", "p4ssword", operator=True)
+        api = velocloud.AllApi(client)
+
+        try:
+          configuration = api.configurationGetConfiguration({ "enterpriseId":enterpriseID,"configurationId":configurationId,"with": ["modules"] })
+          qos_module = None
+          result= None
+          print("updateQOS perocessing started")
+          for module in configuration.modules:
+            if module.name == "QOS":
+              qos_module = module
+              break
+        except ApiException as e:
+          print("Error in configuration_get_configuration")
+        
+        highbulkcosmappingvalue=velocloud.CosMappingValue("15","true")
+        normalbulkcosmappingvalue=velocloud.CosMappingValue("5","true")
+        lowbulkcosmappingvalue=velocloud.CosMappingValue("1","true")
+        newbulkCos=velocloud.models.CosMapping(highbulkcosmappingvalue,normalbulkcosmappingvalue,lowbulkcosmappingvalue)
+
+        highrealtimecosmappingvalue=velocloud.CosMappingValue("35","true")
+        normalrealtimecosmappingvalue=velocloud.CosMappingValue("15","true")
+        lowrealtimecosmappingvalue=velocloud.CosMappingValue("1","true")
+        newrealtimeCos=velocloud.models.CosMapping(highrealtimecosmappingvalue,normalrealtimecosmappingvalue,lowrealtimecosmappingvalue)
+
+        hightransactionalcosmappingvalue=velocloud.CosMappingValue("20","true")
+        normaltransactionalcosmappingvalue=velocloud.CosMappingValue("7","true")
+        lowtransactionalcosmappingvalue=velocloud.CosMappingValue("1","true")
+        newtransactionalCos=velocloud.models.CosMapping(hightransactionalcosmappingvalue,normaltransactionalcosmappingvalue,lowtransactionalcosmappingvalue)
+
+        newedgeQosDatacosMapping=velocloud.models.EdgeQOSDataCosMapping("",newbulkCos,newrealtimeCos,newtransactionalCos)
+        newedgeQosData=velocloud.models.EdgeQOSData("","","","",newedgeQosDatacosMapping)
+        qos_module.data=newedgeQosData
+        #print(newedgeQosData)
+	try:
+          result = api.configurationUpdateConfigurationModule({ "id": qos_module.id,"_update": qos_module })
+          #configuration = api.configurationGetConfiguration({ "enterpriseId": 123,"configurationId":3,"with": ["modules"] })
+          #print("updated module")
+        except ApiException as e:
+          print("Error in configuration_update_configuration_module")
+          print(e)
+        return result
