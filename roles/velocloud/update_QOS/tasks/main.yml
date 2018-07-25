@@ -21,11 +21,11 @@
 - set_fact:
     # configurationId: "{{ response.json[2].id }}"
     configurationId: "{{ item.id }}" 
-    req: "{{ lookup('template','../files/getEnterpriseConfRequest.json') | to_json }}"
+    req: "{{ lookup('template','../files/getEnterpriseConfRequest.json')}"
   with_items: "{{ response.json }}"
   when: item.name == 'Acme VPN Profile'
 - debug:
-    msg: "Request  {{ req }} -- Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
+    msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
 - name: Update QOS Module data for Edge
   debug:
    msg: "{{ velo_edge_id | updateQOS(configurationId,QOS) }}"
