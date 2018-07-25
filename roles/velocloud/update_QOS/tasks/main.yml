@@ -21,7 +21,6 @@
 - set_fact:
     # configurationId: "{{ response.json[2].id }}"
     configurationId: "{{ item.id }}" 
-    req: "{{ lookup('template','../files/getEnterpriseConfRequest.json')}}"
   with_items: "{{ response.json }}"
   when: item.name == 'Acme VPN Profile'
 - debug:
