@@ -20,7 +20,7 @@
       Content-Type: "application/x-www-form-urlencoded"
   register: response
 - set_fact:
-    velo_edge_id: "{{ response.cookies.velocloud.session }}"
+    velo_edge_id: "{{ response.cookies }}"
 - debug:
     msg: " reqest {{velo_edge_id}}"
 
