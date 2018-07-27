@@ -23,10 +23,6 @@
     velo_edge_id: "{{ response.cookies }}"
 - debug:
     msg: " reqest {{velo_edge_id}}"
-
-# **************************************************************************
-#        Get Configurations from enterprise Profile
-# **************************************************************************
 - name: Get Config id from enterprise Profile
   vars:
     body: "{{ lookup('template','../files/getEnterpriseConfRequest.json') | to_json }}"
