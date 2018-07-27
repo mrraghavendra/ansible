@@ -2,11 +2,11 @@
 # tasks file for velocloud "configurationId"
 - name: Get Config id from enterprise Profile
   vars:
-    body: "{{ lookup('template','../files/getEnterpriseConfRequest.json') | to_json }}"
+    body: "{{ lookup('template','../files/loginRequest.json') | to_json }}"
   uri:
     url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
     method: POST
-    user: "{{ username }}"
+    username: "{{ username }}"
     password: "{{ password }}"
     body: "{{ body }}"
     force_basic_auth: yes
