@@ -44,7 +44,7 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-      Cookie: "{{ response.cookies }}"
+      Cookie: "{{ velo_edge_id.velocloud.session }}"
   register: response1
 #- set_fact:
     # configurationId: "{{ response.json[2].id }}"
