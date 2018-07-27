@@ -33,6 +33,8 @@
     #force_basic_auth: yes
     status_code: 200
     return_content: yes
+    body_format: json
+    validate_certs: false
     headers:
      Cookie: "{{ velo_edge_id }}"
   register: response1
