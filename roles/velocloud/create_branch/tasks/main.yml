@@ -4,16 +4,15 @@
   vars:
     body: "{{ lookup('template','../files/loginRequest.txt') }}"
   uri:
-    url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
+    url: "{{ veloURL }}/login/enterpriseLogin"
     method: POST
     body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
-    validate_certs: no
+    body_format: raw
     return_content: yes
     headers:
       Content-Type: "application/x-www-form-urlencoded"
-      Accept: "application/json"
   register: response
 - set_fact:
     velo_edge_id: "{{ lookup('template','../files/loginRequest.txt') }}"
