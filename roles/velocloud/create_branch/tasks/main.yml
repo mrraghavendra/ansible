@@ -2,21 +2,20 @@
 # tasks file for velocloud "configurationId"
 - name: Get Config id from enterprise Profile
   vars:
-    body: "{{ lookup('template','../files/loginRequest.json') | to_json }}"
+    body: "{{ lookup('template','../files/loginRequest.txt') }}"
   uri:
     url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
     method: POST
-    username: "{{ username }}"
-    password: "{{ password }}"
     body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
-    body_format: json
     validate_certs: no
     return_content: yes
     headers:
       Content-Type: "application/x-www-form-urlencoded"
       Accept: "application/json"
   register: response
+- set_fact:
+    velo_edge_id: "{{ lookup('template','../files/loginRequest.txt') }}"
 - debug:
-    msg: "{{  response}} "
+    msg: " reqest {{velo_edge_id}} - {{  response}} "
