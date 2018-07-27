@@ -34,7 +34,7 @@
     status_code: 200
     return_content: yes
     headers:
-     Cookie: "{{ velo_edge_id.velocloud.session }}"
+     Cookie: "{{ velo_edge_id }}"
   register: response1
 #- set_fact:
     # configurationId: "{{ response.json[2].id }}"
