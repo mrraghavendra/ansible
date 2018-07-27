@@ -6,8 +6,8 @@
   uri:
     url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
     method: POST
-    #user: "{{ username }}"
-    #password: "{{ password }}"
+    user: "{{ username }}"
+    password: "{{ password }}"
     body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
@@ -31,8 +31,8 @@
   uri:
     url: "{{ veloURL }}/edge/edgeProvision"
     method: POST
-    #user: "{{ username }}"
-    #password: "{{ password }}"
+    user: "{{ username }}"
+    password: "{{ password }}"
     body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
