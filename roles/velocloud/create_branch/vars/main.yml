@@ -1,5 +1,7 @@
 ---
 # vars file for velocloud
+username: "{{ user }}"
+password: "{{ pass }}"
 enterpriseId: "{{ enterpriseId }}"
 siteCity: "{{ siteCity }}"
 siteContactEmail: "{{ siteContactEmail }}"
