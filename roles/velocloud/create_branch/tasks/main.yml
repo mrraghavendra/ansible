@@ -33,18 +33,12 @@
   uri:
     url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
     method: POST
-    user: "{{ username }}"
-    password: "{{ password }}"
     body: "{{ body }}"
-    force_basic_auth: yes
+    #force_basic_auth: yes
     status_code: 200
-    body_format: json
-    validate_certs: no
     return_content: yes
     headers:
-      Content-Type: "application/json"
-      Accept: "application/json"
-      Cookie: "{{ velo_edge_id.velocloud.session }}"
+     Cookie: "{{ velo_edge_id.velocloud.session }}"
   register: response1
 #- set_fact:
     # configurationId: "{{ response.json[2].id }}"
