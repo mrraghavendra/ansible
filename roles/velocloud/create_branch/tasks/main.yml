@@ -22,7 +22,7 @@
 - set_fact:
     velo_edge_id: "{{ response.cookies }}"
 - debug:
-    msg: " reqest {{velo_edge_id}} - {{  response }} "
+    msg: " reqest {{velo_edge_id}}"
 
 # **************************************************************************
 #        Get Configurations from enterprise Profile
