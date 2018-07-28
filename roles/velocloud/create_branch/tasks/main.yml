@@ -18,12 +18,11 @@
     return_content: yes
     headers:
       Content-Type: "application/x-www-form-urlencoded"
-      Accept: "application/json"
   register: response
 - set_fact:
-    velo_edge_id: "{{ response }}"
+    velo_edge_id: "culture=en-US;{{ response.cookies }}"
 - debug:
-    msg: " reqest {{velo_edge_id}}"
+    msg: " reqest {{velo_edge_id}} "
 
 # **************************************************************************
 #        Get Configurations from enterprise Profile
@@ -43,16 +42,16 @@
     validate_certs: no
     return_content: yes
     headers:
-      Content-Type: "application/x-www-form-urlencoded"
-      Cookie: "{{ velo_edge_id }}"
-  register: response1
-#- set_fact:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
+- set_fact:
     # configurationId: "{{ response.json[2].id }}"
-    #configurationId: "{{ item.id }}" 
-  #with_items: "{{ response.json }}"
-  #when: item.name == 'Acme VPN Profile'
+    configurationId: "{{ item.id }}" 
+  with_items: "{{ response.json }}"
+  when: item.name == 'Acme VPN Profile'
 - debug:
-    msg: "Profile id for vpn profile-   {{  response1 }}  "
+    msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
 
 # **************************************************************************
 #       Provision the Edge Device
@@ -82,7 +81,7 @@
     msg: "Request {{ Req }} --  MKA  {{ velo_edge_id }} Provisioned "
 
 # **************************************************************************
-#       Update Device Settings
+#       Login with enterprise Profile
 # **************************************************************************
 - name: Update Devicesetting Module data for Edge
   debug:
