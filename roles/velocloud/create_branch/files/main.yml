@@ -1,0 +1,98 @@
+-
+# uri:
+#   url: "https://vco47-usvi1.velocloud.net/portal/rest/login/enterpriseLogin"
+#   method: POST
+#   body: "{{ lookup('template','../files/loginrequest.json') | to_json }}"
+#   status_code: 200,302 
+#   headers:
+#     Content-Type: "application/json"
+#   follow_redirects: "safe"
+# register: login 
+# debug:
+#   msg: " cookie is - {{ login }} " 
+# tasks file for velocloud "configurationId"
+- name: login 
+  vars:
+    body: "username={{ username }}&password={{ password }}"
+  uri:
+    url: "{{ veloURL }}/login/enterpriseLogin"
+    method: POST
+    body: "{{ body }}"
+    force_basic_auth: yes
+    status_code: 200
+    body_format: raw
+    validate_certs: false
+    return_content: yes
+    headers:
+      Content-Type: "application/x-www-form-urlencoded"
+  register: login 
+- set_fact:
+    velo_edge_id:
+- debug:
+    msg: "culture=en-US; velocloud.session={{ login.cookies['velocloud.session'] }}"  
+- name: Get Config id from enterprise Profile
+  vars:
+   body: "{{ lookup('template','../files/getEnterprise.json') | to_json }}"
+  uri:
+    url: "{{ veloURL }}/enterprise/getEnterprise"
+    method: POST
+    #user: "{{ username }}"
+    #password: "{{ password }}"
+    body: '{"enterpriseId": 915}'
+    #force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "culture=en-US;velocloud.session={{ login.cookies['velocloud.session'] }}" 
+     # Cookie: "culture=en-US; velocloud.session=s%3A6cc880cda6a8abab746ce4211b829658bd3f4a8d1a2bb9bcb334d047cdf581d17183344f5c0fc4002164492d0b6b96c69da2e6c2fe000353ce444fa48ae3839719474821a9c6a3ec178946b2f0a5e42f67ed7fc1d2d301c8419efe6574caf927b5f1380d8fcbf2b96c6519168b983c9be83734e4cb2d7816afb4535a252ea6ea6649988f1f76d3f89bc950fe1660577a6bf7c612c05fc19a14b6d82c00e92878e68d05670ed24ab82dd0000cd394c428fe70135a10a392b805818a169bd4c55636775fef41e0a4cd871be63e39d801f375d647992f44908e54003cc3b568cda52ec2e4f9d6dd88522a579558e2513fdcd181b34c19263ccd4dd0a5830162904b00a69e7c53928fbed67c2cb7e03df844fd1050e3c4f8fdc02cf624f955a79fce275e3a35c53afbd4253d1104882cf1d93968978391b0a451becf59c3db2f9664f1349552a4220dfc6d084e0ac9f62f088f2400a4d5b31ee807e52118e3ab695fb9a9c20f36c1a55116dd980253b6f8ad993211544d8fc005a4a249932a7bac589c466a8f84dae093408f765f42d6a2e53232c8dfc5daeabf33fb6c2d3c164eb38b14a2317ec098a86c2b625dda0388cb600724a7dcd2671f00cff6127ef5b4280c436550b0816268d350c5ffae303fade186ba5dbee2d4fbbe10e2063163b4404dc257bec19eb62c5aa08acaf78c916654be533f7fb285dfc853cad4a71b08fccf6efc4e474ab4ee99fdfe5dc6eb18883d02a7c0cbbd2c40a76de0d98e0ef746cb919062627f3faea46d92c033001fb6.RZ8cmPdZdhGK0vYtdcRS%2BJqhqFftSwjd1%2FjnIfQRu%2FE"
+  register: response
+#- set_fact:
+    # configurationId: "{{ response.json[2].id }}"
+ #   configurationId: "{{ item.id }}" 
+#  with_items: "{{ response.json }}"
+ # when: item.name == 'POC Profile'
+- debug:
+    #msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
+    msg: "response {{ response.content }} "
+- uri:
+   url: "{{ veloURL }}/logout"
+   method: POST
+   status_code: 200 
+   headers:
+     Cookie: "culture=en-US;velocloud.session={{ login.cookies['velocloud.session'] }}" 
+     Content-Type: "application/json"
+  register: res
+- debug:
+   msg: " logged out {{ res }} "
+# tasks file for velocloud "configurationId"
+# name: Provision Edge Device
+# vars:
+#   body: "{{ lookup('template','../files/edgeProvisionRequest.json') | to_json }}"
+# uri:
+#   url: "{{ veloURL }}/edge/edgeProvision"
+#   method: POST
+#   #user: "{{ username }}"
+#   #password: "{{ password }}"
+#   body: "{{ body }}"
+#   force_basic_auth: yes
+#   status_code: 200
+#   body_format: json
+#   validate_certs: no
+#   return_content: yes
+#   headers:
+#     Content-Type: "application/json"
+#     Accept: "application/json"
+# register: response
+# set_fact:
+#   velo_edge_id: "{{ response.json.id }}"
+# debug:
+#   msg: "MKA  {{ velo_edge_id }} Provisioned "
+# name: Update Devicesetting Module data for Edge
+# debug:
+#       #msg: "{{ 'test' | another_filter('one','two')}}"
+#  # msg: "{{ velo_edge_id | updateDeviceSettings(configurationId) }}"
+#  msg: "{{ velo_edge_id | updateQOS(configurationId,QOS) }}"

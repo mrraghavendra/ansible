@@ -1,8 +1,8 @@
 {
   "enterpriseId": {{ "enterpriseId" }},
-  "configurationType": "NETWORK_BASED",
   "with": [
-    "edges"
+    "edgeCount",
+	"refers"
   ]
 }
 
