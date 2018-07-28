@@ -13,7 +13,7 @@
     body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
-    body_format: raw
+    body_format: form-urlencoded
     validate_certs: false
     return_content: yes
     headers:
