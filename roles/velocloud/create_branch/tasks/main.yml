@@ -44,11 +44,11 @@
       Accept: "application/json"
       Cookie: "culture=en-US;velocloud.session={{ cookies_id['velocloud.session'] }}"
   register: response
-#- set_fact:
+- set_fact:
     # configurationId: "{{ response.json[2].id }}"
-    #configurationId: "{{ item.id }}" 
-  #with_items: "{{ response.json }}"
-  #when: item.name == 'Accenture Lab Profile'
+    configurationId: "{{ item.id }}" 
+  with_items: "{{ response.json }}"
+  when: item.name == 'Accenture Lab Profile'
 - debug:
     msg: "Profile id for vpn profile-   {{  response.content  }} "
 
@@ -61,8 +61,6 @@
   uri:
     url: "{{ veloURL }}/edge/edgeProvision"
     method: POST
-    user: "{{ username }}"
-    password: "{{ password }}"
     body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
@@ -72,6 +70,7 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
+      Cookie: "culture=en-US;velocloud.session={{ cookies_id['velocloud.session'] }}"
   register: response
 - set_fact:
     velo_edge_id: "{{ response.json.id }}"
