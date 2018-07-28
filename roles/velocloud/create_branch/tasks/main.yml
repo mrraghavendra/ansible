@@ -43,13 +43,13 @@
       Content-Type: "application/json"
       Accept: "application/json"
   register: response
-- set_fact:
+#- set_fact:
     # configurationId: "{{ response.json[2].id }}"
-    configurationId: "{{ item.id }}" 
-  with_items: "{{ response.json }}"
-  when: item.name == 'Accenture Lab Profile'
+    #configurationId: "{{ item.id }}" 
+  #with_items: "{{ response.json }}"
+  #when: item.name == 'Accenture Lab Profile'
 - debug:
-    msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
+    msg: "Profile id for vpn profile-   {{  response.content  }} "
 
 # **************************************************************************
 #       Provision the Edge Device
