@@ -20,9 +20,9 @@
       Content-Type: "application/x-www-form-urlencoded"
   register: response
 - set_fact:
-    velo_edge_id: "culture=en-US;velocloud.session={{ response.cookies['velocloud.session'] }}"
+    cookies_id: "{{ response.cookies}}"
 - debug:
-    msg: " reqest {{velo_edge_id}} "
+    msg: " reqest {{cookies_id}} "
 
 # **************************************************************************
 #        Get Configurations from enterprise Profile
@@ -42,7 +42,7 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-      Cookie: "{{ velo_edge_id }}"
+      Cookie: "culture=en-US;velocloud.session={{ cookies_id['velocloud.session'] }}"
   register: response
 #- set_fact:
     # configurationId: "{{ response.json[2].id }}"
