@@ -1,5 +1,5 @@
 {
-  "enterpriseId": {{ "enterpriseId" }},
+  "enterpriseId": 915,
   "with": [
     "edgeCount",
 	"refers"

@@ -22,7 +22,7 @@
 - set_fact:
     cookies_id: "{{ response.cookies}}"
 - debug:
-    msg: " reqest {{cookies_id}} "
+    msg: " velocloud.session={{ cookies_id['velocloud.session'] }} "
 
 # **************************************************************************
 #        Get Configurations from enterprise Profile
