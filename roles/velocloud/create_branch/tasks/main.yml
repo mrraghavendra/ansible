@@ -45,8 +45,8 @@
       Cookie: "culture=en-US;velocloud.session={{ cookies_id['velocloud.session'] }}"
   register: response
 - set_fact:
-    # configurationId: "{{ response.json[2].id }}"
-    configurationId: "{{ item.id }}" 
+    configurationId: "{{ response.json[2].id }}"
+    #configurationId: "{{ item.id }}" 
   with_items: "{{ response.json }}"
   when: item.name == 'Accenture Lab Profile'
 - debug:
