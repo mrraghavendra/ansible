@@ -33,8 +33,6 @@
   uri:
     url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
     method: POST
-    user: "{{ username }}"
-    password: "{{ password }}"
     body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
@@ -49,7 +47,7 @@
     # configurationId: "{{ response.json[2].id }}"
     configurationId: "{{ item.id }}" 
   with_items: "{{ response.json }}"
-  when: item.name == 'Acme VPN Profile'
+  when: item.name == 'Accenture Lab Profile'
 - debug:
     msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
 
