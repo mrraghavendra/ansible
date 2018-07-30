@@ -47,7 +47,7 @@
 - set_fact:
     enterpriseId: '{{ enterprise.id | int }}'
 - debug:
-    msg: "{{  enterpriseId|int }}"
+    msg: '{{  enterpriseId | int }}'
 
 # **************************************************************************
 #        Get Configurations from enterprise Profile
