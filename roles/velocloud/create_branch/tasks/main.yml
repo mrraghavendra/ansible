@@ -45,7 +45,7 @@
 - set_fact:
     enterprise: "{{ response.content }}" 
 - set_fact:
-    enterpriseId: "{{ enterprise.id|int }}"
+    enterpriseId: '{{ enterprise.id | int }}'
 - debug:
     msg: "{{  enterpriseId|int }}"
 
