@@ -43,7 +43,7 @@
       Cookie: "{{ cookies_id }}" 
   register: response
 - set_fact:
-    enterpriseId: "{{ response.content.id }}" 
+    enterpriseId: "{{ response.content['id'] }}" 
 - debug:
     msg: "{{  enterpriseId }}"
 
