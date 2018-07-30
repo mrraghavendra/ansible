@@ -159,6 +159,7 @@
      url: "{{ veloURL }}/logout"
      method: POST
      status_code: 200
+     validate_certs: false
      headers:
        Cookie: "{{ cookies_id }}"
        Content-Type: "application/json"
