@@ -22,7 +22,34 @@
 - set_fact:
     cookies_id: "culture=en-US;velocloud.session={{ response.cookies['velocloud.session']}}"
 - debug:
-    msg: " {{ cookies_id }} "
+    msg: " Logged in successfully!! "
+
+# **************************************************************************
+#       Get Enterprise Profile
+# **************************************************************************
+- name: Get Enterprise Profile
+  vars:
+   body: "{{ lookup('template','../files/getEnterprise.json') | to_json }}"
+  uri:
+    url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
+    method: POST
+    body: '{"with":["edgeCount","refs"]}'
+    status_code: 200
+    body_format: json
+    force_basic_auth: yes
+    validate_certs: false
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}" 
+  register: response
+- set_fact:
+    configurationId: "{{ item.id }}" 
+  with_items: "{{ response.json }}"
+  when: item.name == 'POC Profile'
+- debug:
+    msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
 
 # **************************************************************************
 #        Get Configurations from enterprise Profile
@@ -42,15 +69,14 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-      Cookie: "{{ cookies_id}}"
+      Cookie: "{{ cookies_id }}"
   register: response
 - set_fact:
-    configurationId: "{{ response.json[2].id }}"
-    #configurationId: "{{ item.id }}" 
+    configurationId: "{{ item.id }}" 
   with_items: "{{ response.json }}"
-  when: item.name == 'Accenture Lab Profile'
+  when: item.name == 'POC Profile'
 - debug:
-    msg: "Profile id for vpn profile-   {{  response.content  }} "
+    msg: msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
 
 # **************************************************************************
 #       Provision the Edge Device
@@ -74,14 +100,68 @@
   register: response
 - set_fact:
     velo_edge_id: "{{ response.json.id }}"
-    Req: "{{ lookup('template','../files/edgeProvisionRequest.json') | to_json }}"
 - debug:
-    msg: "Request {{ Req }} --  MKA  {{ velo_edge_id }} Provisioned "
+    msg: "Res- {{ response.content }} --  Edge_ID:  {{ velo_edge_id }} Provisioned "
 
 # **************************************************************************
-#       Login with enterprise Profile
+#       Configrution for Edge Device provisioned
+# **************************************************************************
+- name: Get Configrution id for Edge Device provisioned
+  vars:
+    body: '{"enterpriseId": {{ enterpriseId }},"edgeId": "{{ velo_edge_id }}" }'
+  uri:
+    url: "{{ veloURL }}/edge/getEdgeConfigurationStack"
+    method: POST
+    body: "{{ body }}"
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}"
+  register: response
+- set_fact:
+   velo_edge_config_id: "{{ response.json[0].id }}"
+- set_fact:
+   velo_edge_devicesetting_module_id: "{{ item.id }}"
+  with_items: "{{ response.json[0].modules }}"
+  when: item.name == 'deviceSettings'
+- debug:
+   msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} "
+# **************************************************************************
+#       Device setting Module enterprise Profile
 # **************************************************************************
 - name: Update Devicesetting Module data for Edge
-  debug:
-        #msg: "{{ 'test' | another_filter('one','two')}}"
-    msg: "{{ velo_edge_id | updateDeviceSettings(configurationId) }}"
+  vars:
+    body: "{{ lookup('template','../files/updateDeviceSettingsModuleRequest.json') | to_json }}"
+  uri:
+    url: "{{ veloURL }}/configuration/updateConfigurationModule"
+    method: POST
+    body: "{{ body }}"
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}"
+  register: response
+- debug:
+   msg: "updatted deveicesetting {{ response.content }} "
+# **************************************************************************
+#       Login out with enterprise Profile
+# **************************************************************************
+- name: Logout
+  uri:
+     url: "{{ veloURL }}/logout"
+     method: POST
+     status_code: 200
+     headers:
+       Cookie: "{{ cookies_id }}"
+       Content-Type: "application/json"
+  register: res
+- debug:
+   msg: " Logging out {{ res }} "
