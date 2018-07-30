@@ -31,7 +31,7 @@
   uri:
     url: "{{ veloURL }}/enterprise/getEnterprise"
     method: POST
-    #body: '{"with":["edgeCount","refs"]}'
+    body: '{"enterpriseId": 915,"with": ["enterpriseProxy"]}'
     status_code: 200
     body_format: json
     force_basic_auth: yes
