@@ -31,7 +31,7 @@
   uri:
     url: "{{ veloURL }}/enterprise/getEnterprise"
     method: POST
-    body: '{"enterpriseId": 915,"with": ["enterpriseProxy"]}'
+    body: '{}'
     status_code: 200
     body_format: json
     force_basic_auth: yes
