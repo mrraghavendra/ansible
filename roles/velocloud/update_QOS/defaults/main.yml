@@ -25,5 +25,10 @@
 "edgeDeviceChallengePassword": "string"
 "edgeDevicePrivateKeyPassword": "string"
 "QOS": "GOLD"
+"corplanIP": "10.11.23.10"
+"corpCIDR": "24"
+"GuestlanIP": "10.11.24.10"
+"guestCIDR": "24"
+"vpnTemplate": "POC Profile"
 
 

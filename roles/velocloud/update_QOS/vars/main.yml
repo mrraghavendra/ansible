@@ -3,3 +3,5 @@
 enterpriseId: "{{ enterprise_ID }}"
 #"configurationId": 2
 QOS: "{{ qos }}"
+username: "{{ user }}"
+password: "{{ pass }}"
