@@ -20,7 +20,7 @@
       Content-Type: "application/x-www-form-urlencoded"
   register: response
 - set_fact:
-    cookies_id: "culture=en-US;velocloud.session={{ response.cookies['velocloud.session']}}"
+    cookies_id: "culture=en-US;velocloud.session={{ response.cookies['velocloud.session'] }}"
 - debug:
     msg: " Logged in successfully!! "
 
@@ -43,9 +43,9 @@
       Cookie: "{{ cookies_id }}" 
   register: response
 - set_fact:
-    enterpriseId: "{{ response.content['id'] }}" 
+    enterpriseId1: "{{ response.content['id'] }}" 
 - debug:
-    msg: "{{  enterpriseId }}"
+    msg: "{{  enterpriseId1 }}"
 
 # **************************************************************************
 #        Get Configurations from enterprise Profile
