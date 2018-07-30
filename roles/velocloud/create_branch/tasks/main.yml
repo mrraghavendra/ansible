@@ -27,29 +27,25 @@
 # **************************************************************************
 #       Get Enterprise Profile
 # **************************************************************************
-#- name: Get Enterprise Profile
-#  vars:
-#   body: "{{ lookup('template','../files/getEnterprise.json') | to_json }}"
-#  uri:
-#    url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
-#    method: POST
-#    body: '{"with":["edgeCount","refs"]}'
-#    status_code: 200
-#    body_format: json
-#    force_basic_auth: yes
-#    validate_certs: false
-#    return_content: yes
-#    headers:
-#      Content-Type: "application/json"
-#      Accept: "application/json"
-#      Cookie: "{{ cookies_id }}" 
-#  register: response
-#- set_fact:
-#    configurationId: "{{ item.id }}" 
-#  with_items: "{{ response.json }}"
-#  when: item.name == 'POC Profile'
-#- debug:
-#    msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
+- name: Get Enterprise Profile
+  uri:
+    url: "{{ veloURL }}/enterprise/getEnterprise"
+    method: POST
+    #body: '{"with":["edgeCount","refs"]}'
+    status_code: 200
+    body_format: json
+    force_basic_auth: yes
+    validate_certs: false
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}" 
+  register: response
+- set_fact:
+    enterpriseId: "{{ response.id }}" 
+- debug:
+    msg: "{{  enterpriseId }}"
 
 # **************************************************************************
 #        Get Configurations from enterprise Profile
