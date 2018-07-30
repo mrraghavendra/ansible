@@ -45,9 +45,9 @@
 - set_fact:
     enterprise: "{{ response.content }}" 
 - set_fact:
-    enterpriseId: "{{ enterprise.id }}"
+    enterpriseId: "{{ enterprise.id|int }}"
 - debug:
-    msg: "{{  enterpriseId }}"
+    msg: "{{  enterpriseId|int }}"
 
 # **************************************************************************
 #        Get Configurations from enterprise Profile
