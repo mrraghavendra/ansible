@@ -19,10 +19,10 @@
     headers:
       Content-Type: "application/x-www-form-urlencoded"
   register: response
-- set_fact:
-    cookies_id: "culture=en-US;velocloud.session={{ response.cookies['velocloud.session'] }}"
+#- set_fact:
+#    cookies_id: "culture=en-US;velocloud.session={{ response.cookies['velocloud.session'] }}"
 - debug:
-    msg: " Logged in successfully!! "
+    msg: " Logged in successfully!! {{ response }}"
 
 # **************************************************************************
 #       Get Enterprise Profile
