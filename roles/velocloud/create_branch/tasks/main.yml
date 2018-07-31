@@ -19,10 +19,10 @@
     headers:
       Content-Type: "application/x-www-form-urlencoded"
   register: response
-- set_fact:
-    cookies_id: "culture=en-US;velocloud.session={{ (response.cookies.length > 0​) | ternary(response.cookies['velocloud.session'], 'empty') }}"
+#- set_fact:
+#    cookies_id: "culture=en-US;velocloud.session={{ (response.cookies.length > 0​) | ternary(response.cookies['velocloud.session'], 'empty') }}"
 - debug:
-    msg: " Logged in successfully!! "
+    msg: " Logged in successfully!! {{ (response.cookies.length > 0​) | ternary(response.cookies['velocloud.session'], 'empty') }}"
 
 # **************************************************************************
 #       Get Enterprise Profile
