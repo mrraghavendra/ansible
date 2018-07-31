@@ -22,33 +22,36 @@
 - debug:
     msg: " {{ cookies_id }} "
 
-# tasks file for velocloud "configurationId"
+# *****************************************************
+# Get Enterprise configurationId"
+# *****************************************************
 - name: Get Config id from enterprise Profile
   vars:
     body: "{{ lookup('template','../files/getEnterpriseConfRequest.json') | to_json }}"
   uri:
     url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
     method: POST
-    #user: "{{ username }}"
-    #password: "{{ password }}"
     body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
     body_format: json
-    validate_certs: no
+    validate_certs: false
     return_content: yes
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
+      Cookie: "{{ cookies_id }}"
   register: response
 - set_fact:
-    # configurationId: "{{ response.json[2].id }}"
     configurationId: "{{ item.id }}"
-    req: "{{ lookup('template','../files/getEnterpriseConfRequest.json') | to_json }}"     
   with_items: "{{ response.json }}"
-  when: item.name == 'Acme VPN Profile'
+  when: item.name == 'POC Profile'
 - debug:
-    msg: "Request {{ req }} -- Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
+    msg: "Profile id for vpn profile- {{  response.json[2].name }} is {{ configurationId }} "
+
+# *****************************************************
+# Edge Provision
+# *****************************************************
 - name: Provision Edge Device
   vars:
     body: "{{ lookup('template','../files/edgeProvisionRequest.json') | to_json }}"

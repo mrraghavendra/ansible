@@ -1,0 +1,115 @@
+---
+
+# **************************************************************************
+#       Login with enterprise Profile
+# **************************************************************************
+- name: Login with enterprise Profile
+  vars:
+    body: "{{ lookup('template','../files/loginRequest.txt') }}"
+  uri:
+    url: "{{ veloURL }}/login/enterpriseLogin"
+    method: POST
+    body: "{{ body }}"
+    body_format: raw
+    status_code: 200
+    force_basic_auth: yes
+    validate_certs: false
+    return_content: yes
+    headers:
+      Content-Type: "application/x-www-form-urlencoded"
+  register: response
+- set_fact:
+    cookies_id: "culture=en-US;velocloud.session={{ response.cookies['velocloud.session']}}"
+- debug:
+    msg: "Logged in successfully!!"
+
+# *****************************************************
+# Get Enterprise ConfigurationId
+# *****************************************************
+- name: Get Config id from enterprise Profile
+  vars:
+    body: "{{ lookup('template','../files/getEnterprise.json') | to_json }}"
+  uri:
+    url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
+    method: POST
+    body: '{"with":["edgeCount","refs"]}'
+    status_code: 200
+    body_format: json
+    validate_certs: false
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}" 
+  register: response
+- set_fact:
+    configurationId: "{{ item.id }}" 
+  with_items: "{{ response.json }}"
+  when: item.name == 'POC Profile'
+- debug:
+    msg: "Profile id for vpn profile- {{  response.json[2].name }} is {{ configurationId }} "
+
+# *****************************************************
+# Edge Device Provisioned
+# *****************************************************
+- name: Get Configrution id for Edge Device provisioned
+  vars:
+    body: '{"enterpriseId": {{ enterpriseId }},"edgeId": "{{ velo_edge_id }}" }'
+  uri:
+    url: "{{ veloURL }}/edge/getEdgeConfigurationStack"
+    method: POST
+    body: "{{ body }}"
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}"
+  register: response
+- set_fact:
+   velo_edge_config_id: "{{ response.json[0].id }}"
+- set_fact:
+   velo_edge_devicesetting_module_id: "{{ item.id }}"
+  with_items: "{{ response.json[0].modules }}"
+  when: item.name == 'deviceSettings'
+- debug:
+   msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} "
+
+# *****************************************************
+# Update Guest QOS
+# *****************************************************
+- name: update Guest QOS
+  vars:
+    body: "{{ lookup('template','../files/guest_QOS.json') | to_json }}"
+  uri:
+    url: "{{ veloURL }}/configuration/insertConfigurationModule"
+    method: POST
+    body: "{{ body }}"
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}"
+  register: response
+- debug:
+   msg: "Updatted QOS - {{ response.content }} "
+
+# *****************************************************
+# Logout
+# *****************************************************
+- name: Logout
+  uri:
+     url: "{{ veloURL }}/logout"
+     method: POST
+     status_code: 200
+     headers:
+       Cookie: "{{ cookies_id }}"
+       Content-Type: "application/json"
+  register: response
+- debug:
+   msg: "Logged Out Successfully!"
