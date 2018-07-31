@@ -43,9 +43,11 @@
       Cookie: "{{ cookies_id }}" 
   register: response
 - set_fact:
-    enterprise: "{{ response.json.id | int }}" 
+    enterprise: "{{ response.content }}" 
+- set_fact:
+    enterpriseId: '{{ enterprise.id | int }}'
 - debug:
-    msg: "{{  enterpriseId }}"
+    msg: '{{  enterpriseId | int }}'
 
 # **************************************************************************
 #        Get Configurations from enterprise Profile
