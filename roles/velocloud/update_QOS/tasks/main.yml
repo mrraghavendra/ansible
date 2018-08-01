@@ -82,7 +82,7 @@
 # *****************************************************
 - name: update Guest QOS
   vars:
-    body: "{{ lookup('template','../files/guest_QOS.json') | to_json }}"
+    body: "{{ lookup('template','../files/guest_QOS.txt') | to_json }}"
   uri:
     url: "{{ veloURL }}/configuration/insertConfigurationModule"
     method: POST
