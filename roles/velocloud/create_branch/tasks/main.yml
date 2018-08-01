@@ -97,7 +97,7 @@
 - set_fact:
     velo_edge_id: "{{ response.json.id }}"
 - debug:
-    var: response.content
+    var: response.content.id
 
 # **************************************************************************
 #       Configrution for Edge Device provisioned
