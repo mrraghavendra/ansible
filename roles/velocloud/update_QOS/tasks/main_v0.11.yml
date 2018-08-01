@@ -1,0 +1,79 @@
+---
+# **************************************************************************
+#       Login with enterprise Profile
+# **************************************************************************
+- name: Login with enterprise Profile
+  vars:
+    body: "{{ lookup('template','../files/loginRequest.txt') }}"
+  uri:
+    url: "{{ veloURL }}/login/enterpriseLogin"
+    method: POST
+    body: "{{ body }}"
+    body_format: raw
+    status_code: 200
+    force_basic_auth: yes
+    validate_certs: false
+    return_content: yes
+    headers:
+      Content-Type: "application/x-www-form-urlencoded"
+  register: response
+- set_fact:
+    cookies_id: "culture=en-US;velocloud.session={{ response.cookies['velocloud.session']}}"
+- debug:
+    msg: " {{ cookies_id }} "
+
+# *****************************************************
+# Get Enterprise configurationId"
+# *****************************************************
+- name: Get Config id from enterprise Profile
+  vars:
+    body: "{{ lookup('template','../files/getEnterpriseConfRequest.json') | to_json }}"
+  uri:
+    url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
+    method: POST
+    body: "{{ body }}"
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: false
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}"
+  register: response
+- set_fact:
+    configurationId: "{{ item.id }}"
+  with_items: "{{ response.json }}"
+  when: item.name == 'POC Profile'
+- debug:
+    msg: "Profile id for vpn profile- {{  response.json[2].name }} is {{ configurationId }} "
+
+# *****************************************************
+# Edge Provision
+# *****************************************************
+- name: Provision Edge Device
+  vars:
+    body: "{{ lookup('template','../files/edgeProvisionRequest.json') | to_json }}"
+  uri:
+    url: "{{ veloURL }}/edge/edgeProvision"
+    method: POST
+    #user: "{{ username }}"
+    #password: "{{ password }}"
+    body: "{{ body }}"
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
+- set_fact:
+    velo_edge_id: "{{ response.json.id }}"
+- debug:
+    msg: "MKA  {{ velo_edge_id }} Provisioned "
+- name: Update QOS Module data for Edge
+  debug:
+   msg: "{{ velo_edge_id | updateQOS(configurationId,QOS) }}"

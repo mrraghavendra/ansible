@@ -1,4 +1,5 @@
 ---
+
 # **************************************************************************
 #       Login with enterprise Profile
 # **************************************************************************
@@ -20,19 +21,18 @@
 - set_fact:
     cookies_id: "culture=en-US;velocloud.session={{ response.cookies['velocloud.session']}}"
 - debug:
-    msg: " {{ cookies_id }} "
+    msg: "Logged in successfully!!"
 
 # *****************************************************
-# Get Enterprise configurationId"
+# Get Enterprise ConfigurationId
 # *****************************************************
 - name: Get Config id from enterprise Profile
   vars:
-    body: "{{ lookup('template','../files/getEnterpriseConfRequest.json') | to_json }}"
+    body: "{{ lookup('template','../files/getEnterprise.json') | to_json }}"
   uri:
     url: "{{ veloURL }}/enterprise/getEnterpriseConfigurations"
     method: POST
-    body: "{{ body }}"
-    force_basic_auth: yes
+    body: '{"with":["edgeCount","refs"]}'
     status_code: 200
     body_format: json
     validate_certs: false
@@ -40,28 +40,25 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-      Cookie: "{{ cookies_id }}"
+      Cookie: "{{ cookies_id }}" 
   register: response
 - set_fact:
-    configurationId: "{{ item.id }}"
+    configurationId: "{{ item.id }}" 
   with_items: "{{ response.json }}"
   when: item.name == 'POC Profile'
 - debug:
     msg: "Profile id for vpn profile- {{  response.json[2].name }} is {{ configurationId }} "
 
 # *****************************************************
-# Edge Provision
+# Edge Device Provisioned
 # *****************************************************
-- name: Provision Edge Device
+- name: Get Configrution id for Edge Device provisioned
   vars:
-    body: "{{ lookup('template','../files/edgeProvisionRequest.json') | to_json }}"
+    body: '{"enterpriseId": {{ enterpriseId }},"edgeId": "{{ velo_edge_id }}" }'
   uri:
-    url: "{{ veloURL }}/edge/edgeProvision"
+    url: "{{ veloURL }}/edge/getEdgeConfigurationStack"
     method: POST
-    #user: "{{ username }}"
-    #password: "{{ password }}"
     body: "{{ body }}"
-    force_basic_auth: yes
     status_code: 200
     body_format: json
     validate_certs: no
@@ -69,11 +66,50 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
+      Cookie: "{{ cookies_id }}"
   register: response
 - set_fact:
-    velo_edge_id: "{{ response.json.id }}"
+   velo_edge_config_id: "{{ response.json[0].id }}"
+- set_fact:
+   velo_edge_devicesetting_module_id: "{{ item.id }}"
+  with_items: "{{ response.json[0].modules }}"
+  when: item.name == 'deviceSettings'
 - debug:
-    msg: "MKA  {{ velo_edge_id }} Provisioned "
-- name: Update QOS Module data for Edge
-  debug:
-   msg: "{{ velo_edge_id | updateQOS(configurationId,QOS) }}"
+   msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} "
+
+# *****************************************************
+# Update Guest QOS
+# *****************************************************
+- name: update Guest QOS
+  vars:
+    body: "{{ lookup('template','../files/guest_QOS.json') | to_json }}"
+  uri:
+    url: "{{ veloURL }}/configuration/insertConfigurationModule"
+    method: POST
+    body: "{{ body }}"
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}"
+  register: response
+- debug:
+   msg: "Updatted QOS - {{ response.content }} "
+
+# *****************************************************
+# Logout
+# *****************************************************
+- name: Logout
+  uri:
+     url: "{{ veloURL }}/logout"
+     method: POST
+     status_code: 200
+     headers:
+       Cookie: "{{ cookies_id }}"
+       Content-Type: "application/json"
+  register: response
+- debug:
+   msg: "Logged Out Successfully!"
