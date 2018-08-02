@@ -23,7 +23,7 @@
   when: isCorp == "yes"
   #register: request
 - set_fact:
-    my: "{{ lookup('template','../files/patch_template_variables.json')  }}"
+    my: "{{ lookup('template','../files/template_variables.json')  }}"
 - debug:
     msg: "Response Cust: {{ response.content }} | to_json "
 
@@ -50,6 +50,6 @@
   register: response
   when: isCorp == "no"
 - set_fact:
-    my: "{{ lookup('template','../files/patch_template_variables.json')  }}"
+    my: "{{ lookup('template','../files/template_variables.json')  }}"
 - debug:
     msg: "Response Guest: {{ response.content }} | to_json "
