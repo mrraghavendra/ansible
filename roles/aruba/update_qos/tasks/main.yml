@@ -26,6 +26,7 @@
     my: "{{ lookup('template','../files/template_variables.json')  }}"
 - debug:
     msg: "Response Cust: {{ response.content }} | to_json "
+  when: response.content is defined
 
 # *****************************************************
 # Update Guest QOS
