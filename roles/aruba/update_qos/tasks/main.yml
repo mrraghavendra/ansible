@@ -49,7 +49,5 @@
       Accept: "application/json"
   register: response
   when: isCorp == "no"
-- set_fact:
-    my: "{{ lookup('template','../files/template_variables.json')  }}"
 - debug:
     msg: "Response Guest: {{ response.content }} | to_json "
