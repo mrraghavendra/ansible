@@ -9,7 +9,7 @@
 	"role_aaa_profile": "{{ role_aaa_profile }}",
 	"access_List_session": {
 		"user_role": "{{ user_role }}",
-		"access_session": ["{{ access_List_session }}"],
+		"access_session": ["{{ access_session }}"],
 	},
 	"dot1p_priority": {
 		"ip_access_session": "{{ ip_access_session}}",
