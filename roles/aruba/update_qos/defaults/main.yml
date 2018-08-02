@@ -12,3 +12,20 @@ userwlanbw: 100
 corpwlanbw: 200
 userwlanqos: "Bronz"
 corpwlanqos: "Gold"
+
+isCorp: yes
+vlan_Number: 200
+ipaddress: "{{ ipaddress }}"
+helper_Address: "{{ helper_Address }}"
+description: "{{ vlan_Number }}_description Voice2000"
+vlan_Description: "VoiceQoS"
+vlan_aaa_profile: "200-core-aaa-prof"
+role_name: "aaa profile"
+role_aaa_profile: "initial-role"
+user_role: "200-core-role"
+access_session: "200-Voice-corp"
+ip_access_session: "200-Voice-corp"
+alias: "corp"
+scheduler_Profile: "default"
+queue_Weight: 100
+priority_Map: 67

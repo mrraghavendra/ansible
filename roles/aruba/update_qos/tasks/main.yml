@@ -1,10 +1,13 @@
 ---
+# *****************************************************
+# Update Enterprise QOS
+# *****************************************************
 - name: Patch template
   vars:
-    body: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}"
+    body: "{{ lookup('template','../files/template_variables.json') | to_json }}"
   uri:
     url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
-    method: POST
+    method: PATCH
     #user: "{{ username }}"
     #password: "{{ password }}"
     body: "{{ body }}"
@@ -17,8 +20,36 @@
       Content-Type: "application/json"
       Accept: "application/json"
   register: response
+  when: isCorp == "yes"
   #register: request
 - set_fact:
     my: "{{ lookup('template','../files/patch_template_variables.json')  }}"
 - debug:
-    msg: "Response: {{ response.content }} | to_json "
+    msg: "Response Cust: {{ response.content }} | to_json "
+
+# *****************************************************
+# Update Guest QOS
+# *****************************************************
+- name: Patch template
+  vars:
+    body: "{{ lookup('template','../files/template_variables.json') | to_json }}"
+  uri:
+    url: "{{ url }}/configuration/v1/devices/{{  device_serial_id  }}/template_variables"
+    method: PATCH
+    #user: "{{ username }}"
+    #password: "{{ password }}"
+    body: "{{ body }}"
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
+  when: isCorp == "no"
+- set_fact:
+    my: "{{ lookup('template','../files/patch_template_variables.json')  }}"
+- debug:
+    msg: "Response Guest: {{ response.content }} | to_json "

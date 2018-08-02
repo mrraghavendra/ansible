@@ -1,0 +1,21 @@
+{
+	"vlan_Number": "{{ vlan_Number }}",
+	"ipaddress": "{{ ipaddress }}",
+	"helper": "{{ helper_Address }}",
+	"description": "{{ description }}",
+	"vlan_Description": "{{ vlan_Description }}",
+	"vlan_aaa_profile": "{{ vlan_aaa_profile }}",
+	"role_name": "{{ role_name }}",
+	"role_aaa_profile": "{{ role_aaa_profile }}",
+	"access_List_session": {
+		"user_role": "{{ user_role }}",
+		"access_session": ["{{ access_List_session }}"],
+	},
+	"dot1p_priority": {
+		"ip_access_session": "{{ ip_access_session}}",
+		"alias": "{{ alias}}"
+	},
+	"scheduler_Profile": "{{ scheduler_Profile }}",
+	"queue_Weight": "{{ queue_Weight }}",
+	"priority_Map": "{{ priority_Map }}"
+}
