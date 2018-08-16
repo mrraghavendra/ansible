@@ -52,3 +52,4 @@
   when: isCorp == "no"
 - debug:
     msg: "Response Guest: {{ response.content }} | to_json "
+  when: response.content is defined
