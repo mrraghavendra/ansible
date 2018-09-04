@@ -171,7 +171,7 @@
       Cookie: "{{ cookies_id }}"
   register: response
 - debug:
-   msg: "updatted deveicesetting {{ response.content }} "
+   msg: "updatted deveicesetting {{ body }} "
 # **************************************************************************
 #       Login out with enterprise Profile
 # **************************************************************************
