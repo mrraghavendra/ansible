@@ -143,7 +143,7 @@
     ec2_security_group_names: "{{ ec2_security_group_names }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
   with_items: "{{ segments }}"
 - debug:
-   msg: "{{ ec2_security_group_names|another_filter }}"
+   msg: "{{ ec2_security_group_names|json_formatUtil }}"
 
 # **************************************************************************
 #       Device setting Module enterprise Profiles
