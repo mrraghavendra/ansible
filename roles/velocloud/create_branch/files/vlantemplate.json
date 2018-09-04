@@ -1,5 +1,5 @@
 {
-                  "cidrPrefix":"{{ segments.cidr }}",
+                  "cidrPrefix":"{{ cidr }}",
                   "staticReserved":10,
                   "cost":10,
                   "name":"{{ segment }}",
@@ -7,8 +7,8 @@
                      "GE1"
                   ],
                   "numDhcpAddr":242,
-                  "vlanId":"{{ segments.vlanid }}",
-                  "cidrIp":"{{ segments.subnet }}",
+                  "vlanId":"{{ vlanid }}",
+                  "cidrIp":"{{ subnet }}",
                   "disabled":false,
                   "netmask":"255.255.255.0",
                   "multicast":{
@@ -45,5 +45,5 @@
                      "enabled":false,
                      "area":""
                   },
-                  "segmentId":"{{ segments.segmentid }}"
+                  "segmentId":"{{ segmentid }}"
 }

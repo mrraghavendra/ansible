@@ -133,10 +133,15 @@
 - name: Login with enterprise Profile
   vars:
     ec2_security_group_names: ""
-    segmentLst: "{{ segments }}"
+    items: "{{ item }}" 
+    segmentid: "{{ items.segmentid }}"
+    segment: "{{ items.segment }}"
+    vlanid: "{{ items.vlanid }}"
+    subnet: "{{ items.subnet }}"
+    cidr: "{{ items.cidr }}"    
   set_fact:
     ec2_security_group_names: "{{ ec2_security_group_names }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
-  with_items: "{{ segmentLst }}"
+  with_items: "{{ segments }}"
 - debug:
    msg: "{{ ec2_security_group_names|another_filter }}"
 
