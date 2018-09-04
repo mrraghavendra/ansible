@@ -132,7 +132,7 @@
 # **************************************************************************
 - name: Login with enterprise Profile
   vars:
-    ec2_security_group_names: ""
+    segment_group: ""
     items: "{{ item }}" 
     segmentid: "{{ items.segmentid }}"
     segment: "{{ items.segment }}"
@@ -140,10 +140,10 @@
     subnet: "{{ items.subnet }}"
     cidr: "{{ items.cidr }}"    
   set_fact:
-    ec2_security_group_names: "{{ ec2_security_group_names }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
+    segment_group: "{{ segment_group }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
   with_items: "{{ segments }}"
 - debug:
-   msg: "{{ ec2_security_group_names|json_formatUtil }}"
+   msg: "{{ segment_group|json_formatUtil }}"
 
 # **************************************************************************
 #       Device setting Module enterprise Profiles
