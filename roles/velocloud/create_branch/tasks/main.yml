@@ -151,6 +151,7 @@
     segmentLst: "{{ segment_group|json_formatUtil }}"
 - debug:
    msg: "{{ segmentLst }}"  
+
 # **************************************************************************
 #       Print Device setting Module request
 # **************************************************************************
@@ -159,6 +160,7 @@
     body: "{{ lookup('template','../files/updateDeviceSettingsModuleRequest.json') | to_json }}"
 - debug
     msg: "{{ body }}"
+
 # **************************************************************************
 #       Device setting Module enterprise Profiles
 # **************************************************************************
