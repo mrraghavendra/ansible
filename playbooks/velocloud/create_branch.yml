@@ -3,6 +3,9 @@
 - hosts: localhost
   become: false
   gather_facts: no
+  
+  vars:
+    segment_group: ""
 
   roles:
   - velocloud/create_branch

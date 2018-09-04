@@ -130,7 +130,7 @@
 # **************************************************************************
 #       Segment enterprise Profile
 # **************************************************************************
-- name: Login with enterprise Profile
+- name: Segment configuations enterprise Profile
   vars:
     segment_group: ""
     items: "{{ item }}" 
@@ -142,11 +142,15 @@
   set_fact:
     segment_group: "{{ segment_group }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
   with_items: "{{ segments }}"
-- set_fact:
-   segmentLst: "{{ item.id }}"
-- debug:
-   msg: "{{ segment_group|json_formatUtil }}"
 
+# **************************************************************************
+#       Print Segment enterprise Profile
+# **************************************************************************
+- name: Print Segment configuations enterprise Profile
+  set_fact:
+    segmentLst: "{{ segment_group|json_formatUtil }}"
+- debug:
+   msg: "{{ segmentLst }}"  
 # **************************************************************************
 #       Device setting Module enterprise Profiles
 # **************************************************************************
