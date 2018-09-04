@@ -126,18 +126,17 @@
   when: item.name == 'deviceSettings'
 - debug:
    msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} "
-
-- name: Print sec group
+- name: Get Segment settings Module
   vars:
     ec2_security_group_namesstr: ""
 - set_fact:
-    ec2_security_group_names: "{{ ec2_security_group_names }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
+   velo_edge_config_id: "{{ response.json[0].id }}"
+- set_fact:
+   ec2_security_group_names: "{{ ec2_security_group_names }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
   with_items: "{{ segments }}"
 - debug:
-   msg: "{{ ec2_security_group_names|json_formatUtil }}"
-# **************************************************************************
-#       Device setting Module enterprise Profiles
-# **************************************************************************
+   msg: "ec2_security_group_names|another_filter"
+
 - name: Update Devicesetting Module data for Edge
   vars:
     body: "{{ lookup('template','../files/updateDeviceSettingsModuleRequest.json') | to_json }}"
