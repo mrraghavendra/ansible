@@ -17,7 +17,7 @@ class FilterModule(object):
     def filters(self):
         return {
             'updateDeviceSettings': self.updateDeviceSettings,
-            'updateQOS': self.updateQOS
+            'updateQOS': self.updateQOS,
 			'json_formatUtil': self.json_formatUtil
             #'another_filter': self.b_filter
         }
