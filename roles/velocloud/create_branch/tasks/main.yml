@@ -29,12 +29,10 @@
 # **************************************************************************
 - name: Get Segment settings Module
   vars:
-    ec2_security_group_namesstr: ""
+    ec2_security_group_names: ""
 - set_fact:
    ec2_security_group_names: "{{ ec2_security_group_names }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
   with_items: "{{ segments }}"
-- debug:
-   msg: "ec2_security_group_names|another_filter"
  
 # **************************************************************************
 #       Get Enterprise Profile
