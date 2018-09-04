@@ -142,6 +142,8 @@
   set_fact:
     segment_group: "{{ segment_group }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
   with_items: "{{ segments }}"
+- set_fact:
+   segmentLst: "{{ item.id }}"
 - debug:
    msg: "{{ segment_group|json_formatUtil }}"
 
