@@ -23,3 +23,10 @@ corplanIP: "{{ corpPlanIP }}"
 corpCIDR: "{{ corpCIDR }}"
 GuestlanIP: "{{ guestPlanIP }}"
 guestCIDR: "{{ guestCIDR }}"
+
+segments: 
+    segmentid:"{{ segmentid }}"
+    segment:"{{ segment }}"
+    vlanid:"{{ vlanid }}"
+    subnet:"{{ subnet }}"
+    cidr:"{{ cidr }}"
