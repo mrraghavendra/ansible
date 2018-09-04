@@ -152,6 +152,14 @@
 - debug:
    msg: "{{ segmentLst }}"  
 # **************************************************************************
+#       Print Device setting Module request
+# **************************************************************************
+- name: Update Devicesetting Module data for Edge
+  vars:
+    body: "{{ lookup('template','../files/updateDeviceSettingsModuleRequest.json') | to_json }}"
+- debug
+    msg: "{{ body }}"
+# **************************************************************************
 #       Device setting Module enterprise Profiles
 # **************************************************************************
 - name: Update Devicesetting Module data for Edge
@@ -171,7 +179,7 @@
       Cookie: "{{ cookies_id }}"
   register: response
 - debug:
-   msg: "updatted deveicesetting {{ body }} "
+   msg: "updatted deveicesetting {{ response.content }} "
 # **************************************************************************
 #       Login out with enterprise Profile
 # **************************************************************************
