@@ -32,7 +32,7 @@
     body: "{{ lookup('template','../files/loginRequest.txt') }}"
   set_fact:
     ec2_security_group_names: "{{ ec2_security_group_names }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
-- with_items: "{{ segments }}"
+  with_items: "{{ segments }}"
  
 # **************************************************************************
 #       Get Enterprise Profile
