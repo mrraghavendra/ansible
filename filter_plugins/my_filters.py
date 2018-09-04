@@ -13,12 +13,12 @@ from copy import deepcopy
 import json
 import velocloud.models
 
-
 class FilterModule(object):
     def filters(self):
         return {
             'updateDeviceSettings': self.updateDeviceSettings,
             'updateQOS': self.updateQOS
+			'json_json_formatUtil': self.json_formatUtil
             #'another_filter': self.b_filter
         }
  
@@ -106,3 +106,25 @@ class FilterModule(object):
           print("Error in configuration_update_configuration_module")
           print(e)
         return result
+	
+	def json_formatUtil(self, a_variable):
+        print('in filter')
+        c=a_variable[0:len(a_variable)-2]+'}'
+        b=c.split('-')
+        a_newvariable="["
+        i=0
+        print('length of list is '+str(len(b)))
+        for temp in b:
+           a_newvariable=a_newvariable + str(temp) 
+           i=i+1 
+	   if i < len(b) :
+             a_newvariable=a_newvariable+','
+           
+        a_newvariable=a_newvariable+']'
+          # print(b)
+          # print('/n')
+        #a_newvariable=a_newvariable.replace("u'","'")
+        #a_newvariable=a_newvariable.replace(' u',"")
+        #a_newvariable=a_newvariable.replace("\\\","")
+        print(a_newvariable)
+        return a_newvariable

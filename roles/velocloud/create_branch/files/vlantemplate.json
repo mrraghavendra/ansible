@@ -1,0 +1,49 @@
+{
+                  "cidrPrefix":"{{ cidr }}",
+                  "staticReserved":10,
+                  "cost":10,
+                  "name":"{{ segment }}",
+                  "interfaces":[
+                     "GE1"
+                  ],
+                  "numDhcpAddr":242,
+                  "vlanId":"{{ vlanid }}",
+                  "cidrIp":"{{ subnet }}",
+                  "disabled":false,
+                  "netmask":"255.255.255.0",
+                  "multicast":{
+                     "pim":{
+                        "enabled":false,
+                        "type":"PIM_SM"
+                     },
+                     "pimPruneIntervalSeconds":null,
+                     "pimKeepAliveTimerSeconds":null,
+                     "igmpHostQueryIntervalSeconds":null,
+                     "igmpMaxQueryResponse":null,
+                     "igmp":{
+                        "enabled":false,
+                        "type":"IGMP_V2"
+                     }
+                  },
+                  "baseDhcpAddr":13,
+                  "dhcp":{
+                     "enabled":true,
+                     "leaseTimeSeconds":86400,
+                     "dhcpRelay":{
+                        "enabled":false,
+                        "servers":[
+
+                        ]
+                     },
+                     "options":[
+
+                     ]
+                  },
+                  "advertise":true,
+                  "ospf":{
+                     "passiveInterface":true,
+                     "enabled":false,
+                     "area":""
+                  },
+                  "segmentId":"{{ segmentid }}"
+}
