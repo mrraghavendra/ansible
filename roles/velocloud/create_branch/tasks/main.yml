@@ -27,7 +27,7 @@
 # **************************************************************************
 #       Segment enterprise Profile
 # **************************************************************************
-- name: Get Segment settings Module
+- name: 'Get 1234 settings Module'
   vars:
     ec2_security_group_names: ""
 - set_fact:
