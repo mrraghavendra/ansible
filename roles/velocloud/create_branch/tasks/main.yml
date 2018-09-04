@@ -127,7 +127,7 @@
 - debug:
    msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} "
 # **************************************************************************
-#       Device setting Module enterprise Profile
+#       Device setting Module enterprise Profiles
 # **************************************************************************
 - name: Update Devicesetting Module data for Edge
   vars:
