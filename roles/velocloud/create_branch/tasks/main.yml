@@ -158,7 +158,7 @@
 - name: Update Devicesetting Module data for Edge
   vars:
     body: "{{ lookup('template','../files/updateDeviceSettingsModuleRequest.json') | to_json }}"
-- debug:
+  debug:
     msg: "{{ body }}"
 
 # **************************************************************************
