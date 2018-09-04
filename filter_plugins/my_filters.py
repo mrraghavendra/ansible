@@ -18,7 +18,8 @@ class FilterModule(object):
     def filters(self):
         return {'updateDeviceSettings': self.updateDeviceSettings,
                 'updateQOS': self.updateQOS,
-                'json_formatUtil': self.json_formatUtil}
+                'json_formatUtil': self.json_formatUtil
+			   }
 
     def updateDeviceSettings(self, a_variable, b_variable):
         velocloud.configuration.verify_ssl = False
@@ -185,8 +186,8 @@ class FilterModule(object):
             print(e)
         return result
 
-        def json_formatUtil(self, a_variable):
-            print('in json_formatUtil')
+    def json_formatUtil(self, a_variable):
+        print('in json_formatUtil')
 
         c = a_variable[0:len(a_variable) - 2] + '}'
         b = c.split('-')
