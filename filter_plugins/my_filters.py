@@ -108,7 +108,7 @@ class FilterModule(object):
         return result
 	
 	def json_formatUtil(self, a_variable):
-        print('in filter')
+	    print('in json_formatUtil')
         c=a_variable[0:len(a_variable)-2]+'}'
         b=c.split('-')
         a_newvariable="["
