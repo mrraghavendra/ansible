@@ -133,7 +133,7 @@
 - name: Segment settings Module enterprise Profile
   vars:
     ec2_security_group_namesstr: ""
-  set_fact:
+- set_fact:
     ec2_security_group_names: "{{ ec2_security_group_names }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
   with_items: "{{ segments }}"
 - debug:
