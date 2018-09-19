@@ -27,7 +27,7 @@ rules:
     sourcePort:"{{ sourcePort }}"
     upLimit:"{{ upLimit }}"
     downLimit:"{{ downLimit }}"
-    priorityID: "{{ priorityID }}"
+    priorityID:"{{ priorityID }}"
     policy:"{{ policy }}"
     protocol:"{{ protocol }}"
 
