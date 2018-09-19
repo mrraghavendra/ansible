@@ -81,9 +81,9 @@
 # **************************************************************************
 - name: Get extra_Vars Module request
   vars:
-    body: "{{ lookup('template','../files/extra_Vars.json') | to_json }}"
+    body: "{{ lookup('template','../files/extra_Vars.json') }}"
   set_fact:
-    segmentBdy: '{{ body|json_formatUtil }}'
+    segmentBdy: '{{ body|to_yaml }}'
 - debug:
    msg: "{{ segmentBdy }}"  
 # **************************************************************************
