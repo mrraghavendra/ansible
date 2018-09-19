@@ -21,7 +21,7 @@ class FilterModule(object):
         return {'updateDeviceSettings': self.updateDeviceSettings,
                 'updateQOS': self.updateQOS,
                 'json_formatUtil': self.json_formatUtil,
-				'segRulesfilter':segRulesfilter
+				'segRulesfilter': self.segRulesfilter
                }
 
     def updateDeviceSettings(self, a_variable, b_variable):
