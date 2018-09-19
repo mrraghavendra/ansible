@@ -82,7 +82,7 @@
 # **************************************************************************
 - name: Print Segment configuations enterprise Profile
   debug:
-   msg: "{{ testVars | to_json }}" 
+   msg: "{{ testVars }}" 
 
 # *****************************************************
 # Update Guest QOS
