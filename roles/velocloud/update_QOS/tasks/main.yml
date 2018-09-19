@@ -84,8 +84,6 @@
     body: "{{ lookup('template','../files/extra_Vars.json') | to_json }}"
   set_fact:
     segmentBdy: "{{ body|json_formatUtil }}"
-  debug:
-    msg: "{{ segmentBdy }}"
 # **************************************************************************
 #       Print Segment enterprise Profile
 # **************************************************************************
