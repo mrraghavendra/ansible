@@ -9,6 +9,7 @@ import json
 import velocloud.models
 import velocloud
 import urllib3
+import ast
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
 urllib3.disable_warnings()
@@ -207,55 +208,56 @@ class FilterModule(object):
         return a_newvariable
         
     def segRulesfilter(self, a_variable):
-        j2_env=Environment(loader=FileSystemLoader('./files'),trim_blocks=True)
-        template=j2_env.get_template('rulestemplate.json')
-        segmenttemplate=j2_env.get_template('SegmenQOStemplate.json')
-        insertqostemplate=j2_env.get_template('insert_QOS.json')
-        print("test:"+a_variable)
-        i=0
-        obj_json = json.loads(a_variable)
-        ruletem =""
+        j2_env = Environment(loader=FileSystemLoader('./files'), trim_blocks=True)
+        template = j2_env.get_template('rulestemplate.json')
+        segmenttemplate = j2_env.get_template('SegmenQOStemplate.json')
+        insertqostemplate = j2_env.get_template('insert_QOS.json')
+        jdata = ast.literal_eval(json.dumps(a_variable))
+        print("test:" + jdata)
+        i = 0
+        obj_json = json.loads(jdata)
+        ruletem = ""
         print(obj_json)
-        segtemplate='{"segments":['
-        noofsegments=len(obj_json['segments'])
-        j=0
+        segtemplate = '{"segments":['
+        noofsegments = len(obj_json['segments'])
+        j = 0
         for temp in obj_json['segments']:
-            j=j+1
-            ruletem='['
-            noofrules=len(temp['rules'])
-            i=0
+            j = j + 1
+            ruletem = '['
+            noofrules = len(temp['rules'])
+            i = 0
             for a_rule in temp['rules']:
-                #jinjainput ="ruleName='"+a_rule['name']+"',"+"desination_ip='"+a_rule['dip']+"',"+"desination_port='"+a_rule['dport']+"',"+"protocol_id='"+a_rule['protocol']+"',"+"priority='"+a_rule['priority']+"',"+"traffic_class='"+a_rule['traffic_class']+"'"
-                i=i+1
-                context=dict()
-                context['ruleName']=a_rule['ruleName']
-                context['desination_ip']=a_rule['destAppIP']
-                context['desination_port']=a_rule['destAppPort']
-                context['protocol_id']=a_rule['protocol'].get('id')
-                context['priority']=a_rule['priorityID']
-                context['traffic_class']=a_rule['serviceClass']
-                context['hostname']=a_rule['destApp']
-                #print(context)
-                #print(jinjainput)
+                # jinjainput ="ruleName='"+a_rule['name']+"',"+"desination_ip='"+a_rule['dip']+"',"+"desination_port='"+a_rule['dport']+"',"+"protocol_id='"+a_rule['protocol']+"',"+"priority='"+a_rule['priority']+"',"+"traffic_class='"+a_rule['traffic_class']+"'"
+                i = i + 1
+                context = dict()
+                context['ruleName'] = a_rule['ruleName']
+                context['desination_ip'] = a_rule['destAppIP']
+                context['desination_port'] = a_rule['destAppPort']
+                context['protocol_id'] = a_rule['protocol'].get('id')
+                context['priority'] = a_rule['priorityID']
+                context['traffic_class'] = a_rule['serviceClass']
+                context['hostname'] = a_rule['destApp']
+                # print(context)
+                # print(jinjainput)
                 ruletemplate = template.render(**context)
-                if i<noofrules: 
-                    ruletem=ruletem+ruletemplate+","
+                if i < noofrules: 
+                    ruletem = ruletem + ruletemplate + ","
                 else:
-                    ruletem=ruletem+ruletemplate
+                    ruletem = ruletem + ruletemplate
             
-            ruletem=ruletem+']' 
-            segcontext=dict()
-            segcontext['segment_id']=temp['segmentid']
-            segcontext['segment_name']=temp['segment']
-            segcontext['rules']=ruletem
-            segment=segmenttemplate.render(**segcontext)
-            if j<noofsegments:
-                segtemplate=segtemplate+segment+','
+            ruletem = ruletem + ']' 
+            segcontext = dict()
+            segcontext['segment_id'] = temp['segmentid']
+            segcontext['segment_name'] = temp['segment']
+            segcontext['rules'] = ruletem
+            segment = segmenttemplate.render(**segcontext)
+            if j < noofsegments:
+                segtemplate = segtemplate + segment + ','
             else:
-                segtemplate=segtemplate+segment+"]}"
+                segtemplate = segtemplate + segment + "]}"
         
-        qoscontext=dict()
-        qoscontext['tempsegment']=segtemplate
-        qoscontext['velo_edge_config_id']= obj_json['velo_edge_id'] 
-        insertqos=insertqostemplate.render(**qoscontext)
+        qoscontext = dict()
+        qoscontext['tempsegment'] = segtemplate
+        qoscontext['velo_edge_config_id'] = obj_json['velo_edge_id'] 
+        insertqos = insertqostemplate.render(**qoscontext)
         return insertqos 
