@@ -76,14 +76,14 @@
   when: item.name == 'deviceSettings'
 - debug:
    msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} "
-
 # **************************************************************************
 #       Print Segment enterprise Profile
 # **************************************************************************
 - name: Print Segment configuations enterprise Profile
-  debug:
-   msg: "{{ testVars }}" 
-
+  set_fact:
+    segmentLst: "{{ testVars|json_formatUtil }}"
+- debug:
+   msg: "{{ segmentLst }}"  
 # *****************************************************
 # Update Guest QOS
 # *****************************************************
