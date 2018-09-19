@@ -16,8 +16,8 @@ protocol:
 
 rules:
     destApp:"{{ destApp }}"
-    destId: "{{ destId }}"
-    id: "{{ id }}"
+    destId:"{{ destId }}"
+    id:"{{ id }}"
     ruleName:"{{ ruleName }}"
     destAppIP:"{{ destAppIP }}"
     destAppPort:"{{ destAppPort }}"
@@ -28,8 +28,8 @@ rules:
     upLimit:"{{ upLimit }}"
     downLimit:"{{ downLimit }}"
     priorityID: "{{ priorityID }}"
-    policy: "{{ policy }}"
-    protocol: "{{ protocol }}"
+    policy:"{{ policy }}"
+    protocol:"{{ protocol }}"
 
 segments: 
     segmentid:"{{ segmentid }}"
