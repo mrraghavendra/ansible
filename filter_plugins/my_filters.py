@@ -217,7 +217,7 @@ class FilterModule(object):
         i = 0
         obj_json = json.loads(jdata)
         ruletem = ""
-        print(obj_json)
+        print("obj_json:"+obj_json)
         segtemplate = '{"segments":['
         noofsegments = len(obj_json['segments'])
         j = 0
