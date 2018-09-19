@@ -83,7 +83,7 @@
   vars:
     body: "{{ lookup('template','../files/extra_Vars.json') | to_json }}"
   set_fact:
-    segmentBdy: '{{ body|list|join("\", \"") }}'
+    segmentBdy: '{{ body|json_formatUtil }}'
 - debug:
    msg: "{{ segmentBdy }}"  
 # **************************************************************************
