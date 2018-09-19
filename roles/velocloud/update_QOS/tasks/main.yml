@@ -82,14 +82,16 @@
 - name: Get extra_Vars Module request
   vars:
     body: "{{ lookup('template','../files/extra_Vars.json') | to_json }}"
+  set_fact:
+    segmentBdy: "{{ body|json_formatUtil }}"
   debug:
-    msg: "{{ body }}"
+    msg: "{{ segmentBdy }}"
 # **************************************************************************
 #       Print Segment enterprise Profile
 # **************************************************************************
 - name: Print Segment configuations enterprise Profile
   set_fact:
-    segmentLst: "{{ testVars|json_formatUtil }}"
+    segmentLst: "{{ segmentBdy|segRulesfilter }}"
 - debug:
    msg: "{{ segmentLst }}"  
 # *****************************************************
