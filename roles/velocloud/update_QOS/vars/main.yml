@@ -39,8 +39,8 @@ segments:
     cidr:"{{ cidr }}"
 
 extraVars:{
-    enterpriseId:"{{ enterpriseId }}"
-    siteName:"{{ siteName }}"
-    segments:["{{ segments }}"]
+    enterpriseId:"{{ enterpriseId }}",
+    siteName:"{{ siteName }}",
+    segments:["{{ segments }}"],
     velo_edge_id:"{{ velo_edge_id }}"
-}
+    }
