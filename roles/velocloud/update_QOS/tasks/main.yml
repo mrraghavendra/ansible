@@ -83,7 +83,7 @@
   vars:
     body: "{{ lookup('template','../files/extra_Vars.json') }}"
   set_fact:
-    segmentBdy: '{{ body|to_yaml }}'
+    segmentBdy: '{{ body|to_json }}'
 - debug:
    msg: "{{ segmentBdy }}"  
 # **************************************************************************
