@@ -77,6 +77,14 @@
 - debug:
    msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} "
 # **************************************************************************
+#       Get extra_Vars Module request
+# **************************************************************************
+- name: Get extra_Vars Module request
+  vars:
+    body: "{{ lookup('template','../files/extra_Vars.json') | to_json }}"
+  debug:
+    msg: "{{ body }}"
+# **************************************************************************
 #       Print Segment enterprise Profile
 # **************************************************************************
 - name: Print Segment configuations enterprise Profile

@@ -5,6 +5,7 @@ enterpriseId: "{{ enterprise_ID }}"
 QOS: "{{ qos }}"
 username: "{{ user }}"
 password: "{{ pass }}"
+velo_edge_id: "{{ velo_edge_id }}"
 
 policy:
     id:"{{ id }}"
@@ -37,9 +38,3 @@ segments:
     rules:"{{ rules }}"
     subnet:"{{ subnet }}"
     cidr:"{{ cidr }}"
-
-testVars:
-    enterpriseId:"{{ enterpriseId }}",
-    siteName:"{{ siteName }}",
-    segments:"{{ segments }}",
-    velo_edge_id:"{{ velo_edge_id }}"

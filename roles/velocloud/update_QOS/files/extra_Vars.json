@@ -1,0 +1,8 @@
+{
+	"extra_vars": {
+		"enterpriseId": {{ enterpriseId }},
+		"siteName": {{ siteName }},
+		"segments": {{ segments }},
+		"velo_edge_id": {{ velo_edge_id }}
+	}
+}
