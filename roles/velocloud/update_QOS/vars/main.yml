@@ -38,9 +38,8 @@ segments:
     subnet:"{{ subnet }}"
     cidr:"{{ cidr }}"
 
-extraVars:{
+extraVars:
     enterpriseId:"{{ enterpriseId }}",
     siteName:"{{ siteName }}",
-    segments:["{{ segments }}"],
+    segments:"{{ segments }}",
     velo_edge_id:"{{ velo_edge_id }}"
-    }
