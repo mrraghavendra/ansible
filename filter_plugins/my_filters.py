@@ -215,6 +215,7 @@ class FilterModule(object):
         jdata = ast.literal_eval(json.dumps(a_variable))
         print("test:" + jdata)
         i = 0
+		print("obj_json1")
         obj_json = json.loads(jdata)
         ruletem = ""
         print("obj_json:"+obj_json)
