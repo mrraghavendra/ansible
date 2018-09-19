@@ -1,0 +1,14 @@
+{
+            "segment":{
+               "segmentId":"{{ segment_id }}",
+               "name":"{{ segment_name }}",
+               "type":"REGULAR"
+               
+            },
+            "rules":{{ rules }},
+            "webProxy":{
+               "providers":[
+
+               ]
+            }
+}

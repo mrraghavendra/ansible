@@ -5,3 +5,35 @@ enterpriseId: "{{ enterprise_ID }}"
 QOS: "{{ qos }}"
 username: "{{ user }}"
 password: "{{ pass }}"
+
+policy:
+    id:"{{ id }}"
+    policy:"{{ policy}}"
+
+protocol:
+    id:"{{ id }}"
+    protocol:"{{ protocol }}"
+
+rules:
+    destApp:"{{ destApp }}"
+    destId: "{{ destId }}"
+    id: "{{ id }}"
+    ruleName:"{{ ruleName }}"
+    destAppIP:"{{ destAppIP }}"
+    destAppPort:"{{ destAppPort }}"
+    priority:"{{ priority }}"
+    serviceClass:"{{ serviceClass }}"
+    source:"{{ source }}"
+    sourcePort:"{{ sourcePort }}"
+    upLimit:"{{ upLimit }}"
+    downLimit:"{{ downLimit }}"
+    priorityID: "{{ priorityID }}"
+    policy: "{{ policy }}"
+    protocol: "{{ protocol }}"
+
+segments: 
+    segmentid:"{{ segmentid }}"
+    segment:"{{ segment }}"
+    rules:"{{ rules }}"
+    subnet:"{{ subnet }}"
+    cidr:"{{ cidr }}"
