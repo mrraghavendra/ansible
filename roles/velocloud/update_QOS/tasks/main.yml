@@ -81,7 +81,7 @@
 #       Print Segment enterprise Profile
 # **************************************************************************
 - name: Print Segment configuations enterprise Profile
-- debug:
+  debug:
    msg: "{{ testVars | to_json }}" 
 
 # *****************************************************
