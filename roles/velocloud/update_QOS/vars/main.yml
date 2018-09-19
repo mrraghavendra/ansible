@@ -38,7 +38,7 @@ segments:
     subnet:"{{ subnet }}"
     cidr:"{{ cidr }}"
 
-extraVars:
+testVars:
     enterpriseId:"{{ enterpriseId }}",
     siteName:"{{ siteName }}",
     segments:"{{ segments }}",

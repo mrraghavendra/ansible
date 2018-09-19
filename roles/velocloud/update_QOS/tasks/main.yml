@@ -82,9 +82,9 @@
 # **************************************************************************
 - name: Print Segment configuations enterprise Profile
   set_fact:
-    segmentLst: "{{ extraVars|segRulesfilter }}"
+    segmentLst: "{{ testVars|segRulesfilter }}"
 - debug:
-   msg: "{{ segmentLst }}" 
+   msg: "{{ segmentLst | to_json }}" 
 
 # *****************************************************
 # Update Guest QOS
