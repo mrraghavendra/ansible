@@ -207,7 +207,7 @@ class FilterModule(object):
         return a_newvariable
         
     def segRulesfilter(self, a_variable):
-        j2_env=Environment(loader=FileSystemLoader('../files'),trim_blocks=True)
+        j2_env=Environment(loader=FileSystemLoader('./files'),trim_blocks=True)
         template=j2_env.get_template('rulestemplate.json')
         segmenttemplate=j2_env.get_template('SegmenQOStemplate.json')
         insertqostemplate=j2_env.get_template('insert_QOS.json')
