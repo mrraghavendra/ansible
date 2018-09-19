@@ -21,7 +21,7 @@ class FilterModule(object):
         return {'updateDeviceSettings': self.updateDeviceSettings,
                 'updateQOS': self.updateQOS,
                 'json_formatUtil': self.json_formatUtil,
-				'segRulesfilter': self.segRulesfilter
+                'segRulesfilter': self.segRulesfilter
                }
 
     def updateDeviceSettings(self, a_variable, b_variable):
@@ -211,7 +211,7 @@ class FilterModule(object):
         template=j2_env.get_template('rulestemplate.json')
         segmenttemplate=j2_env.get_template('SegmenQOStemplate.json')
         insertqostemplate=j2_env.get_template('insert_QOS.json')
-		print(a_variable)
+        print(a_variable)
         i=0
         obj_json = json.loads(a_variable)
         ruletem =""
