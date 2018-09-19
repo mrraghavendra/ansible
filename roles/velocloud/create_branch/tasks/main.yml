@@ -148,7 +148,7 @@
 # **************************************************************************
 - name: Print Segment configuations enterprise Profile
   set_fact:
-    segmentLst: "{{ segment_group|json_formatUtil }}"
+    segmentLst: "{{ extraVars |segRulesfilter }}"
 - debug:
    msg: "{{ segmentLst }}"  
 

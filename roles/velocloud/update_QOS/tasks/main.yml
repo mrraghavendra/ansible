@@ -45,7 +45,7 @@
 - set_fact:
     configurationId: "{{ item.id }}" 
   with_items: "{{ response.json }}"
-  when: item.name == 'POC Profile'
+  when: item.name == 'POC2 Profile'
 - debug:
     msg: "Profile id for vpn profile- {{  response.json[2].name }} is {{ configurationId }} "
 
@@ -76,6 +76,15 @@
   when: item.name == 'deviceSettings'
 - debug:
    msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} "
+
+# **************************************************************************
+#       Print Segment enterprise Profile
+# **************************************************************************
+- name: Print Segment configuations enterprise Profile
+  set_fact:
+    segmentLst: "{{ segment_group|json_formatUtil }}"
+- debug:
+   msg: "{{ segmentLst }}" 
 
 # *****************************************************
 # Update Guest QOS

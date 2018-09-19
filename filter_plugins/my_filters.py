@@ -20,7 +20,8 @@ class FilterModule(object):
     def filters(self):
         return {'updateDeviceSettings': self.updateDeviceSettings,
                 'updateQOS': self.updateQOS,
-                'json_formatUtil': self.json_formatUtil
+                'json_formatUtil': self.json_formatUtil,
+				'segRulesfilter':segRulesfilter
                }
 
     def updateDeviceSettings(self, a_variable, b_variable):
