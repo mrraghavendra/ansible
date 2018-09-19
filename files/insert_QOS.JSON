@@ -1,8 +1,0 @@
-{
-  "data":{{ tempsegment }},
-  "description":"",
-  "name":"QOS",
-  "configurationId": {{ velo_edge_config_id }},
-  "type":"",
-  "version":""
-}
