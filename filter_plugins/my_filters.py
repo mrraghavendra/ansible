@@ -226,7 +226,7 @@ class FilterModule(object):
         # obj_json = json.loads(jsonData)
         obj_json = ast.literal_eval(jsonDataStr)
         ruletem = ""
-        print("obj_json2" + obj_json)
+        print(obj_json['enterpriseId'])
         segtemplate = '{"segments":['
         print("obj_json3")
         # type(obj_json)
