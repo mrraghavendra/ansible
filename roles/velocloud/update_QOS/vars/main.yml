@@ -6,7 +6,7 @@ QOS: "{{ qos }}"
 username: "{{ user }}"
 password: "{{ pass }}"
 velo_edge_id: "{{ velo_edge_id }}"
-siteName:"{{ siteName }}"
+siteName: "{{ siteName }}"
 
 policy:
     id:"{{ id }}"
