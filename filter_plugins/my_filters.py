@@ -214,21 +214,21 @@ class FilterModule(object):
         segmenttemplate = j2_env.get_template('SegmenQOStemplate.json')
         insertqostemplate = j2_env.get_template('insert_QOS.json')
         jsonDataStr = str(a_variable)
-        print("test:" + jsonDataStr)
+        #print("test:" + jsonDataStr)
         jsonDataStr = jsonDataStr.replace('"', "'").replace("u'", "'")
         print("test2:" + jsonDataStr)
        
         i = 0
-        print("obj_json1111")
+        #print("obj_json1111")
         # obj_json = json.dumps(json.loads(a_variable))
         # jsonStr = a_variable.decode("utf-8")
         # jsonData = json.dumps(jsonDataStr)
         # obj_json = json.loads(jsonData)
         obj_json = ast.literal_eval(jsonDataStr)
         ruletem = ""
-        print(obj_json['enterpriseId'])
+        #print(obj_json['enterpriseId'])
         segtemplate = '{"segments":['
-        print("obj_json3")
+        #print("obj_json3")
         # type(obj_json)
         noofsegments = len(obj_json['segments'])
         print(noofsegments)

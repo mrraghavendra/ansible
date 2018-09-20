@@ -91,15 +91,15 @@
 # **************************************************************************
 - name: Print Segment configuations enterprise Profile
   set_fact:
-    segmentLst: "{{ segmentBdy|segRulesfilter }}"
+    guest_QOS: "{{ segmentBdy|segRulesfilter }}"
 - debug:
-   msg: "{{ segmentLst }}"  
+   msg: "{{ guest_QOS }}"  
 # *****************************************************
 # Update Guest QOS
 # *****************************************************
 - name: update Guest QOS
   vars:
-    body: "{{ lookup('template','../files/guest_QOS.json') | to_json }}"
+    body: "{{ guest_QOS | to_json }}"
   uri:
     url: "{{ veloURL }}/configuration/insertConfigurationModule"
     method: POST
