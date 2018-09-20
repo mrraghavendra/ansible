@@ -219,7 +219,7 @@ class FilterModule(object):
         print("test2:" + jsonDataStr)
        
         i = 0
-        print("obj_json1")
+        print("obj_json1111")
         # obj_json = json.dumps(json.loads(a_variable))
         # jsonStr = a_variable.decode("utf-8")
         # jsonData = json.dumps(jsonDataStr)
