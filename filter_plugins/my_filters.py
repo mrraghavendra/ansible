@@ -223,11 +223,11 @@ class FilterModule(object):
         jsonData = json.dumps(jsonDataStr)
         obj_json = json.loads(jsonData)
         ruletem = ""
-        print("obj_json2")
+        print("obj_json2"+obj_json)
         segtemplate = '{"segments":['
         print("obj_json3")
         noofsegments = len(obj_json['segments'])
-        print("obj_json4")
+        print("obj_json4"+noofsegments)
         j = 0
         for temp in obj_json['segments']:
             j = j + 1
