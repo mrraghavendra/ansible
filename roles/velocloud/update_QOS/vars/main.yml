@@ -1,12 +1,14 @@
 ---
 # vars file for velocloud
 enterpriseId: "{{ enterprise_ID }}"
+siteName: "{{ siteName }}"
 #"configurationId": 2
 QOS: "{{ qos }}"
 username: "{{ user }}"
 password: "{{ pass }}"
 velo_edge_id: "{{ velo_edge_id }}"
-siteName: "{{ siteName }}"
+
+
 
 policy:
     id:"{{ id }}"
