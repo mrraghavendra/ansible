@@ -237,7 +237,7 @@ class FilterModule(object):
             j = j + 1
             ruletem = '['
             noofrules = len(temp['rules'])
-            print("obj_json:" + j)
+            print(noofrules)
             i = 0
             for a_rule in temp['rules']:
                 # jinjainput ="ruleName='"+a_rule['name']+"',"+"desination_ip='"+a_rule['dip']+"',"+"desination_port='"+a_rule['dport']+"',"+"protocol_id='"+a_rule['protocol']+"',"+"priority='"+a_rule['priority']+"',"+"traffic_class='"+a_rule['traffic_class']+"'"
