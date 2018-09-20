@@ -214,17 +214,17 @@ class FilterModule(object):
         insertqostemplate = j2_env.get_template('insert_QOS.json')
         jsonDataStr = str(a_variable)
         print("test:" + jsonDataStr)
-        jsonDataStr = jsonDataStr.replace("'", '"').replace('u"','"')
+        jsonDataStr = jsonDataStr.replace("'", '"').replace('u"', '"')
         print("test2:" + jsonDataStr)
        
         i = 0
         print("obj_json1")
         # obj_json = json.dumps(json.loads(a_variable))
-		jsonStr = a_variable.decode("utf-8")
+        jsonStr = a_variable.decode("utf-8")
         jsonData = json.dumps(jsonStr)
         obj_json = json.loads(jsonData)
         ruletem = ""
-        print("obj_json2"+obj_json)
+        print("obj_json2" + obj_json)
         segtemplate = '{"segments":['
         print("obj_json3")
         noofsegments = len(obj_json['segments'])
@@ -234,7 +234,7 @@ class FilterModule(object):
             j = j + 1
             ruletem = '['
             noofrules = len(temp['rules'])
-            print("obj_json:"+j)
+            print("obj_json:" + j)
             i = 0
             for a_rule in temp['rules']:
                 # jinjainput ="ruleName='"+a_rule['name']+"',"+"desination_ip='"+a_rule['dip']+"',"+"desination_port='"+a_rule['dport']+"',"+"protocol_id='"+a_rule['protocol']+"',"+"priority='"+a_rule['priority']+"',"+"traffic_class='"+a_rule['traffic_class']+"'"
