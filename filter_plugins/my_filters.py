@@ -225,12 +225,15 @@ class FilterModule(object):
         ruletem = ""
         print("obj_json2")
         segtemplate = '{"segments":['
+        print("obj_json3")
         noofsegments = len(obj_json['segments'])
+        print("obj_json4")
         j = 0
         for temp in obj_json['segments']:
             j = j + 1
             ruletem = '['
             noofrules = len(temp['rules'])
+            print("obj_json:"+j)
             i = 0
             for a_rule in temp['rules']:
                 # jinjainput ="ruleName='"+a_rule['name']+"',"+"desination_ip='"+a_rule['dip']+"',"+"desination_port='"+a_rule['dport']+"',"+"protocol_id='"+a_rule['protocol']+"',"+"priority='"+a_rule['priority']+"',"+"traffic_class='"+a_rule['traffic_class']+"'"
