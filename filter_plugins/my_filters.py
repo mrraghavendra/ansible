@@ -226,8 +226,8 @@ class FilterModule(object):
         ruletem = ""
         print("obj_json2" + obj_json)
         segtemplate = '{"segments":['
-        print("obj_json3")
-        type(obj_json)
+        print("obj_json3"+jsonDataStr['velo_edge_id'])
+        #type(obj_json)
         noofsegments = len(obj_json['segments'])
         print(noofsegments)
         j = 0
