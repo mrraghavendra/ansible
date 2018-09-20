@@ -212,15 +212,16 @@ class FilterModule(object):
         template = j2_env.get_template('rulestemplate.json')
         segmenttemplate = j2_env.get_template('SegmenQOStemplate.json')
         insertqostemplate = j2_env.get_template('insert_QOS.json')
-        #a_variable = a_variable.replace("'", '"').a_variable('u"', '"')
+        jsonData = str(a_variable)
+        jsonData = jsonData.replace("'", '"').jsonData('u"', '"')
         # jdata = eval(a_variable))
-        print("test:" + str(a_variable))
+        print("test:" + str(jsonData))
         i = 0
         print("obj_json1")
         # obj_json = json.dumps(json.loads(a_variable))
-        obj_json = json.loads(a_variable)
+        obj_json = json.loads(jsonData)
         ruletem = ""
-        print("obj_json:" + obj_json)
+        print("obj_json2")
         segtemplate = '{"segments":['
         noofsegments = len(obj_json['segments'])
         j = 0
