@@ -220,14 +220,14 @@ class FilterModule(object):
         i = 0
         print("obj_json1")
         # obj_json = json.dumps(json.loads(a_variable))
-        jsonData = json.dumps(jsonDataStr)
+        #jsonData = json.dumps(jsonDataStr)
         obj_json = json.loads(jsonData)
         ruletem = ""
         print("obj_json2"+obj_json)
         segtemplate = '{"segments":['
         print("obj_json3")
         noofsegments = len(obj_json['segments'])
-        print("obj_json4"+noofsegments)
+        print(noofsegments)
         j = 0
         for temp in obj_json['segments']:
             j = j + 1
