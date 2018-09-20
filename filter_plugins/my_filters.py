@@ -222,7 +222,7 @@ class FilterModule(object):
         # obj_json = json.dumps(json.loads(a_variable))
         #jsonStr = a_variable.decode("utf-8")
         jsonData = json.dumps(jsonDataStr)
-        obj_json = json.loads(jsonData)
+        obj_json = json.loads(jsonDataStr)
         ruletem = ""
         print("obj_json2" + obj_json)
         segtemplate = '{"segments":['
