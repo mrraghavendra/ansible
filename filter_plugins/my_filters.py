@@ -214,7 +214,7 @@ class FilterModule(object):
         insertqostemplate = j2_env.get_template('insert_QOS.json')
         #a_variable = a_variable.replace("'", '"').a_variable('u"', '"')
         # jdata = eval(a_variable))
-        print("test:" + a_variable)
+        print("test:" + str(a_variable))
         i = 0
         print("obj_json1")
         # obj_json = json.dumps(json.loads(a_variable))
