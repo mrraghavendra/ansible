@@ -45,7 +45,7 @@
 - set_fact:
     configurationId: "{{ item.id }}" 
   with_items: "{{ response.json }}"
-  when: item.name == "{{ profile }}"
+  when: item.name == 'POC2 Profile'
 - debug:
     msg: "Profile id for vpn profile- {{  response.json[2].name }} is {{ configurationId }} "
 
