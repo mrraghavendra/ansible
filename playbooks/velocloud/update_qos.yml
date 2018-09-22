@@ -3,6 +3,9 @@
 - hosts: localhost
   become: false
   gather_facts: no
+  
+  vars:
+    segment_group_names: []
 
   roles:
      - velocloud/update_QOS

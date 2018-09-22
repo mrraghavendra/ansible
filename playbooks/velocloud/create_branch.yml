@@ -6,7 +6,6 @@
   
   vars:
     segment_group: ""
-    segment_group_names: []
 
   roles:
   - velocloud/create_branch
