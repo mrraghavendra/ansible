@@ -82,6 +82,7 @@
 - name: Get Segments Logical ID
   vars:
     body: '{"with":["profileCount","handoffUsage","mpgUsage"]}'
+    segment_group_names: []
   uri:
     url: "{{ veloURL }}/enterprise/getEnterpriseNetworkSegments"
     method: POST
@@ -97,7 +98,7 @@
   register: response
 - set_fact:
    segment_group_names: "{{ segment_group_names }} + ['{{ item.name }}_{{ item.logicalId }}']"
-  with_items: "{{ response.json[0].name }}"
+  with_items: "{{ response.json[0] }}"
 - debug:
    msg: "Segments"
 # **************************************************************************
