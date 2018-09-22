@@ -91,7 +91,7 @@
 # **************************************************************************
 - name: Print Segment configuations enterprise Profile
   set_fact:
-    guest_QOS: "{{ segmentBdy, velo_edge_config_id |segRulesfilter }}"
+    guest_QOS: "{{ segmentBdy |segRulesfilter(velo_edge_config_id) }}"
 - debug:
    msg: "{{ guest_QOS }}"  
 # *****************************************************
