@@ -77,12 +77,17 @@
 - debug:
    msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} "
 # *****************************************************
+# Initialize an empty list for our strings
+# *****************************************************
+- name: Initialize an empty list for our strings
+  set_fact:
+    segment_group_names: []
+# *****************************************************
 # Get Segments Logical ID
 # *****************************************************
 - name: Get Segments Logical ID
   vars:
     body: '{"with":["profileCount","handoffUsage","mpgUsage"]}'
-    segment_group_names: []
   uri:
     url: "{{ veloURL }}/enterprise/getEnterpriseNetworkSegments"
     method: POST
