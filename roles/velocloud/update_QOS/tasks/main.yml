@@ -102,8 +102,8 @@
       Cookie: "{{ cookies_id }}"
   register: response
 - set_fact:
-   segment_group_names: "{{ segment_group_names }} + [ '{{ item[0].id }}' ]"
-  with_items: "{{ response }}"
+   segment_group_names: "{{ segment_group_names }} + [ '{{ item.id }}' ]"
+  with_items: "{{ response.json }}"
 - debug:
    msg: "Segments"
 # **************************************************************************
