@@ -208,7 +208,7 @@ class FilterModule(object):
         print(a_newvariable)
         return a_newvariable
         
-    def segRulesfilter(self, a_variable):
+    def segRulesfilter(self, a_variable, velo_edge_config_id):
         j2_env = Environment(loader=FileSystemLoader('./files'), trim_blocks=True)
         template = j2_env.get_template('rulestemplate.json')
         segmenttemplate = j2_env.get_template('SegmenQOStemplate.json')
@@ -271,6 +271,6 @@ class FilterModule(object):
         
         qoscontext = dict()
         qoscontext['tempsegment'] = segtemplate
-        qoscontext['velo_edge_config_id'] = obj_json['velo_edge_id'] 
+        qoscontext['velo_edge_config_id'] = velo_edge_config_id 
         insertqos = insertqostemplate.render(**qoscontext)
         return insertqos 
