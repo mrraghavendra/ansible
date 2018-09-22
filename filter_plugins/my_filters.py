@@ -268,7 +268,7 @@ class FilterModule(object):
             cnt = 0
             while cnt < len(segment_group_names):
                 print(segment_group_names[cnt])
-                data = segment_group_names.split("::", 0)
+                data = segment_group_names[cnt].split("::", 0)
                 if strSegment == data[0]:
                     segcontext['segmentLogicalId'] = data[1]
                     print(data[1])
