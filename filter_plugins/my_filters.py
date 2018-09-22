@@ -269,9 +269,9 @@ class FilterModule(object):
             while cnt < len(segment_group_names):
                 print(segment_group_names[cnt])
                 data = segment_group_names[cnt].split("::", 0)
-				print("----"+data[0])
-				print("----"+data[1])
-                #if strSegment == data[0]:
+                print("----" + data[0])
+                print("----" + data[1])
+                # if strSegment == data[0]:
                  #   segcontext['segmentLogicalId'] = data[1]
                   #  print(data[1])
                    # break
