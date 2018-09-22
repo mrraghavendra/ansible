@@ -208,29 +208,30 @@ class FilterModule(object):
         print(a_newvariable)
         return a_newvariable
         
-    def segRulesfilter(self, a_variable, velo_edge_config_id):
+    def segRulesfilter(self, a_variable, velo_edge_config_id, segment_group_names):
         j2_env = Environment(loader=FileSystemLoader('./files'), trim_blocks=True)
         template = j2_env.get_template('rulestemplate.json')
         segmenttemplate = j2_env.get_template('SegmenQOStemplate.json')
         insertqostemplate = j2_env.get_template('insert_QOS.json')
         jsonDataStr = str(a_variable)
-        #print("test:" + jsonDataStr)
+        # print("test:" + jsonDataStr)
         jsonDataStr = jsonDataStr.replace('"', "'").replace("u'", "'")
         print("test2:" + jsonDataStr)
        
         i = 0
-        #print("obj_json1111")
+        # print("obj_json1111")
         # obj_json = json.dumps(json.loads(a_variable))
         # jsonStr = a_variable.decode("utf-8")
         # jsonData = json.dumps(jsonDataStr)
         # obj_json = json.loads(jsonData)
         obj_json = ast.literal_eval(jsonDataStr)
         ruletem = ""
-        #print(obj_json['enterpriseId'])
+        # print(obj_json['enterpriseId'])
         segtemplate = '{"segments":['
-        #print("obj_json3")
+        # print("obj_json3")
         # type(obj_json)
         noofsegments = len(obj_json['segments'])
+        print(len(segment_group_names))
         print(noofsegments)
         j = 0
         for temp in obj_json['segments']:
@@ -263,6 +264,7 @@ class FilterModule(object):
             segcontext['segment_id'] = temp['segmentid']
             segcontext['segment_name'] = temp['segment']
             segcontext['rules'] = ruletem
+            segcontext['segmentLogicalId'] = 'test'
             segment = segmenttemplate.render(**segcontext)
             if j < noofsegments:
                 segtemplate = segtemplate + segment + ','

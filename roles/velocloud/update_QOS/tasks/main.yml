@@ -76,6 +76,30 @@
   when: item.name == 'deviceSettings'
 - debug:
    msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} "
+# *****************************************************
+# Get Segments Logical ID
+# *****************************************************
+- name: Get Segments Logical ID
+  vars:
+    body: '{"with":["profileCount","handoffUsage","mpgUsage"]}'
+  uri:
+    url: "{{ veloURL }}/enterprise/getEnterpriseNetworkSegments"
+    method: POST
+    body: "{{ body }}"
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}"
+  register: response
+- set_fact:
+   segment_group_names: "{{ segment_group_names }} + ['{{ item.name }}_{{ item.logicalId }}']"
+  with_items: "{{ response.json[0].name }}"
+- debug:
+   msg: "Segments"
 # **************************************************************************
 #       Get extra_Vars Module request
 # **************************************************************************
@@ -91,7 +115,7 @@
 # **************************************************************************
 - name: Print Segment configuations enterprise Profile
   set_fact:
-    guest_QOS: "{{ segmentBdy |segRulesfilter(velo_edge_config_id) }}"
+    guest_QOS: "{{ segmentBdy |segRulesfilter(velo_edge_config_id, segment_group_names) }}"
 - debug:
    msg: "{{ guest_QOS }}"  
 # *****************************************************
