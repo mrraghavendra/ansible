@@ -264,6 +264,10 @@ class FilterModule(object):
             segcontext['segment_id'] = temp['segmentid']
             segcontext['segment_name'] = temp['segment']
             segcontext['rules'] = ruletem
+            cnt = 0
+            while cnt < len(segment_group_names):
+                print(segment_group_names[cnt])
+                cnt += 1
             segcontext['segmentLogicalId'] = 'test'
             segment = segmenttemplate.render(**segcontext)
             if j < noofsegments:
