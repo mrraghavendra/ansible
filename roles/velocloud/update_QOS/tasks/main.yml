@@ -102,7 +102,7 @@
       Cookie: "{{ cookies_id }}"
   register: response
 - set_fact:
-   segment_group_names: "{{ segment_group_names }}"
+   segment_group_names: "{{ segment_group_names }} + ['{{ item.name }}']"
   with_items: "{{ response.json[0] }}"
 - debug:
    msg: "Segments"
