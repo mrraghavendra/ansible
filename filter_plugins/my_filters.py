@@ -261,14 +261,20 @@ class FilterModule(object):
             
             ruletem = ruletem + ']' 
             segcontext = dict()
+            strSegment = temp['segment']
             segcontext['segment_id'] = temp['segmentid']
-            segcontext['segment_name'] = temp['segment']
+            segcontext['segment_name'] = strSegment
             segcontext['rules'] = ruletem
             cnt = 0
             while cnt < len(segment_group_names):
                 print(segment_group_names[cnt])
+                data = segment_group_names.split("::", 0)
+                if strSegment == data[0]:
+                    segcontext['segmentLogicalId'] = data[1]
+                    print(data[1])
+                    break
                 cnt += 1
-            segcontext['segmentLogicalId'] = 'test'
+            
             segment = segmenttemplate.render(**segcontext)
             if j < noofsegments:
                 segtemplate = segtemplate + segment + ','
