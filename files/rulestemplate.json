@@ -72,7 +72,7 @@
          "type":"{{ traffic_class }}",
          "rxScheduler":{
             "bandwidth":-1,
-            "bandwidthCapPct":10,
+            "bandwidthCapPct":{{ downLimit }},
             "queueLen":-1,
             "burst":-1,
             "latency":-1,
@@ -80,7 +80,7 @@
          },
          "txScheduler":{
             "bandwidth":-1,
-            "bandwidthCapPct":-1,
+            "bandwidthCapPct": {{ upLimit }},
             "queueLen":-1,
             "burst":-1,
             "latency":-1,
