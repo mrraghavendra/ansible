@@ -245,7 +245,7 @@ class FilterModule(object):
                 i = i + 1
                 context = dict()
                 protocol = a_rule['protocol'].get('id')
-                serviceClss = a_rule['serviceClass'].strip()
+                serviceClss = a_rule['serviceClass'].replace(" ", "")
                 print(serviceClss)
                 context['ruleName'] = a_rule['ruleName']
                 context['desination_ip'] = a_rule['destAppIP']
