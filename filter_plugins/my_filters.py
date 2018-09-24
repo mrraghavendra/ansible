@@ -251,7 +251,7 @@ class FilterModule(object):
                 context['desination_port'] = a_rule['destAppPort']
                 context['protocol_id'] = protocol
                 context['priority'] = a_rule['priority'].lower()
-                context['traffic_class'] = a_rule['serviceClass'].lower().strip()
+                context['traffic_class'] = a_rule['serviceClass'].strip().lower()
                 context['hostname'] = a_rule['destApp']
                 context['downLimit'] = a_rule['downLimit']
                 context['upLimit'] = a_rule['upLimit']
