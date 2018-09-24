@@ -28,15 +28,15 @@ rules:
     priority:"{{ priority }}"
     serviceClass:"{{ serviceClass }}"
     source:"{{ source }}"
-    sourcePort:"{{ sourcePort }}"
-    upLimit:"{{ upLimit }}"
-    downLimit:"{{ downLimit }}"
+    sourcePort:{{ sourcePort }}
+    upLimit:{{ upLimit }}
+    downLimit:{{ downLimit }}
     priorityID:"{{ priorityID }}"
     policy:"{{ policy }}"
     protocol:"{{ protocol }}"
 
 segments: 
-    segmentid:"{{ segmentid }}"
+    segmentid:{{ segmentid }}
     segment:"{{ segment }}"
     rules:"{{ rules }}"
     subnet:"{{ subnet }}"
