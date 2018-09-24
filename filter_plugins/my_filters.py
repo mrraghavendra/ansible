@@ -244,10 +244,12 @@ class FilterModule(object):
                 # jinjainput ="ruleName='"+a_rule['name']+"',"+"desination_ip='"+a_rule['dip']+"',"+"desination_port='"+a_rule['dport']+"',"+"protocol_id='"+a_rule['protocol']+"',"+"priority='"+a_rule['priority']+"',"+"traffic_class='"+a_rule['traffic_class']+"'"
                 i = i + 1
                 context = dict()
+                protocol = a_rule['protocol'].get('protocol')
+                print("protocol" + protocol)
                 context['ruleName'] = a_rule['ruleName']
                 context['desination_ip'] = a_rule['destAppIP']
                 context['desination_port'] = a_rule['destAppPort']
-                context['protocol_id'] = a_rule['protocol'].get('id')
+                context['protocol_id'] = protocol
                 context['priority'] = a_rule['priorityID']
                 context['traffic_class'] = a_rule['serviceClass']
                 context['hostname'] = a_rule['destApp']
@@ -269,8 +271,8 @@ class FilterModule(object):
             while cnt < len(segment_group_names):
                 print(segment_group_names[cnt])
                 data = segment_group_names[cnt].split("::")
-                #print("----" + data[0])
-                #print("----" + data[1])
+                # print("----" + data[0])
+                # print("----" + data[1])
                 if strSegment == data[0]:
                     segcontext['segmentLogicalId'] = data[1]
                     print(data[1])
