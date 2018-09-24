@@ -245,13 +245,14 @@ class FilterModule(object):
                 i = i + 1
                 context = dict()
                 protocol = a_rule['protocol'].get('id')
-                print(protocol)
+                serviceClss = a_rule['serviceClass'].strip()
+                print(serviceClss)
                 context['ruleName'] = a_rule['ruleName']
                 context['desination_ip'] = a_rule['destAppIP']
                 context['desination_port'] = a_rule['destAppPort']
                 context['protocol_id'] = protocol
                 context['priority'] = a_rule['priority'].lower()
-                context['traffic_class'] = a_rule['serviceClass'].strip().lower()
+                context['traffic_class'] = serviceClss.lower()
                 context['hostname'] = a_rule['destApp']
                 context['downLimit'] = a_rule['downLimit']
                 context['upLimit'] = a_rule['upLimit']
