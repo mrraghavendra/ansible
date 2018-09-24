@@ -253,6 +253,8 @@ class FilterModule(object):
                 context['priority'] = a_rule['priorityID']
                 context['traffic_class'] = a_rule['serviceClass']
                 context['hostname'] = a_rule['destApp']
+                context['downLimit'] = a_rule['downLimit']
+                context['upLimit'] = a_rule['upLimit']
                 # print(context)
                 # print(jinjainput)
                 ruletemplate = template.render(**context)
