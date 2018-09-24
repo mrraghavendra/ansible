@@ -244,7 +244,7 @@ class FilterModule(object):
                 # jinjainput ="ruleName='"+a_rule['name']+"',"+"desination_ip='"+a_rule['dip']+"',"+"desination_port='"+a_rule['dport']+"',"+"protocol_id='"+a_rule['protocol']+"',"+"priority='"+a_rule['priority']+"',"+"traffic_class='"+a_rule['traffic_class']+"'"
                 i = i + 1
                 context = dict()
-                protoco	l = a_rule['protocol'].get('id')
+                protocol = a_rule['protocol'].get('id')
                 print(protocol)
                 context['ruleName'] = a_rule['ruleName']
                 context['desination_ip'] = a_rule['destAppIP']
