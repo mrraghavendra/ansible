@@ -29,4 +29,3 @@ url: "http://34.213.119.214:8080/aruba"
 #{"extra_vars": {"customerName":"test","id":"1234","user":"test","role":"admin","userWLAN":"yes","corpWLAN":"yes"}}
 #{"extra_vars":{{"tvar":"testval","qos":"gold"}}}
 #{"extra_vars":{"device_serial_id":"DZ0005126","tvar1": "testval","userwlan": "yes","corpwlan": "yes","userwlanbw": "100","corpwlanbw": "1200","userwlanqos": "Bronz","corpwlanqos": "Gold"}}
-#curl -i -k -X POST 'https://35.162.12.157/api/v2/job_templates/42/launch/' -u admin:smartvm -H "Accept: application/json" -H "Content-Type: application/json" -d '{"Extra_vars":{"customerName":"test","id":"1234","user":"test","role":"admin"}}'
