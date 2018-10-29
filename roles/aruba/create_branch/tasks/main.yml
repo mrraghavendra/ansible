@@ -5,19 +5,5 @@
 #       Login with enterprise Profile
 # **************************************************************************
 - name: Login with enterprise Profile
-  vars:
-    body: "{{ lookup('template','../files/loginRequest.json') }}"
-  uri:
-    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/login?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy"
-    method: POST
-    body: "{{ body }}"
-    force_basic_auth: yes
-    status_code: 200
-    body_format: raw
-    validate_certs: false
-    return_content: yes
-    headers:
-      Content-Type: "application/x-www-form-urlencoded"
-  register: response
 - debug:
-    msg: " Logged in successfully!! "
+    msg: " Logged in successfully!!"
