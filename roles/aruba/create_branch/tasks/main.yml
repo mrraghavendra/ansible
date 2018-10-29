@@ -1,9 +1,4 @@
 ---
-# ************Tasks file for velocloud "configurationId" *******************
-
-# **************************************************************************
-#       Login with enterprise Profile
-# **************************************************************************
 - name: Login with enterprise Profile
 - debug:
     msg: " Logged in successfully!!"
