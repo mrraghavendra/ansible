@@ -1,6 +1,6 @@
 ---
 - name: create customer
-- debug:
+  debug:
     msg: "MKA  {{ lookup('template','../files/loginRequest.json') | to_json }}"
 - name: Assign Device to Customer
   uri:
