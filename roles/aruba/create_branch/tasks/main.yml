@@ -76,5 +76,23 @@
       Content-Type: "application/json"
       Accept: "application/json"
   register: response
+- set_fact:
+    accessToken: "{{ response.json.access_token }}"
+- debug:
+    msg: "Access Token  {{ accessToken }}"
+- name: Get Access Token
+  uri:
+    url: "https://apigw-prod2.central.arubanetworks.com/monitoring/v1/aps?access_token={{ accessToken }}"
+    method: GET
+    body: '{}'    
+    status_code: 200
+    body_format: json
+    force_basic_auth: yes
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
 - debug:
     msg: "MKA  {{ response.content | to_json }}"
