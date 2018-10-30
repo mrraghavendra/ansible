@@ -25,11 +25,11 @@
   uri:
     url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy&response_type=code&scope=all"
     method: POST
-    body: '{}'
-    force_basic_auth: no
+    body: '{}'    
     status_code: 200
     body_format: json
-    validate_certs: no
+    force_basic_auth: yes
+    validate_certs: false
     return_content: yes
     headers:
       Content-Type: "application/json"
