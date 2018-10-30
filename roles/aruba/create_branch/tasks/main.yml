@@ -36,8 +36,10 @@
       Accept: "application/json"      
       Cookie: "{{ csrf }};{{ session }}"      
   register: response
+- set_fact:
+    authoCode: "{{ response.content['auth_code'] }}"
 - debug:
-    msg: "MKA  {{ response.content | to_json }}"
+    msg: "AuthoCode  {{ authoCode }}"
 - name: Create template group
   uri:
     url: "{{ url }}/configuration/v1/groups"
