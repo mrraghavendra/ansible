@@ -1,12 +1,9 @@
 ---
-- name: Login
-  vars:
-    body: "{{ lookup('template','../files/loginRequest.json') | to_json }}"
-  uri:
-    #url: "URL:http://services.groupkt.com/state/get/IND/KA"
-    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/login?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy"
+- name: Login  
+  uri:    
+    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/login?client_id={{ clientID }}"
     method: POST
-    body: '{"username": "r.madhur.ramachandra@accenture.com","password": "Admin1234"}'
+    body: '{"username": "{{ user }}","password": "{{ pass }}"}'
     force_basic_auth: no
     status_code: 200
     body_format: json
@@ -20,12 +17,12 @@
     csrf: "csrftoken={{ response.cookies['csrftoken'] }};Secure; Path=/"
     session: "session={{ response.cookies['session'] }}; Secure; HttpOnly; Path=/"
     csrf1: "{{ response.cookies['csrftoken'] }}"
-    session1: "{{ response.cookies['session'] }}"
+    #session1: "{{ response.cookies['session'] }}"
 - debug:
     msg: "MKA  {{ response }}"
 - name: Get Auth Code
   uri:
-    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy&response_type=code&scope=all"
+    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/?client_id={{ clientID }}&response_type=code&scope=all"
     method: POST
     body: '{}'    
     status_code: 200
@@ -46,7 +43,7 @@
     msg: "Auth Code:  {{ authCode }}"
 - name: Get Refresh Token
   uri:
-    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/token?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy&grant_type=authorization_code&scope=all&client_secret=NKFJwaSvjQz8lGRKtLqWFV3TbgMrrDem&code={{ authCode }}"
+    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/token?client_id={{ clientID }}&grant_type=authorization_code&scope=all&client_secret={{ clientSecret }}&code={{ authCode }}"
     method: POST    
     body: '{}'
     force_basic_auth: yes
@@ -64,7 +61,7 @@
     msg: "Refresh Token:  {{ refreshToken }}"
 - name: Get Access Token
   uri:
-    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/token?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy&client_secret=NKFJwaSvjQz8lGRKtLqWFV3TbgMrrDem&grant_type=refresh_token&refresh_token={{ refreshToken }}"
+    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/token?client_id={{ clientID }}&client_secret={{ clientSecret }}&grant_type=refresh_token&refresh_token={{ refreshToken }}"
     method: POST
     body: '{}'    
     status_code: 200
