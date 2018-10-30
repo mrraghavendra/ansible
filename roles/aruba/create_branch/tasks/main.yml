@@ -44,7 +44,7 @@
     authCode: "{{ response.json.auth_code }}"
 - debug:
     msg: "Auth Code:  {{ authCode }}"
-- name: Auth code from Token
+- name: Get Refresh Token
   uri:
     url: "https://apigw-prod2.central.arubanetworks.com/oauth2/token?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy&grant_type=authorization_code&scope=all&client_secret=NKFJwaSvjQz8lGRKtLqWFV3TbgMrrDem&code={{ authCode }}"
     method: POST    
@@ -58,19 +58,18 @@
       Content-Type: "application/json"
       Accept: "application/json"
   register: response
+- set_fact:
+    refreshToken: "{{ response.json.refresh_token }}"
 - debug:
-    msg: "MKA  {{ response.content | to_json }}"
-- name: Move device to template group
+    msg: "Refresh Token:  {{ refreshToken }}"
+- name: Get Access Token
   uri:
-    url: "{{ url }}/configuration/v1/devices/move"
+    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/token?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy&client_secret=NKFJwaSvjQz8lGRKtLqWFV3TbgMrrDem&grant_type=refresh_token&refresh_token={{ refreshToken }}"
     method: POST
-    #user: "{{ username }}"
-    #password: "{{ password }}"
-    #body: "{{ lookup('file','../files/create_customer.json') }}"
-    body: '{"group": "{{ template_group }}","serials":["{{ device_serial_id }}"]}'
-    force_basic_auth: yes
+    body: '{}'    
     status_code: 200
     body_format: json
+    force_basic_auth: yes
     validate_certs: no
     return_content: yes
     headers:
