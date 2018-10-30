@@ -1,13 +1,11 @@
 ---
-- name: create customer
+- name: Login
   vars:
     body: "{{ lookup('template','../files/loginRequest.json') | to_json }}"
   uri:
     #url: "URL:http://services.groupkt.com/state/get/IND/KA"
     url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/login?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy"
     method: POST
-    #user: "{{ username }}"
-    #password: "{{ password }}"
     body: '{"username": "r.madhur.ramachandra@accenture.com","password": "Admin1234"}'
     force_basic_auth: no
     status_code: 200
@@ -18,17 +16,16 @@
       Content-Type: "application/json"
       Accept: "application/json"
   register: response
+- set_fact:
+    cookies_id: "{{ response.cookies }}"
 - debug:
     msg: "MKA  {{ response.cookies }}"
-- name: Assign Device to Customer
+- name: Get Auth Code
   uri:
-    url: "{{ url }}/msp_api/v1/customers/{{ customer_id }}/devices"
+    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy&response_type=code&scope=all"
     method: POST
-    #user: "{{ username }}"
-    #password: "{{ password }}"
-    #body: "{{ lookup('file','../files/create_customer.json') }}"
-    body: '{"devices":[{"serial":"{{ device_serial_id }}","mac":"{{ device_mac_address }}"}]}'
-    force_basic_auth: yes
+    body: '{}'
+    force_basic_auth: no
     status_code: 200
     body_format: json
     validate_certs: no
@@ -36,6 +33,7 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
+      Cookie: "{{ cookies_id }}"
   register: response
 - debug:
     msg: "MKA  {{ response.content | to_json }}"
