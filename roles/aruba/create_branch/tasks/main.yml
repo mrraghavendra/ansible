@@ -38,7 +38,7 @@
       Accept: "application/json"
       X-Csrf-Token: "{{ csrf1 }}"
       Cookie: "{{ csrf }};{{ session }}"
-      session: "{{ session1 }}"
+      #session: "{{ session1 }}"
   register: response
 - set_fact:
     authCode: "{{ response.json.auth_code }}"
@@ -80,7 +80,7 @@
     accessToken: "{{ response.json.access_token }}"
 - debug:
     msg: "Access Token  {{ accessToken }}"
-- name: Get Access Token
+- name: Get Monitoring API
   uri:
     url: "https://apigw-prod2.central.arubanetworks.com/monitoring/v1/aps?access_token={{ accessToken }}"
     method: GET
