@@ -36,9 +36,9 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-      X-CSRFToken: {{ csrf1 }}
-      Cookie: "{{ session }}"'{{ csrf }}'
-      session: {{ session1 }}      
+      X-CSRFToken: "{{ csrf1 }}"
+      Cookie: "{{ session }} {{ csrf }}"
+      session: "{{ session1 }}"
   register: response
 - debug:
     msg: "MKA  {{ response.content | to_json }}"
