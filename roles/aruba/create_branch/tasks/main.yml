@@ -18,8 +18,9 @@
   register: response
 - set_fact:
     cookies_id: "{{ response.cookies }}"
+    session: "{{ response.cookies['session'] }}"
 - debug:
-    msg: "MKA  {{ response.cookies }}"
+    msg: "MKA  {{ response.cookies['csrftoken'] }}"
 - name: Get Auth Code
   uri:
     url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy&response_type=code&scope=all"
