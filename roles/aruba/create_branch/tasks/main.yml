@@ -40,10 +40,8 @@
       Cookie: "{{ csrf }};{{ session }}"
       session: "{{ session1 }}"
   register: response
-- set_fact:
-    authoCode: "{{ response.content.auth_code }}"
 - debug:
-    msg: "AuthoCode  {{ authoCode }}"
+    msg: "MKA  {{ response.content | to_json }}"
 - name: Create template group
   uri:
     url: "{{ url }}/configuration/v1/groups"
