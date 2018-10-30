@@ -2,27 +2,8 @@
 - name: create customer
   vars:
     body: "{{ lookup('template','../files/loginRequest.json') | to_json }}"
-  uri:
-    #url: "URL:http://services.groupkt.com/state/get/IND/KA"
-    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/login?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy"
-    method: POST
-    #user: "{{ username }}"
-    #password: "{{ password }}"
-    body: "{{ body }}"
-    debug: 
-        msg: "Request Body {{ body }}"
-    #body: '{"customer_name":"{{ customer_name }}","group":{"id":"{{ customer_id }}","name":"{{ customer_name }}"},"users":[{"username":"{{ user }}","role":"admin"}]}'
-    force_basic_auth: yes
-    status_code: 200
-    body_format: json
-    validate_certs: no
-    return_content: yes
-    headers:
-      Content-Type: "application/json"
-      Accept: "application/json"
-  register: response
 - debug:
-    msg: "MKA  {{ response.cookies }}"
+    msg: "MKA  {{ body }}"
 - name: Assign Device to Customer
   uri:
     url: "{{ url }}/msp_api/v1/customers/{{ customer_id }}/devices"
