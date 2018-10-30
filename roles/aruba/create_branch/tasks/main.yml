@@ -41,7 +41,7 @@
       session: "{{ session1 }}"
   register: response
 - set_fact:
-    authoCode: "{{ response.content['auth_code'] }}"
+    authoCode: "{{ response.content.auth_code }}"
 - debug:
     msg: "AuthoCode  {{ authoCode }}"
 - name: Create template group
