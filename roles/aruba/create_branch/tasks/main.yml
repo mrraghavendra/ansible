@@ -17,8 +17,8 @@
       Accept: "application/stuff+json"
   register: response
 - set_fact:
-    csrf: "X-CSRF-Token={{ response.cookies['csrftoken'] }}"
-    session: "session={{ response.cookies['session'] }}"
+    csrf: "csrftoken={{ response.cookies['csrftoken'] }};Secure; Path=/"
+    session: "session={{ response.cookies['session'] }}; Secure; HttpOnly; Path=/"
     csrf1: "{{ response.cookies['csrftoken'] }}"
     session1: "{{ response.cookies['session'] }}"
 - debug:
@@ -37,7 +37,7 @@
       Content-Type: "application/json"
       Accept: "application/json"
       X-Csrf-Token: "{{ csrf1 }}"
-      Cookie: "{{ session }} {{ csrf }}"
+      Cookie: "{{ csrf }};{{ session }}"
       session: "{{ session1 }}"
   register: response
 - debug:
