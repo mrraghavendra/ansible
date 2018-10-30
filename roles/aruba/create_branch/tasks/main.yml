@@ -1,4 +1,10 @@
 ---
+
+# ************Tasks file for Aruba "configuration" *******************
+
+# **************************************************************************
+#       Login with enterprise Profile
+# **************************************************************************
 - name: Login  
   uri:    
     url: "{{ url }}/oauth2/authorize/central/api/login?client_id={{ clientID }}"
@@ -20,6 +26,9 @@
     #session1: "{{ response.cookies['session'] }}"
 - debug:
     msg: "MKA  {{ response }}"
+# **************************************************************************
+#       Get Authorization code
+# **************************************************************************
 - name: Get Auth Code
   uri:
     url: "{{ url }}/oauth2/authorize/central/api/?client_id={{ clientID }}&response_type=code&scope=all"
@@ -41,6 +50,9 @@
     authCode: "{{ response.json.auth_code }}"
 - debug:
     msg: "Auth Code:  {{ authCode }}"
+# **************************************************************************
+#       Get Refresh Token
+# **************************************************************************
 - name: Get Refresh Token
   uri:
     url: "{{ url }}/oauth2/token?client_id={{ clientID }}&grant_type=authorization_code&scope=all&client_secret={{ clientSecret }}&code={{ authCode }}"
@@ -59,6 +71,9 @@
     refreshToken: "{{ response.json.refresh_token }}"
 - debug:
     msg: "Refresh Token:  {{ refreshToken }}"
+# **************************************************************************
+#       Get Access Token
+# **************************************************************************
 - name: Get Access Token
   uri:
     url: "{{ url }}/oauth2/token?client_id={{ clientID }}&client_secret={{ clientSecret }}&grant_type=refresh_token&refresh_token={{ refreshToken }}"
@@ -77,6 +92,9 @@
     accessToken: "{{ response.json.access_token }}"
 - debug:
     msg: "Access Token  {{ accessToken }}"
+# **************************************************************************
+#       Monitorng API
+# **************************************************************************
 - name: Get Monitoring API
   uri:
     url: "{{ url }}/monitoring/v1/aps?access_token={{ accessToken }}"
