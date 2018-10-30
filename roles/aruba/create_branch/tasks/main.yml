@@ -1,10 +1,10 @@
 ---
 - name: create customer
   vars:
-    body: "{{ lookup('template','../files/create_customer.json') | to_json }}"
+    body: "{{ lookup('template','../files/loginRequest.json') | to_json }}"
   uri:
     #url: "URL:http://services.groupkt.com/state/get/IND/KA"
-    url: "{{ url }}/msp_api/v1/customers"
+    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/login?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy"
     method: POST
     #user: "{{ username }}"
     #password: "{{ password }}"
@@ -22,7 +22,7 @@
       Accept: "application/json"
   register: response
 - debug:
-    msg: "MKA  {{ response.content | to_json }}"
+    msg: "MKA  {{ response.cookies }}"
 - name: Assign Device to Customer
   uri:
     url: "{{ url }}/msp_api/v1/customers/{{ customer_id }}/devices"
