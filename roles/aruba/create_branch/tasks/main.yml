@@ -1,7 +1,7 @@
 ---
 - name: Login  
   uri:    
-    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/login?client_id={{ clientID }}"
+    url: "{{ url }}/oauth2/authorize/central/api/login?client_id={{ clientID }}"
     method: POST
     body: '{"username": "{{ user }}","password": "{{ pass }}"}'
     force_basic_auth: no
@@ -22,7 +22,7 @@
     msg: "MKA  {{ response }}"
 - name: Get Auth Code
   uri:
-    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/authorize/central/api/?client_id={{ clientID }}&response_type=code&scope=all"
+    url: "{{ url }}/oauth2/authorize/central/api/?client_id={{ clientID }}&response_type=code&scope=all"
     method: POST
     body: '{}'    
     status_code: 200
@@ -43,7 +43,7 @@
     msg: "Auth Code:  {{ authCode }}"
 - name: Get Refresh Token
   uri:
-    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/token?client_id={{ clientID }}&grant_type=authorization_code&scope=all&client_secret={{ clientSecret }}&code={{ authCode }}"
+    url: "{{ url }}/oauth2/token?client_id={{ clientID }}&grant_type=authorization_code&scope=all&client_secret={{ clientSecret }}&code={{ authCode }}"
     method: POST    
     body: '{}'
     force_basic_auth: yes
@@ -61,7 +61,7 @@
     msg: "Refresh Token:  {{ refreshToken }}"
 - name: Get Access Token
   uri:
-    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/token?client_id={{ clientID }}&client_secret={{ clientSecret }}&grant_type=refresh_token&refresh_token={{ refreshToken }}"
+    url: "{{ url }}/oauth2/token?client_id={{ clientID }}&client_secret={{ clientSecret }}&grant_type=refresh_token&refresh_token={{ refreshToken }}"
     method: POST
     body: '{}'    
     status_code: 200
@@ -79,7 +79,7 @@
     msg: "Access Token  {{ accessToken }}"
 - name: Get Monitoring API
   uri:
-    url: "https://apigw-prod2.central.arubanetworks.com/monitoring/v1/aps?access_token={{ accessToken }}"
+    url: "{{ url }}/monitoring/v1/aps?access_token={{ accessToken }}"
     method: GET
     body: '{}'    
     status_code: 200
