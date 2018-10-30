@@ -18,7 +18,9 @@
   register: response
 - set_fact:
     csrf: "csrftoken={{ response.cookies['csrftoken'] }};Secure; Path=/"
-    session: "session={{ response.cookies['session'] }}; Secure; HttpOnly; Path=/"   
+    session: "session={{ response.cookies['session'] }}; Secure; HttpOnly; Path=/"
+    csrf1: "{{ response.cookies['csrftoken'] }}"
+    session1: "{{ response.cookies['session'] }}"
 - debug:
     msg: "MKA  {{ response }}"
 - name: Get Auth Code
@@ -33,8 +35,10 @@
     return_content: yes
     headers:
       Content-Type: "application/json"
-      Accept: "application/json"      
-      Cookie: "{{ csrf }};{{ session }}"      
+      Accept: "application/json"
+      X-Csrf-Token: "{{ csrf1 }}"
+      Cookie: "{{ csrf }};{{ session }}"
+      session: "{{ session1 }}"
   register: response
 - set_fact:
     authoCode: "{{ response.content['auth_code'] }}"
