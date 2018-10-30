@@ -43,15 +43,12 @@
 - set_fact:
     authCode: "{{ response.json.auth_code }}"
 - debug:
-    msg: "MKA  {{ authCode }}"
-- name: Create template group
+    msg: "Auth Code:  {{ authCode }}"
+- name: Auth code from Token
   uri:
-    url: "{{ url }}/configuration/v1/groups"
-    method: POST
-    #user: "{{ username }}"
-    #password: "{{ password }}"
-    #body: "{{ lookup('file','../files/create_customer.json') }}"
-    body: '{"group":"{{ template_group }}","group_attributes":{"group_password":"{{ group_pwd }}","template_group":true}}'
+    url: "https://apigw-prod2.central.arubanetworks.com/oauth2/token?client_id=iFztCEnFlccPAkGKlpDF3Ua4IV1G9wYy&grant_type=authorization_code&scope=all&client_secret=NKFJwaSvjQz8lGRKtLqWFV3TbgMrrDem&code={{ authCode }}"
+    method: POST    
+    body: '{}'
     force_basic_auth: yes
     status_code: 200
     body_format: json
