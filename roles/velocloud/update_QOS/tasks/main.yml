@@ -48,7 +48,29 @@
   when: item.name == 'POC2 Profile'
 - debug:
     msg: "Profile id for vpn profile- {{  response.json[2].name }} is {{ configurationId }} "
-
+# *****************************************************
+# Get Site ID
+# *****************************************************
+- name: Get Config id from enterprise Profile
+  uri:
+    url: "{{ veloURL }}/enterprise/getEnterpriseEdges"
+    method: POST
+    body: '{"enterpriseId": {{ enterpriseId }},"with": ["site"]}'
+    status_code: 200
+    body_format: json
+    validate_certs: false
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}" 
+  register: response
+- set_fact:
+    configurationId: "{{ item.id }}" 
+  with_items: "{{ response.json }}"
+  when: item.name == 'POC2 Profile'
+- debug:
+    msg: "Profile id for vpn profile- {{  response.json[2].name }} "
 # *****************************************************
 # Edge Device Provisioned
 # *****************************************************
