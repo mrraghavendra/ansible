@@ -51,7 +51,7 @@
 # *****************************************************
 # Get Site ID
 # *****************************************************
-- name: Get Config id from enterprise Profile
+- name: Get Site id from enterprise edge
   uri:
     url: "{{ veloURL }}/enterprise/getEnterpriseEdges"
     method: POST
@@ -68,9 +68,9 @@
 - set_fact:
     velo_edge_id: "{{ item.id }}" 
   with_items: "{{ response.json }}"
-  when: item.name == 'Veloedge2_openstack'
+  when: item.name == '{{ siteName }}'
 - debug:
-    msg: "Edge Id - {{  response.json[2].name }} {{ velo_edge_id }} "
+    msg: "Response - {{  response.json[2].name }}  "
 # *****************************************************
 # Edge Device Provisioned
 # *****************************************************
@@ -97,7 +97,7 @@
   with_items: "{{ response.json[0].modules }}"
   when: item.name == 'deviceSettings'
 - debug:
-   msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} "
+   msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} - {{ velo_edge_id }} "
 # *****************************************************
 # Initialize an empty list for our strings
 # *****************************************************
