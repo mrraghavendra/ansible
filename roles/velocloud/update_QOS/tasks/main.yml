@@ -66,11 +66,11 @@
       Cookie: "{{ cookies_id }}" 
   register: response
 - set_fact:
-    configurationId: "{{ item.id }}" 
+    velo_edge_id: "{{ item.id }}" 
   with_items: "{{ response.json }}"
-  when: item.name == 'POC2 Profile'
+  when: item.name == 'Veloedge2_openstack'
 - debug:
-    msg: "Profile id for vpn profile- {{  response.json[2].name }} "
+    msg: "Edge Id - {{  response.json[2].name }} {{ velo_edge_id }} "
 # *****************************************************
 # Edge Device Provisioned
 # *****************************************************
