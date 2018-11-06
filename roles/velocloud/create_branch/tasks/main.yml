@@ -60,7 +60,7 @@
     force_basic_auth: yes
     status_code: 200
     body_format: json
-    validate_certs: no
+    validate_certs: false
     return_content: yes
     headers:
       Content-Type: "application/json"
@@ -87,7 +87,7 @@
     force_basic_auth: yes
     status_code: 200
     body_format: json
-    validate_certs: no
+    validate_certs: false
     return_content: yes
     headers:
       Content-Type: "application/json"
@@ -111,7 +111,7 @@
     body: "{{ body }}"
     status_code: 200
     body_format: json
-    validate_certs: no
+    validate_certs: false
     return_content: yes
     headers:
       Content-Type: "application/json"
@@ -173,7 +173,7 @@
     body: "{{ body }}"
     status_code: 200
     body_format: json
-    validate_certs: no
+    validate_certs: false
     return_content: yes
     headers:
       Content-Type: "application/json"
