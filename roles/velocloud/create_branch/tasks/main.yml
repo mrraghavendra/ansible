@@ -95,11 +95,9 @@
       Cookie: "{{ cookies_id }}"
   register: response
 - set_fact:
-    velo_edge_id: "{{ response.json.id }}"
-    sBody: "{{ body }}"
+    velo_edge_id: "{{ response.json.id }}"    
 - debug:
-    msg: {{ sBody }}
-    #var: velo_edge_id
+    msg: {{ lookup('template','../files/edgeProvisionRequest.json') | to_json }}
 
 # **************************************************************************
 #       Configrution for Edge Device provisioned
