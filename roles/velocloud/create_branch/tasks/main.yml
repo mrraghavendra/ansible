@@ -72,7 +72,7 @@
   with_items: "{{ response.json }}"
   when: item.name == 'POC2 Profile'
 - debug:
-    msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
+    msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ lookup('template','../files/edgeProvisionRequest.json') | to_json }} "
 
 # **************************************************************************
 #       Provision the Edge Device
@@ -95,9 +95,9 @@
       Cookie: "{{ cookies_id }}"
   register: response
 - set_fact:
-    velo_edge_id: "{{ response.json.id }}"    
+    velo_edge_id: "{{ response.json.id }}"
 - debug:
-    msg: {{ lookup('template','../files/edgeProvisionRequest.json') | to_json }}
+    var: velo_edge_id
 
 # **************************************************************************
 #       Configrution for Edge Device provisioned
