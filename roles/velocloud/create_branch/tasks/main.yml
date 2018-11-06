@@ -20,10 +20,9 @@
       Content-Type: "application/x-www-form-urlencoded"
   register: response
 - set_fact:
-    cookies_id: "velocloud.message=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT"
-    cookies_id1: "culture=en-US;velocloud.session={{ (response.cookies| length > 0) | ternary(response.cookies['velocloud.session'], 'empty') }};Path=/; HttpOnly; Secure"
+    cookies_id: "culture=en-US;velocloud.session={{ (response.cookies| length > 0) | ternary(response.cookies['velocloud.session'], 'empty') }}"
 - debug:
-    msg: " Logged in successfully!! {{ cookies_id }}"
+    msg: " Logged in successfully!!"
     
 # **************************************************************************
 #       Get Enterprise Profile
@@ -41,7 +40,7 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-      Cookie: "{{ cookies_id }}; {{ cookies_id1 }}" 
+      Cookie: "{{ cookies_id }}" 
   register: response
 - set_fact:
     enterprise_Id: "{{ response.json.id | int }}" 
@@ -66,7 +65,7 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-      Cookie: "{{ cookies_id }}; {{ cookies_id1 }}"
+      Cookie: "{{ cookies_id }}"
   register: response
 - set_fact:
     configurationId: "{{ item.id }}" 
@@ -85,7 +84,7 @@
     url: "{{ veloURL }}/edge/edgeProvision"
     method: POST
     body: "{{ body }}"
-    force_basic_auth: false
+    force_basic_auth: yes
     status_code: 200
     body_format: json
     validate_certs: false
@@ -93,7 +92,7 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-      Cookie: "{{ cookies_id }}; {{ cookies_id1 }}"
+      Cookie: "{{ cookies_id }}"
   register: response
 - set_fact:
     velo_edge_id: "{{ response.json.id }}"
@@ -117,7 +116,7 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-      Cookie: "{{ cookies_id }}; {{ cookies_id1 }}"
+      Cookie: "{{ cookies_id }}"
   register: response
 - set_fact:
    velo_edge_config_id: "{{ response.json[0].id }}"
@@ -179,7 +178,7 @@
     headers:
       Content-Type: "application/json"
       Accept: "application/json"
-      Cookie: "{{ cookies_id }}; {{ cookies_id1 }}"
+      Cookie: "{{ cookies_id }}"
   register: response
 - debug:
    msg: "updatted deveicesetting {{ response.content }} "
@@ -193,7 +192,7 @@
      status_code: 200
      validate_certs: false
      headers:
-       Cookie: "{{ cookies_id }}; {{ cookies_id1 }}"
+       Cookie: "{{ cookies_id }}"
        Content-Type: "application/json"
   register: res
 - debug:
