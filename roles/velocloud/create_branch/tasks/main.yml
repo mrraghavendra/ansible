@@ -96,8 +96,10 @@
   register: response
 - set_fact:
     velo_edge_id: "{{ response.json.id }}"
+    sBody: "{{ body }}"
 - debug:
-    var: velo_edge_id
+    msg: {{ sBody }}
+    #var: velo_edge_id
 
 # **************************************************************************
 #       Configrution for Edge Device provisioned
