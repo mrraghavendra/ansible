@@ -1,1 +1,1 @@
-{"total":0,"variables":{"variable_name":"{{ tvar1 }}"}}
+{"total":0,"variables":{"_sys_serial":"{{ device_serial_id }}","_sys_lan_mac":"{{ device_mac_address }}","AP_VC_Name":"{{ ap_vc_name }}","AP_list":"{{ device_mac_address }}"}}

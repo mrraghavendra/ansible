@@ -8,9 +8,9 @@ customerName: "ABC corp"
 id: "780b0647e5154c8ab1d42e62a7791dc9"
 user_name: "tom"
 roles: "admin"
-device_serial_id: "DZ0005126"
-device_mac_address: "F0:5C:19:CA:13:1C"
-template_group: "a036000000l6hph_9789"
+device_serial_id: "CNFZJSSBH1"
+device_mac_address: "90:4c:81:c5:a9:fe"
+template_group: "velobranch"
 group_pwd: "abc*1"
 tvar: "testval"
 userwlan: "yes"
@@ -19,6 +19,7 @@ userwlanbw: 100
 corpwlanbw: 200
 userwlanqos: "Bronz"
 corpwlanqos: "Gold"
+ap_vc_name: "SetMeUp-C5:A9:FE"
 
 # defaults file for /ansible/roles/tutorial
 customer_name: "{{ customerName }}"
