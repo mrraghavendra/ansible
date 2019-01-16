@@ -33,6 +33,24 @@ qos: "{{ qos }}"
 url: "http://34.213.119.214:8080/aruba"
 
 
+Local_DHCP: "{{ Local_DHCP }}"
+Local_DHCP_VLAN: "{{ Local_DHCP_VLAN }}"
+Local_DHCP_Subnet: "{{ Local_DHCP_Subnet }}"
+Local_DHCP_Subnet_Mask: "{{ Local_DHCP_Subnet_Mask }}"
+Local_DHCP_Default_Router: "{{ Local_DHCP_Default_Router }}"
+Local_DHCP_DNS_Server_01: "{{ Local_DHCP_DNS_Server_01 }}"
+Local_DHCP_Domain_Name: "{{ Local_DHCP_Domain_Name }}"
+
+
+SSID: "{{ SSID }}"
+SSID_enable: "{{ SSID_enable }}"
+SSID_Zone: "{{ SSID_Zone }}"
+Country_Code: "{{ Country_Code }}"
+Timezone: "{{ Timezone }}"
+airtime_fairness: "{{ airtime_fairness }}"
+
+
+
  
 
 #{"extra_vars": {"customerName":"test","id":"1234","user":"test","role":"admin","userWLAN":"yes","corpWLAN":"yes"}}
