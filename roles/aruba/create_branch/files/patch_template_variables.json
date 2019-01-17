@@ -1,1 +1,1 @@
-{"total":0,"variables":{"_sys_allowed_ap":"{{ device_mac_address }}","_sys_lan_mac":"{{ device_mac_address }}"}}
+{"total":0,"variables":{"_sys_allowed_ap":"{{ device_mac_address }}","_sys_lan_mac":"{{ device_mac_address }}","_sys_serial":"{{ device_serial_id }}","AP_Allowed_List":"{{ device_mac_address }}","AP_Hostname":"{{ ap_hostname }}","AP_VC_Name":"{{ ap_vc_name }}","AP_Zonename":"","ESSID_01":"{{ ssid_01 }}","ESSID_02":"{{ ssid_02 }}","ESSID_03":"Velo_Finance","ESSID_04":"Velo_Portal"}}
