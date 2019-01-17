@@ -56,6 +56,8 @@ Local_DHCP_Subnet_Mask_01: "255.255.255.0"
 Local_DHCP_Default_Router_01: "172.10.0.1"
 Local_DHCP_DNS_Server_01: "8.8.8.8"
 Local_DHCP_Domain_Name_01: "local.velocloudcorp.com"
+peruser_downstream_limit_SSID_01: "100"
+peruser_uptream_limit_SSID_01: "100"
 
 
 #02
@@ -68,11 +70,8 @@ Local_DHCP_Subnet_Mask_02: "255.255.255.0"
 Local_DHCP_Default_Router_02: "172.11.0.1"
 Local_DHCP_DNS_Server_02: "8.8.8.8"
 Local_DHCP_Domain_Name_02: "local.velocloudguest.com"
-
-
-
-
-
+peruser_downstream_limit_SSID_02: "100"
+peruser_uptream_limit_SSID_02: "100"
 
 
  
