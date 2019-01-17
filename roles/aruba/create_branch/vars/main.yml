@@ -13,14 +13,14 @@ VC_Timezone: "{{ Timezone }}"
 Country_Code: "{{ Country_Code }}"
 Timezone: "{{ Timezone }}"
 airtime_fairness: "{{ airtime_fairness }}"
-wmm-background-share: "{{ wmm-background-share}}",
-wmm-best-effort-share: "{{  wmm-best-effort-share }}",
-wmm-video-share: "{{  wmm-video-share }}",
-wmm-voice-share: "{{  wmm-voice-share }}",
-AP_VC_DNS_IP: "{{ AP_VC_DNS_IP }}",
-AP_VC_IP: "{{ AP_VC_DNS_IP }}",
-AP_VC_Name: "{{ AP_VC_DNS_IP }}",
-AP_VC_VLAN: "{{ AP_VC_DNS_IP }}",
+wmm-background-share: "{{ wmm-background-share}}"
+wmm-best-effort-share: "{{  wmm-best-effort-share }}"
+wmm-video-share: "{{  wmm-video-share }}"
+wmm-voice-share: "{{  wmm-voice-share }}"
+AP_VC_DNS_IP: "{{ AP_VC_DNS_IP }}"
+AP_VC_IP: "{{ AP_VC_DNS_IP }}"
+AP_VC_Name: "{{ AP_VC_DNS_IP }}"
+AP_VC_VLAN: "{{ AP_VC_DNS_IP }}"
 
 
 ssid_01: "{{ ssid_01 }}"

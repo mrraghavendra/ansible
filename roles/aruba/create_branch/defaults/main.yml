@@ -8,9 +8,9 @@ customerName: "ABC corp"
 id: "6110c05da03849b2937be64739697ceb"
 user_name: "tom"
 roles: "admin"
-device_serial_id: "CNFZJSSBH1"
-device_mac_address: "90:4c:81:c5:a9:fe"
-template_group: "velobranch"
+device_serial_id: "CNFZJSSBH2"
+device_mac_address: "90:4c:81:c5:ca:fa"
+template_group: "velo_dev"
 group_pwd: "abc*1"
 tvar: "testval"
 userwlan: "yes"
@@ -19,7 +19,7 @@ userwlanbw: 100
 corpwlanbw: 200
 userwlanqos: "Bronz"
 corpwlanqos: "Gold"
-ap_vc_name: "SetMeUp-C5:A9:FE"
+ap_vc_name: "SetMeUp-C5:CA:FA"
 
 # defaults file for /ansible/roles/tutorial
 customer_name: "{{ customerName }}"
@@ -32,22 +32,45 @@ tvar1: "{{ tvar }}"
 qos: "{{ qos }}"
 url: "http://34.213.119.214:8080/aruba"
 
+ap_hostname: "VELO_AP_01"
+VC_Country_Code: "IN"
+VC_Timezone: "Mumbai 05 30"
+Country_Code: "IN"
+Timezone: "Mumbai 05 30"
+airtime_fairness: "preferred-access"
+wmm-background-share: "10",
+wmm-best-effort-share: "40"
+wmm-video-share: "30"
+wmm-voice-share: "20"
+AP_VC_DNS_IP: "10.255.134.2"
+AP_VC_IP: "10.255.134.59"
+AP_VC_Name: "{{ ap_vc_name }}"
+AP_VC_VLAN: "821"
+ssid_01: "Velo_Corp"
+VLAN_SSID_01: "100"
+SSID_enable_01: "TRUE"
+Local_DHCP_VLAN_01: "VeloCorp_Local_DHCP"
+Local_DHCP_Subnet_01: "172.10.0.1"
+Local_DHCP_Subnet_Mask_01: "255.255.255.0"
+Local_DHCP_Default_Router_01: "172.10.0.1"
+Local_DHCP_DNS_Server_01: "8.8.8.8"
+Local_DHCP_Domain_Name_01: "local.velocloudcorp.com"
 
-Local_DHCP: "{{ Local_DHCP }}"
-Local_DHCP_VLAN: "{{ Local_DHCP_VLAN }}"
-Local_DHCP_Subnet: "{{ Local_DHCP_Subnet }}"
-Local_DHCP_Subnet_Mask: "{{ Local_DHCP_Subnet_Mask }}"
-Local_DHCP_Default_Router: "{{ Local_DHCP_Default_Router }}"
-Local_DHCP_DNS_Server_01: "{{ Local_DHCP_DNS_Server_01 }}"
-Local_DHCP_Domain_Name: "{{ Local_DHCP_Domain_Name }}"
+
+#02
+ssid_02: "{{ ssid_02 }}"
+VLAN_SSID_02: "{{ vlan_02 }}"
+SSID_enable_02: "{{ SSID_enable_02 }}"
+Local_DHCP_VLAN_02: "{{ Local_DHCP_VLAN_02 }}"
+Local_DHCP_Subnet_02: "{{ Local_DHCP_Subnet_02 }}"
+Local_DHCP_Subnet_Mask_02: "{{ Local_DHCP_Subnet_Mask_02 }}"
+Local_DHCP_Default_Router_02: "{{ Local_DHCP_Default_Router_02 }}"
+Local_DHCP_DNS_Server_02: "{{ Local_DHCP_DNS_Server_02 }}"
+Local_DHCP_Domain_Name_02: "{{ Local_DHCP_Domain_Name_02 }}"
 
 
-SSID: "{{ SSID }}"
-SSID_enable: "{{ SSID_enable }}"
-SSID_Zone: "{{ SSID_Zone }}"
-Country_Code: "{{ Country_Code }}"
-Timezone: "{{ Timezone }}"
-airtime_fairness: "{{ airtime_fairness }}"
+
+
 
 
 
