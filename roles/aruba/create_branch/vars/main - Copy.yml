@@ -1,0 +1,66 @@
+---
+# vars file for /ansible/roles/aruba
+customer_id: "{{ id }}"
+customer_name: "{{ customerName }}"
+user: "{{ user_name }}"
+role: "{{ roles }}"
+device_serial_id: "{{ device_serial }}"
+device_mac_address: "{{ device_mac_address }}"
+ap_hostname: "{{ ap_hostname }}"
+ap_vc_name: "{{ ap_vc_name}}"
+VC_Country_Code: "{{ Country_Code }}"
+VC_Timezone: "{{ Timezone }}"
+Country_Code: "{{ Country_Code }}"
+Timezone: "{{ Timezone }}"
+airtime_fairness: "{{ airtime_fairness }}"
+wmm-background-share: "{{ wmm-background-share}}"
+wmm-best-effort-share: "{{  wmm-best-effort-share }}"
+wmm-video-share: "{{  wmm-video-share }}"
+wmm-voice-share: "{{  wmm-voice-share }}"
+AP_VC_DNS_IP: "{{ AP_VC_DNS_IP }}"
+AP_VC_IP: "{{ AP_VC_DNS_IP }}"
+AP_VC_Name: "{{ AP_VC_DNS_IP }}"
+AP_VC_VLAN: "{{ AP_VC_DNS_IP }}"
+AP_VC_Netmask: "{{ AP_VC_Netmask }}"
+
+
+ssid_01: "{{ ssid_01 }}"
+VLAN_SSID_01: "{{ vlan_01 }}"
+SSID_enable_01: "{{ SSID_enable_01 }}"
+Local_DHCP_VLAN_01: "{{ Local_DHCP_VLAN_01 }}"
+Local_DHCP_Subnet_01: "{{ Local_DHCP_Subnet_01 }}"
+Local_DHCP_Subnet_Mask_01: "{{ Local_DHCP_Subnet_Mask_01 }}"
+Local_DHCP_Default_Router_01: "{{ Local_DHCP_Default_Router_01 }}"
+Local_DHCP_DNS_Server_01: "{{ Local_DHCP_DNS_Server_01 }}"
+Local_DHCP_Domain_Name_01: "{{ Local_DHCP_Domain_Name_01 }}"
+
+
+#02
+ssid_02: "{{ ssid_02 }}"
+VLAN_SSID_02: "{{ vlan_02 }}"
+SSID_enable_02: "{{ SSID_enable_02 }}"
+Local_DHCP_VLAN_02: "{{ Local_DHCP_VLAN_02 }}"
+Local_DHCP_Subnet_02: "{{ Local_DHCP_Subnet_02 }}"
+Local_DHCP_Subnet_Mask_02: "{{ Local_DHCP_Subnet_Mask_02 }}"
+Local_DHCP_Default_Router_02: "{{ Local_DHCP_Default_Router_02 }}"
+Local_DHCP_DNS_Server_02: "{{ Local_DHCP_DNS_Server_02 }}"
+Local_DHCP_Domain_Name_02: "{{ Local_DHCP_Domain_Name_02 }}"
+
+
+
+template_group: "velobranch"
+group_pwd: "abc*1"
+tvar: "testval"
+userwlan: "yes"
+corpwlan: "yes"
+userwlanbw: 100
+corpwlanbw: 200
+userwlanqos: "Bronz"
+corpwlanqos: "Gold"
+
+
+
+
+
+
+
