@@ -21,6 +21,7 @@ AP_VC_DNS_IP: "{{ AP_VC_DNS_IP }}"
 AP_VC_IP: "{{ AP_VC_DNS_IP }}"
 AP_VC_Name: "{{ AP_VC_DNS_IP }}"
 AP_VC_VLAN: "{{ AP_VC_DNS_IP }}"
+AP_VC_Netmask: "{{ AP_VC_Netmask }}"
 
 
 ssid_01: "{{ ssid_01 }}"
