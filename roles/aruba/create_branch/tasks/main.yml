@@ -158,10 +158,7 @@
       Accept: "application/json"
   register: response
 - debug:
-    msg: "MKA  {{ response.content | to_json }}"
-- name: Print Patch template
-- debug:
-    msg: "MKA {{ lookup('template','../files/patch_template_variables.json') | to_json }}  "
+    msg: "MKA  {{ lookup('template','../files/patch_template_variables.json') | to_json }}"
 - name: Patch template
   vars:
     body: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}" 
