@@ -159,23 +159,23 @@
   register: response
 - debug:
     msg: "MKA  {{ lookup('template','../files/patch_template_variables.json') | to_json }}"
-#- name: Patch template
-#  vars:
-#    body: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}" 
-#  uri:
-#    url: "{{ url }}/configuration/v1/devices/{{ device_serial_id }}/template_variables?access_token={{ accessToken }}"
-#    method: PATCH    
-#    body: "{{ body }}" 
-#    force_basic_auth: yes
-#    status_code: 200
-#    body_format: json
-#    validate_certs: no
-#    return_content: yes
-#    headers:
-#      Content-Type: "application/json"
-#      Accept: "application/json"
-#  register: response
-#- set_fact: 
-#    templateVariables: "{{ lookup('template','../files/patch_template_variables.json')  }}" 
-#- debug:
-#    msg: "MKA {{ templateVariables }} | to_json "
+- name: Patch template
+  vars:
+    body: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}" 
+  uri:
+    url: "{{ url }}/configuration/v1/devices/{{ device_serial_id }}/template_variables?access_token={{ accessToken }}"
+    method: PATCH    
+    body: "{{ body }}" 
+    force_basic_auth: yes
+    status_code: 200
+    body_format: json
+    validate_certs: no
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+  register: response
+- set_fact: 
+    templateVariables: "{{ lookup('template','../files/patch_template_variables.json')  }}" 
+- debug:
+    msg: "MKA {{ templateVariables }} | to_json "
