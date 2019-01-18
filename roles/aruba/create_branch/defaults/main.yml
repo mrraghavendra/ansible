@@ -34,7 +34,7 @@ url: "http://34.213.119.214:8080/aruba"
 
 ap_hostname: "VELO_AP_01"
 VC_Country_Code: "IN"
-VC_Timezone: "5 30"
+VC_Timezone: "IST"
 Country_Code: "IN"
 Timezone: "UTC"
 airtime_fairness: "default-access"
