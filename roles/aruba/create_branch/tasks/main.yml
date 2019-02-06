@@ -164,7 +164,7 @@
     body: "{{ lookup('template','../files/patch_template_variables.json') | to_json }}" 
   uri:
     url: "{{ url }}/configuration/v1/devices/{{ device_serial_id }}/template_variables?access_token={{ accessToken }}"
-    method: GET    
+    method: PATCH    
     body: "{{ body }}" 
     force_basic_auth: yes
     status_code: 200
@@ -178,4 +178,4 @@
 - set_fact: 
     templateVariables: "{{ lookup('template','../files/patch_template_variables.json')  }}" 
 - debug:
-    msg: "MKA {{ response }} | to_json "
+    msg: "MKA {{ templateVariables }} | to_json "
