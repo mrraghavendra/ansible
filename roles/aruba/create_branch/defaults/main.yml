@@ -32,7 +32,7 @@ tvar1: "{{ tvar }}"
 qos: "{{ qos }}"
 url: "http://34.213.119.214:8080/aruba"
 
-ap_hostname: "VELO_AP_02"
+ap_hostname: "90:4c:81:c5:a9:fe"
 VC_Country_Code: "IN"
 VC_Timezone: "IST"
 Country_Code: "IN"
