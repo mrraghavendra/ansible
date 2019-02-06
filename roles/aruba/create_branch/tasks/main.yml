@@ -178,4 +178,4 @@
 - set_fact: 
     templateVariables: "{{ lookup('template','../files/patch_template_variables.json')  }}" 
 - debug:
-    msg: "MKA {{ templateVariables }} | to_json "
+    msg: "MKA {{ response }} | to_json "
