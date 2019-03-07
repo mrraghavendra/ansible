@@ -12,7 +12,8 @@
 		"leaseTimeSeconds": 86400,
 		"options": [
 			
-		]
+		],
+		"override": true
 	},
 	"staticReserved": 10,
 	"baseDhcpAddr": 13,
