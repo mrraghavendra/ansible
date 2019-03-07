@@ -31,7 +31,7 @@
 		"igmpHostQueryIntervalSeconds": null,
 		"igmpMaxQueryResponse": null
 	},
-	"numDhcpAddr": 242,
+	"numDhcpAddr": 17,
 	"ospf": {
 		"enabled": false,
 		"area": "",
