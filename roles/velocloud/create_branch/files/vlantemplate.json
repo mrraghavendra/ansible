@@ -38,7 +38,7 @@
 	},
 	"disabled": false,
 	"interfaces": [
-		
+		"GE1"
 	],
 	"override": true
 }
