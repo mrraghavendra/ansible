@@ -1,1 +1,1 @@
-username={{ username }}&password={{ password }}
+username={{ user }}&password={{ pass }}

@@ -10,8 +10,8 @@
   uri:
     url: "{{ veloURL }}/login/enterpriseLogin"
     method: POST
-    user: "{{ username }}"
-    password: "{{ password }}"
+    user: "{{ user }}"
+    password: "{{ pass }}"
     body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
