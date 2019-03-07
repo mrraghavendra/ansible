@@ -8,7 +8,27 @@
                 "mode":"MAC"
              },
              
-        "networks":{{ segmentLst }}
+        "networks":{{ segmentLst }},
+		  "interfaces": [
+				{
+					"space": "Corporate Network",
+					"name": "GE1",
+					"type": "wired",
+					"cwp": false,
+					"portMode": "access",
+					"vlanIds": [
+						504
+					],
+					"disabled": false,
+					"l2": {
+						"autonegotiation": true,
+						"speed": "100M",
+						"duplex": "FULL",
+						"MTU": 1500
+					},
+					"override": true
+				}
+			]
           },
           "segments":[
              {
@@ -84,24 +104,24 @@
                   ]
                 }
              },
-					{
-						"segment": {
-							"segmentId": 4,
-							"name": "CORP-BR1",
-							"type": "REGULAR"
-						},
-						"routes": {
-							"icmpProbes": [
-								
-							],
-							"icmpResponders": [
-								
-							],
-							"static": [
-								
-							]
-						}
-					}
+			{
+				"segment": {
+					"segmentId": 4,
+					"name": "CORP-BR1",
+					"type": "REGULAR"
+				},
+				"routes": {
+					"icmpProbes": [
+						
+					],
+					"icmpResponders": [
+						
+					],
+					"static": [
+						
+					]
+				}
+			}
           ],
           "ha":{
              "enabled":false,
