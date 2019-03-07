@@ -10,8 +10,8 @@
   uri:
     url: "{{ veloURL }}/login/enterpriseLogin"
     method: POST
-    user: "{{ user }}"
-    password: "{{ pass }}"
+    user: "r.madhur.ramachandra@accenture.com"
+    password: "Admin1234"
     body: "{{ body }}"
     force_basic_auth: yes
     status_code: 200
