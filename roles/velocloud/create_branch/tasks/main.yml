@@ -131,7 +131,7 @@
 # **************************************************************************
 #       Segment enterprise Profile
 # **************************************************************************
-- name: Segment configuations enterprise Profile
+- name: Segment configuations enterprise Profile-1
   vars:
     segment_group: ""
     items: "{{ item }}" 
@@ -142,8 +142,6 @@
   set_fact:
     segment_group: "{{ segment_group }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
   with_items: "{{ segments }}"
-- debug:
-  msg: "segments - {{ segments }}"
 
 # **************************************************************************
 #       Print Segment enterprise Profile
