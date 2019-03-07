@@ -1,1 +1,1 @@
-username="r.madhur.ramachandra@accenture.com"&password="Admin1234"
+username={{ username }}&password={{ password }}
