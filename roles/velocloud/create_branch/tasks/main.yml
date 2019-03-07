@@ -68,11 +68,12 @@
       Cookie: "{{ cookies_id }}"
   register: response
 - set_fact:
-    configurationId: "{{ item.id }}" 
+    configurationId: "{{ item.id }}"
+    profile_ids: "{{ item.name }}"
   with_items: "{{ response.json }}"
   when: item.name == 'POC2 Profile'
 - debug:
-    msg: "Profile id for vpn profile-   {{  response.json[2].name }} is {{ configurationId }} "
+    msg: "Profile id for vpn profile-   {{  profile_ids }} is {{ configurationId }} "
 
 # **************************************************************************
 #       Provision the Edge Device
