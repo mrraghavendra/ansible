@@ -138,7 +138,7 @@
     segmentid: "{{ items.segmentid }}"
     segment: "{{ items.segment }}"
     vlanid: "{{ items.vlanid }}"
-    subnet: "{{ (items.subnet| length > 0) | ternary(items.subnet, '8.8.8.8') }}"
+    subnet: "{{ items.subnet }}"
     cidr: "{{ items.cidr }}"    
   set_fact:
     segment_group: "{{ segment_group }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
