@@ -38,8 +38,6 @@
 		"passiveInterface": true
 	},
 	"disabled": false,
-	"interfaces": [
-		{{ ge }}
-	],
+	"interfaces": {{ ge }},
 	"override": true
 }
