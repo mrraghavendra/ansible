@@ -1,7 +1,7 @@
 {
-	"vlanId": "{{ vlanid }}",
+	"vlanId": {{ vlanid }},
 	"name": "{{ segment }}",
-	"segmentId": "{{ segmentid }}",
+	"segmentId": {{ segmentid }},
 	"disabled": false,
 	"advertise": true,
 	"cost": 10,
