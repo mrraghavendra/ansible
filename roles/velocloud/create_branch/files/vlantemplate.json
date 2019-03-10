@@ -39,7 +39,7 @@
 	},
 	"disabled": false,
 	"interfaces": [
-		"{{ ge }}"
+		{{ ge }}
 	],
 	"override": true
 }
