@@ -52,44 +52,8 @@
              },
              {
                 "segment":{
-                   "segmentId":1,
-                   "name":"Guest",
-                   "type":"REGULAR"
-                },
-                "routes":{
-                   "icmpProbes":[
-
-                  ],
-                   "icmpResponders":[
-
-                  ],
-                   "static":[
-
-                  ]
-                }
-             },
-             {
-                "segment":{
                    "segmentId":2,
                    "name":"Corporate",
-                   "type":"REGULAR"
-                },
-                "routes":{
-                   "icmpProbes":[
-
-                  ],
-                   "icmpResponders":[
-
-                  ],
-                   "static":[
-
-                  ]
-                }
-             },
-             {
-                "segment":{
-                   "segmentId":3,
-                   "name":"Arubamgmt",
                    "type":"REGULAR"
                 },
                 "routes":{
@@ -210,7 +174,7 @@
 								
 							]
 						},
-						"advertise": false,
+						"advertise": true,
 						"natDirect": true,
 						"trusted": false,
 						"rpf": "SPECIFIC",
@@ -241,11 +205,11 @@
 						},
 						"multicast": {
 							"igmp": {
-								"enabled": false,
+								"enabled": true,
 								"type": "IGMP_V2"
 							},
 							"pim": {
-								"enabled": false,
+								"enabled": true,
 								"type": "PIM_SM"
 							},
 							"pimKeepAliveTimerSeconds": null,
@@ -264,14 +228,13 @@
 						},
 						"addressing": {
 							"type": "STATIC",
-							"cidrPrefix": 26,
-							"cidrIp": "10.34.134.7",
-							"netmask": "255.255.255.192",
-							"gateway": "10.34.134.2",
+							"cidrPrefix": 24,
+							"cidrIp": "10.255.134.18",
+							"netmask": "255.255.255.0",
+							"gateway": "10.255.134.2",
 							"username": null,
 							"password": null
 						},
-						"override": true,
 						"dhcpServer": {
 							"enabled": false,
 							"leaseTimeSeconds": 3600,

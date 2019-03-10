@@ -2,6 +2,7 @@
 	"vlanId": "{{ vlanid }}",
 	"name": "{{ segment }}",
 	"segmentId": "{{ segmentid }}",
+	"disabled": false,
 	"advertise": true,
 	"cost": 10,
 	"cidrIp": "{{ subnet }}",
@@ -17,6 +18,7 @@
 	},
 	"staticReserved": 10,
 	"baseDhcpAddr": 13,
+	"numDhcpAddr": 242,
 	"multicast": {
 		"igmp": {
 			"enabled": false,
@@ -31,15 +33,13 @@
 		"igmpHostQueryIntervalSeconds": null,
 		"igmpMaxQueryResponse": null
 	},
-	"numDhcpAddr": 17,
 	"ospf": {
 		"enabled": false,
 		"area": "",
 		"passiveInterface": true
 	},
-	"disabled": false,
+	"override": true,
 	"interfaces": [
 		{{ ge }}
-	],
-	"override": true
+	]
 }
