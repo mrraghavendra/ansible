@@ -228,10 +228,10 @@
 						},
 						"addressing": {
 							"type": "STATIC",
-							"cidrPrefix": 24,
-							"cidrIp": "10.255.134.18",
+							"cidrPrefix": {{ insterfaceStaticCIDR }},
+							"cidrIp": "{{ insterfaceStaticIP }} ",
 							"netmask": "255.255.255.0",
-							"gateway": "10.255.134.2",
+							"gateway": "{{ insterfaceStaticGW }}",
 							"username": null,
 							"password": null
 						},
