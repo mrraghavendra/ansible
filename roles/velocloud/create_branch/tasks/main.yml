@@ -147,7 +147,7 @@
     segment_group: "{{ segment_group }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
   with_items: "{{ segments }}"
 - debug:
-   msg: "segments - {{ segments }}"
+   msg: "segments - {{ segments }} - {{ interfaceUpdt }}"
 
 # **************************************************************************
 #       Print Segment enterprise Profile
