@@ -142,12 +142,12 @@
     subnet: "{{ items.subnet }}"
     cidr: "{{ items.cidr }}"  
     ge: "{% if vlanName == 'corp' %} \"GE1\" {% else %} {% endif %}"   
-    interfaceUpdt: "{% if vlanName == 'corp' %} {{ vlanid }} {% else %} {% endif %}"      
+    #interfaceUpdt: "{% if vlanName == 'corp' %} {{ vlanid }} {% else %} {% endif %}"      
   set_fact:
     segment_group: "{{ segment_group }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
   with_items: "{{ segments }}"
 - debug:
-   msg: "segments - {{ segments }} - {{ interfaceUpdt }}"
+   msg: "segments - {{ segments }}"
 
 # **************************************************************************
 #       Print Segment enterprise Profile

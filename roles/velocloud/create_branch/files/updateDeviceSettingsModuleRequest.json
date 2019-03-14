@@ -17,7 +17,7 @@
 					"cwp": false,
 					"portMode": "access",
 					"vlanIds": [
-						{{ interfaceUpdt }}
+						505
 					],
 					"disabled": false,
 					"l2": {
