@@ -229,7 +229,7 @@
 						"addressing": {
 							"type": "STATIC",
 							"cidrPrefix": {{ insterfaceStaticCIDR }},
-							"cidrIp": "{{ insterfaceStaticIP }} ",
+							"cidrIp": "{{ insterfaceStaticIP }}",
 							"netmask": "255.255.255.0",
 							"gateway": "{{ insterfaceStaticGW }}",
 							"username": null,
