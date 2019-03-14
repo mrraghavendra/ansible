@@ -1,6 +1,6 @@
 {
 	"vlanId": {{ vlanid }},
-	"name": "{{ segment }}",
+	"name": "{{ vlanName }}",
 	"segmentId": {{ segmentid }},
 	"disabled": false,
 	"advertise": true,

@@ -30,6 +30,7 @@ guestCIDR: "{{ guestCIDR }}"
 segments: 
     segmentid:"{{ segmentid }}"
     segment:"{{ segment }}"
+    vlanName:"{{ vlanName }}"
     vlanid:"{{ vlanid }}"
     subnet:"{{ subnet }}"
     cidr:"{{ cidr }}"

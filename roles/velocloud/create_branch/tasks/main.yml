@@ -138,9 +138,10 @@
     segmentid: "{{ items.segmentid }}"
     segment: "{{ items.segment }}"
     vlanid: "{{ items.vlanid }}"
+    vlanName: "{{ vlanName }}"
     subnet: "{{ items.subnet }}"
     cidr: "{{ items.cidr }}"  
-    ge: "{% if segment == 'corp' %} \"GE1\" {% else %} {% endif %}"    
+    ge: "{% if vlanName == 'corp' %} \"GE1\" {% else %} {% endif %}"    
   set_fact:
     segment_group: "{{ segment_group }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
   with_items: "{{ segments }}"
