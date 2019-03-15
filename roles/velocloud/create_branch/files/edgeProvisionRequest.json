@@ -2,7 +2,7 @@
   "enterpriseId": "{{ enterpriseId }}",
   "configurationId": "{{ configurationId }}",
   "name": "{{ siteName }}",
-  "serialNumber": "{{ edgeDeviceSerialNumber }}",
+  "serialNumber": "",
   "modelNumber": "{{ edgeDeviceModelNumber }}",
   "description": "{{ siteName }}_Edge",
   "site": {
