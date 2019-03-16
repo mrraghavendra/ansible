@@ -1,0 +1,54 @@
+{
+	"id": {{ velo_edge_devicesetting_module_id }},
+	"_update": {
+		"data": {
+			"links": [
+				{
+					"logicalId": null,
+					"internalId": "68b98849-2b86-4681-bef0-45058271be12",
+					"discovery": "USER_DEFINED",
+					"mode": "PUBLIC",
+					"type": "WIRED",
+					"name": "Accenture Ltd",
+					"isp": null,
+					"publicIpAddress": null,
+					"sourceIpAddress": "",
+					"nextHopIpAddress": null,
+					"customVlanId": false,
+					"vlanId": 0,
+					"virtualIpAddress": null,
+					"dynamicBwAdjustmentEnabled": false,
+					"bwMeasurement": "USER_DEFINED",
+					"upstreamMbps": "1",
+					"downstreamMbps": "1",
+					"backupOnly": false,
+					"udpHolePunching": false,
+					"overheadBytes": 0,
+					"MTU": 1500,
+					"dscpTag": "",
+					"staticSlaEnabled": false,
+					"classesofServiceEnabled": false,
+					"encryptOverlay": true,
+					"staticSLA": {
+						"latencyMs": 0,
+						"jitterMs": 0,
+						"lossPct": 0
+					},
+					"classesOfService": {
+						"classId": null,
+						"classesOfService": [
+							
+						]
+					},
+					"interfaces": [
+						"GE3"
+					],
+					"lastActive": null
+				}
+			]
+		},
+		"description": null,
+		"name": "WAN",
+		"refs": null
+	}
+}

@@ -166,7 +166,6 @@
     body: "{{ lookup('template','../files/updateDeviceSettingsModuleRequest.json') | to_json }}"
   debug:
     msg: "{{ body }}"
-
 # **************************************************************************
 #       Device setting Module enterprise Profiles
 # **************************************************************************
@@ -188,6 +187,27 @@
   register: response
 - debug:
    msg: "updatted deveicesetting {{ response.content }} "
+# **************************************************************************
+#       Device setting  WAN Module enterprise Profiles
+# **************************************************************************
+- name: Update Devicesetting WAN Module data for Edge
+  vars:
+    body: "{{ lookup('template','../files/WANSettings.json') | to_json }}"
+  uri:
+    url: "{{ veloURL }}/configuration/updateConfigurationModule"
+    method: POST
+    body: "{{ body }}"
+    status_code: 200
+    body_format: json
+    validate_certs: false
+    return_content: yes
+    headers:
+      Content-Type: "application/json"
+      Accept: "application/json"
+      Cookie: "{{ cookies_id }}"
+  register: response
+- debug:
+   msg: "updatted deveice WAN setting  {{ response.content }} "
 # **************************************************************************
 #       Login out with enterprise Profile
 # **************************************************************************
