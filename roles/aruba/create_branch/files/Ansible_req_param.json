@@ -1,0 +1,24 @@
+{
+	"extra_vars": {
+		"device_serial": "",
+		"mac_address": "",
+		"ap_vc_name":"",
+		"countryCode": "",
+		"template_group_move": "",
+		"ap_static_dns": "20.295.230.8",
+		"ap_static_domain": "arubanetworks.com",
+		"ap_static_gateway": "20.255.234.2",
+		"ap_static_ip": "20.255.234.60",
+		"ap_static_subnet": "255.255.255.192",
+		"SSID_01": "",
+		"DHCP_Router_01": "",
+		"DHCP_Subnet_01": "",
+		"DHCP_Subnet_MASK_01": "",
+		"SSID_VLAN_01": "",
+		"SSID_02": "",
+		"DHCP_Router_02": "",
+		"DHCP_Subnet_02": "",
+		"DHCP_Subnet_MASK_02": "",
+		"SSID_VLAN_02": ""
+	}
+}
