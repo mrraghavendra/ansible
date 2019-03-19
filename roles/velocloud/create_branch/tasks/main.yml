@@ -141,7 +141,7 @@
     vlanName: "{{ items.vlanName }}"
     subnet: "{{ items.subnet }}"
     cidr: "{{ items.cidr }}"  
-    ge: "{% if vlanName == 'corp' %} \"GE1\" {% elseif vlanName == 'guest'  %} \"GE2\" {% else %} {% endif %}"
+    ge: "{% if vlanName == 'corp' %} \"GE1\" {% else if vlanName == 'guest'  %} \"GE2\" {% else %} {% endif %}"
     #ge: "{% if vlanName == 'corp' %} \"GE1\" {% else %} {% endif %}"       
     #interfaceUpdt: "{% if vlanName == 'corp' %} {{ vlanid }} {% else %} {% endif %}"      
   set_fact:
