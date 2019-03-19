@@ -27,7 +27,25 @@
 						"MTU": 1500
 					},
 					"override": true
-				}
+				},
+			    {
+					"space": "Corporate Network",
+					"name": "GE2",
+					"type": "wired",
+					"cwp": false,
+					"portMode": "access",
+					"vlanIds": [
+						506
+					],
+					"disabled": false,
+					"l2": {
+						"autonegotiation": true,
+						"speed": "100M",
+						"duplex": "FULL",
+						"MTU": 1500
+					},
+					"override": true
+			  }
 			]
           },
           "segments":[
