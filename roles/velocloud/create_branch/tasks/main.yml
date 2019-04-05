@@ -161,7 +161,7 @@
   set_fact:
     segmentLst: "{{ segment_group|json_formatUtil }}"
 - debug:
-   msg: "{{ segmentLst }}"  - ge "GE1_Vlan_Id"
+   msg: "{{ segmentLst }}  - ge {{ GE1_Vlan_Id }}"
 
 # **************************************************************************
 #       Print Device setting Module request
