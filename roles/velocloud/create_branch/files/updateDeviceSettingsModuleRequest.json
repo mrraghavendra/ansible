@@ -1,5 +1,5 @@
 {
-    "id":"{{ velo_edge_devicesetting_module_id }}",
+    "id": {{ velo_edge_devicesetting_module_id }},
     "_update":{
        "data":{
           "lan":{
@@ -17,7 +17,7 @@
 					"cwp": false,
 					"portMode": "access",
 					"vlanIds": [
-						505
+						{{ GE1_Vlan_Id }}
 					],
 					"disabled": false,
 					"l2": {
@@ -35,7 +35,7 @@
 					"cwp": false,
 					"portMode": "access",
 					"vlanIds": [
-						506
+						{{ GE2_Vlan_Id }}
 					],
 					"disabled": false,
 					"l2": {
@@ -538,8 +538,14 @@
        "refs":{
           "deviceSettings:segment":[
              {
-                "configurationId":"{{ velo_edge_config_id }}",
-                "moduleId":"{{ velo_edge_devicesetting_module_id }}",
+				"configurationId": {{ velo_edge_config_id }},
+                "moduleId": {{ velo_edge_devicesetting_module_id }},
+				"enterpriseObjectId": 10669,
+				"logicalId": "688d6777-b482-4b1f-b696-7188a117fbb3",
+				"ref": "deviceSettings:segment"
+			},{
+                "configurationId": {{ velo_edge_config_id }},
+                "moduleId": {{ velo_edge_devicesetting_module_id }},
                 "enterpriseObjectId":11588,
                 "logicalId":"76b1fa78-19d7-45c4-a43b-e638f4610c80",
                 "ref":"deviceSettings:segment"

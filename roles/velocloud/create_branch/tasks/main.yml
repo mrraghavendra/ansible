@@ -142,10 +142,14 @@
     subnet: "{{ items.subnet }}"
     cidr: "{{ items.cidr }}"  
     ge: "{% if vlanName == 'corp' %} \"GE1\" {% elif vlanName == 'guest'  %} \"GE2\" {% else %} {% endif %}"
+    ge1id: "{% if vlanName == 'corp' %} {{ items.vlanid }} {% else %} 505 {% endif %}"
+    ge2id: "{% if vlanName == 'guest' %} {{ items.vlanid }} {% else %} 506 {% endif %}"
     #ge: "{% if vlanName == 'corp' %} \"GE1\" {% else %} {% endif %}"       
     #interfaceUpdt: "{% if vlanName == 'corp' %} {{ vlanid }} {% else %} {% endif %}"      
   set_fact:
     segment_group: "{{ segment_group }}{{lookup('template','../files/vlantemplate.json') | to_json }}{{'-'}}"
+    GE1_Vlan_Id: "{{ ge1id }}"
+    GE2_Vlan_Id: "{{ ge2id }}"
   with_items: "{{ segments }}"
 - debug:
    msg: "segments - {{ segments }}"
@@ -157,7 +161,7 @@
   set_fact:
     segmentLst: "{{ segment_group|json_formatUtil }}"
 - debug:
-   msg: "{{ segmentLst }}"  
+   msg: "{{ segmentLst }}"  - ge "GE1_Vlan_Id"
 
 # **************************************************************************
 #       Print Device setting Module request
