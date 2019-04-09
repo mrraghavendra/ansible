@@ -113,6 +113,15 @@
 					{
 						"name": "GE3",
 						"disabled": false,
+						"addressing": {
+							"type": "STATIC",
+							"cidrPrefix": {{ insterfaceStaticCIDR }},
+							"cidrIp": "{{ insterfaceStaticIP }}",
+							"netmask": "255.255.255.192",
+							"gateway": "{{ insterfaceStaticGW }}",
+							"username": null,
+							"password": null
+						},
 						"wanOverlay": "AUTO_DISCOVERED",
 						"encryptOverlay": true,
 						"radiusAuthentication": {
@@ -121,7 +130,7 @@
 								
 							]
 						},
-						"advertise": true,
+						"advertise": false,
 						"natDirect": true,
 						"trusted": false,
 						"rpf": "SPECIFIC",
@@ -173,15 +182,7 @@
 							"duplex": "FULL",
 							"MTU": 1500
 						},
-						"addressing": {
-							"type": "STATIC",
-							"cidrPrefix": {{ insterfaceStaticCIDR }},
-							"cidrIp": "{{ insterfaceStaticIP }}",
-							"netmask": "255.255.255.0",
-							"gateway": "{{ insterfaceStaticGW }}",
-							"username": null,
-							"password": null
-						},
+						"override": true,
 						"dhcpServer": {
 							"enabled": false,
 							"leaseTimeSeconds": 3600,
