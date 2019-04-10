@@ -1,20 +1,7 @@
 {
   "enterpriseId": "{{ enterpriseId }}",
   "configurationId": "{{ configurationId }}",
-  "name": "{{ siteName }}",
+  "name": "{{ siteName }}_main",
   "modelNumber": "vmware",
   "description": "{{ siteName }}_Edge",
-  "site": {
-    "city": "{{ siteCity }}",
-    "contactEmail": "{{ siteContactEmail }}",
-    "contactMobile":"{{ siteContactMobile }}",
-    "contactName": "{{ siteContactName }}",
-    "contactPhone": "{{ siteContactPhone }}",
-    "country": "{{ siteCountry }}",
-    "name":"{{ siteName }}",
-    "postalCode": "{{ sitePostalCode}}",
-    "state": "{{ siteState }}",
-    "streetAddress": "{{ siteStreetAddress }}",
-    "streetAddress2": "{{ siteStreetAddress2 }}"
-  }
 }
