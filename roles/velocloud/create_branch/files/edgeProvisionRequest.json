@@ -3,5 +3,5 @@
   "configurationId": "{{ configurationId }}",
   "name": "{{ siteName }}_main",
   "modelNumber": "vmware",
-  "description": "{{ siteName }}_Edge",
+  "description": "{{ siteName }}_Edge"
 }
