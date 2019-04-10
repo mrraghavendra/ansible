@@ -1,7 +1,7 @@
 {
   "enterpriseId": "{{ enterpriseId }}",
   "configurationId": "{{ configurationId }}",
-  "name": "{{ siteName }}_main",
+  "name": "{{ siteName }}",
   "modelNumber": "vmware",
   "description": "{{ siteName }}_Edge"
 }

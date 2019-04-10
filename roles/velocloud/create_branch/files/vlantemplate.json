@@ -6,7 +6,7 @@
 	"advertise": true,
 	"cost": 10,
 	"cidrIp": "{{ subnet }}",
-	"cidrPrefix": "{{ cidr }}",
+	"cidrPrefix": {{ cidr }},
 	"netmask": "255.255.255.0",
 	"dhcp": {
 		"enabled": false,
