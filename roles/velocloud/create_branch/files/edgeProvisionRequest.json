@@ -12,8 +12,6 @@
     "contactName": "{{ siteContactName }}",
     "contactPhone": "{{ siteContactPhone }}",
     "country": "{{ siteCountry }}",
-    "lat": "",
-    "lon": "",
     "name":"{{ siteName }}",
     "postalCode": "{{ sitePostalCode}}",
     "state": "{{ siteState }}",
