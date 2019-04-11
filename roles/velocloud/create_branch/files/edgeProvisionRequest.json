@@ -2,6 +2,6 @@
   "enterpriseId": "{{ enterpriseId }}",
   "configurationId": "{{ configurationId }}",
   "name": "{{ siteName }}",
-  "modelNumber": "vmware",
+  "modelNumber": "{{ edgeDeviceModelNumber }}",
   "description": "{{ siteName }}_Edge"
 }
