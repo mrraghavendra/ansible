@@ -1,0 +1,27 @@
+{
+  "extra_vars": {
+                                "enterpriseId": 915,
+                                "siteName": "Site55",
+                                "siteStreetAddress": "Bangalore",
+                                "siteStreetAddress2": "Bangalore",
+                                "siteCity": "Bangalore",
+                                "siteState": "Karnataka",
+                                "sitePostalCode": "560001",
+                                "siteCountry": "India",
+                                "siteContactEmail": "mat@abc.com",
+                                "siteContactName": "Matt",
+                                "siteContactMobile": "67845632",
+                                "siteContactPhone": "67845632",
+                                "siteLat": "12.9421",
+                                "siteLon": "77.5754",
+                                "edgeDeviceSerialNumber": "1245SD3214",
+                                "edgeDeviceModelNumber": "virtual",
+                                "hubName": "noHub",
+                                "segments": [
+                                	{"vlanid":20,"segment":"Guest","segmentid":1,"subnet":"10.20.30.15","cidr":24},
+                                	{"vlanid":22,"segment":"corporate","segmentid":0,"subnet":"10.20.20.15","cidr":24}
+                                ]
+                }
+}
+
+#https://35.162.12.157/api/v2/job_templates/44/launch/

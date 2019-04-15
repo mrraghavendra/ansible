@@ -1,0 +1,29 @@
+---
+# defaults file for velocloud
+"enterpriseId": 123
+#"configurationId": 2
+"siteCity": "string"
+"siteContactEmail": "mat@abc.com"
+"siteContactMobile": "67845632"
+"siteContactName": "Matt"
+"siteContactPhone": "67845632"
+"siteCountry": "UK"
+"siteLat": 0
+"siteLon": 0
+"siteName": "string"
+"sitePostalCode": "string"
+"siteState": "string"
+"siteStreetAddress": "string"
+"siteStreetAddress2": "string"
+"edgeDeviceSerialNumber": "1245SD3214"
+"edgeDeviceModelNumber": "edge500"
+"edgeDeviceChallengePassword": "test1"
+"edgeDevicePrivateKeyPassword": "test2"
+"edgeDeviceName": "{{ siteName }}_Edge"
+"edgeSitedescription": "{{ siteName }}_Edge"
+"hubName": "noHub"
+"corplanIP": "10.11.23.10"
+"corpCIDR": "24"
+"GuestlanIP": "10.11.24.10"
+"guestCIDR": "24"
+"vpnTemplate": "POC Profile"
