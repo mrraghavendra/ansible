@@ -95,7 +95,7 @@
 - set_fact:
    velo_edge_devicesetting_module_id: "{{ item.id }}"
   with_items: "{{ response.json[0].modules }}"
-  when: item.name == 'deviceSettings'
+  when: item.name == 'QOS'
 - debug:
    msg: "Edge segment - {{ velo_edge_config_id }} -  Provisioned with devsetting_moduleid - {{ velo_edge_devicesetting_module_id }} - {{ velo_edge_id }} "
 # *****************************************************
