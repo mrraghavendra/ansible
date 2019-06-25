@@ -6,7 +6,7 @@
 - name: Assign Device to Customer
   uri:
     url: "{{ url }}/msp_api/v1/customers/{{ customer_id }}/devices"
-    method: PUT
+    method: POST
     body: '{"devices":[{"serial":"{{ device_serial_id }}","mac":"{{ device_mac_address }}"}]}'
     force_basic_auth: yes
     status_code: 200
