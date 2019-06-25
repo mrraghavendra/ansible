@@ -1,0 +1,82 @@
+---
+method: POST
+username: ""
+password: ""
+
+
+customerName: "ABC corp"
+id: "6110c05da03849b2937be64739697ceb"
+user_name: "tom"
+roles: "admin"
+device_serial_id: "CNFZJSSBH1"
+device_mac_address: "90:4c:81:c5:a9:fe"
+template_group: "Velo_dev"
+group_pwd: "abc*1"
+tvar: "testval"
+userwlan: "yes"
+corpwlan: "yes"
+userwlanbw: 100
+corpwlanbw: 200
+userwlanqos: "Bronz"
+corpwlanqos: "Gold"
+ap_vc_name: "SetMeUp-C5:A9:FE"
+
+# defaults file for /ansible/roles/tutorial
+customer_name: "{{ customerName }}"
+customer_id: "{{ id }}"
+user: "{{ user_name }}"
+role: "{{ roles }}"
+userWLAN: "{{ userWLAN }}"
+corpWLAN : "{{ corpWLAN }}"
+tvar1: "{{ tvar }}"
+qos: "{{ qos }}"
+url: "http://34.213.119.214:8080/aruba"
+
+ap_hostname: "90:4c:81:c5:a9:fe"
+VC_Country_Code: "IN"
+VC_Timezone: "IST"
+Country_Code: "IN"
+Timezone: "UTC"
+airtime_fairness: "default-access"
+wmm-background-share: "10"
+wmm-best-effort-share: "40"
+wmm-video-share: "30"
+wmm-voice-share: "20"
+AP_VC_DNS_IP: "10.255.130.8"
+AP_VC_IP: "10.255.134.60"
+AP_VC_Name: "{{ ap_vc_name }}"
+AP_VC_VLAN: "821"
+AP_VC_Netmask: "255.255.255.192"
+ssid_01: "Velo_Corp"
+VLAN_SSID_01: "100"
+SSID_enable_01: "True"
+Local_DHCP_VLAN_01: "100"
+Local_DHCP_Subnet_01: "172.10.0.1"
+Local_DHCP_Subnet_Mask_01: "255.255.255.0"
+Local_DHCP_Default_Router_01: "172.10.0.1"
+Local_DHCP_DNS_Server_01: "8.8.8.8"
+Local_DHCP_Domain_Name_01: "local.velocloudcorp.com"
+peruser_downstream_limit_SSID_01: "100"
+peruser_uptream_limit_SSID_01: "100"
+
+
+#02
+ssid_02: "Velo_Guest"
+VLAN_SSID_02: "200"
+SSID_enable_02: "True"
+Local_DHCP_VLAN_02: "VeloGuest_Local_DHCP"
+Local_DHCP_Subnet_02: "172.11.0.1"
+Local_DHCP_Subnet_Mask_02: "255.255.255.0"
+Local_DHCP_Default_Router_02: "172.11.0.1"
+Local_DHCP_DNS_Server_02: "8.8.8.8"
+Local_DHCP_Domain_Name_02: "local.velocloudguest.com"
+peruser_downstream_limit_SSID_02: "100"
+peruser_uptream_limit_SSID_02: "100"
+
+
+ 
+
+#{"extra_vars": {"customerName":"test","id":"1234","user":"test","role":"admin","userWLAN":"yes","corpWLAN":"yes"}}
+#{"extra_vars":{{"tvar":"testval","qos":"gold"}}}
+#{"extra_vars":{"device_serial_id":"DZ0005126","tvar1": "testval","userwlan": "yes","corpwlan": "yes","userwlanbw": "100","corpwlanbw": "1200","userwlanqos": "Bronz","corpwlanqos": "Gold"}}
+#id: "780b0647e5154c8ab1d42e62a7791dc9"

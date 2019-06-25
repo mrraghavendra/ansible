@@ -1,0 +1,1 @@
+{"customer_name":"{{ customer_name }}","group":{"id":"{{ customer_id }}","name": "{{ customer_name }}"},"users":[{"username":"{{ user }}","role": "admin"}]}
