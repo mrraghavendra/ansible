@@ -18,7 +18,7 @@ corpwlanbw: 200
 userwlanqos: "Bronz"
 corpwlanqos: "Gold"
 ap_vc_name: "SetMeUp-C5:A9:FE"
-branchName: "test"
+branchName: "{{ branchName }}"
 
 
 

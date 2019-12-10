@@ -178,4 +178,4 @@
 - set_fact: 
     templateVariables: "{{ lookup('template','../files/patch_template_variables.json')  }}" 
 - debug:
-    msg: "SDKLOG-{{ branchName }}: WLan for SSID {{ ssid_01 }} provisioned at {{ lookup('pipe','date +%Y-%m-%d-%H-%M-%S') }}"
+    msg: "SDKLOG-{{ branchName }}: WLan for SSID {{ ssid_01 }} provisioned at {{ lookup('pipe','date +%Y-%m-%d-%H:%M:%S') }}"
