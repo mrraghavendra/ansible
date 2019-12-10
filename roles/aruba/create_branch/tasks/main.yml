@@ -178,4 +178,4 @@
 - set_fact: 
     templateVariables: "{{ lookup('template','../files/patch_template_variables.json')  }}" 
 - debug:
-    msg: "MKA {{ templateVariables }} | to_json "
+    msg: "SDKLOG-{{ branchName }}: WLan for SSID {{ }} provisioned at {{ ansible_date_time.iso8601 }}"
