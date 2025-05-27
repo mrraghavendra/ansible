@@ -11,7 +11,7 @@ def get_diff_stats():
     
     total_added = 0
     total_deleted = 0
-    print(f"Inside PR Result" + result.stdout.strip())
+    print("Inside PR Result" + result)
     for line in result.stdout.strip().split('\n'):
         if line:
             added, deleted, file = line.split('\t')
