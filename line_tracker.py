@@ -3,7 +3,7 @@ import subprocess
 def get_diff_stats():
     # Get diff of current branch vs base
     result = subprocess.run(
-        ['git', 'diff', '--numstat', 'origin/main...HEAD'],
+        ['git', 'diff', '--numstat', 'origin/master...HEAD'],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True
@@ -11,7 +11,7 @@ def get_diff_stats():
     
     total_added = 0
     total_deleted = 0
-    print(f"result" + result.stdout.strip())
+    print(result)
     for line in result.stdout.strip().split('\n'):
         if line:
             added, deleted, file = line.split('\t')
