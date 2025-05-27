@@ -3,7 +3,7 @@ import subprocess
 def get_diff_stats():
     # Get diff of current branch vs base
     result = subprocess.run(
-        ['git', 'diff', '--numstat', 'origin/master...HEAD'],
+        ['git', 'diff', 'origin','master'],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True
