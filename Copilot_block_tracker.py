@@ -37,5 +37,5 @@ for line in added_lines:
 
     print("\nTotal added comment lines:", len(comment_lines))
     print("\nLikely Copilot-generated comment lines:", len(copilot_like))
-    print("\nExample lines:\n", "\n".join(copilot_like[:5]))
+    # print("\nExample lines:\n", "\n".join(copilot_like[:5]))
     print("\nTotal Copilot added lines:", copilot_line_count)
