@@ -18,7 +18,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
       with:
-        fetch-depth: 2  # Ensures Git diff can work correctly
+        fetch-depth: 0  # Ensures Git diff can work correctly
     - name: Set up Python 3.10
       uses: actions/setup-python@v4
       with:
