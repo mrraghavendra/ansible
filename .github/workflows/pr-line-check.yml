@@ -34,3 +34,6 @@ jobs:
     - name: Run Copilot Line Tracker Script
       run: |
         python Copilot_line_tracker.py
+    - name: Run Copilot Block Line Tracker Script
+      run: |
+        python Copilot_block_tracker.py
