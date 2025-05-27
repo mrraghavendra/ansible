@@ -19,16 +19,7 @@ velocloud.configuration.verify_ssl = False
 
 class FilterModule(object):
 
-    # Copilot start
-    def filters1234(self):
-        return {'updateDeviceSettings': self.updateDeviceSettings,
-                'updateQOS': self.updateQOS,
-                'json_formatUtil': self.json_formatUtil,
-                'segRulesfilter': self.segRulesfilter
-               }
-    # Copilot end
-    
-    def filters(self):
+   def filters(self):
         return {'updateDeviceSettings': self.updateDeviceSettings,
                 'updateQOS': self.updateQOS,
                 'json_formatUtil': self.json_formatUtil,
