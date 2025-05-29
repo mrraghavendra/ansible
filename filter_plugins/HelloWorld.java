@@ -33,14 +33,10 @@ public class SampleClass {
     // # Copilot start
     public static void main(String[] args) {
         SampleClass obj = new SampleClass();
-
         obj.greetUser();
-
         int sum = obj.addNumbers(12, 8);
         System.out.println("Sum: " + sum);
-
         System.out.println("Is 15 even? " + obj.isEven(15));
-
         String[] countries = {"India", "USA", "Germany", "Brazil"};
         obj.printSortedArray(countries);
     }
