@@ -30,10 +30,10 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run Line Tracker Script
       run: |
-        python line_tracker.py
+        python scripts/line_tracker.py
     - name: Run Copilot Line Tracker Script
       run: |
-        python Copilot_line_tracker.py
+        python scripts/Copilot_line_tracker.py
     - name: Run Copilot Block Line Tracker Script
       run: |
-        python Copilot_block_tracker.py
+        python scripts/Copilot_block_tracker.py
