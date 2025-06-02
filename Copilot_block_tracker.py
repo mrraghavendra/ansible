@@ -35,7 +35,9 @@ comment_lines = [line for line in added_lines if '#' in line]
 # (Optional) Filter if comments look like Copilot (heuristic, customizable)
 copilot_like = [line for line in comment_lines if 'copilot' in line.lower()]
 
+
 print("\nTotal added comment lines:", len(comment_lines))
 print("\nLikely Copilot-generated comment lines:", len(copilot_like))
 # print("\nExample lines:\n", "\n".join(copilot_like[:5]))
+print("\nTotal Lines Of Code:", len(added_lines) - len(comment_lines))
 print("\nTotal Copilot added lines:", copilot_line_count)
