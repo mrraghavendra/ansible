@@ -41,7 +41,9 @@ jobs:
         
     - name: Sep 2 - Run Copilot Block Line Tracker Script
       id: codeCheck
-      run: python scripts/Copilot_block_tracker.py
+      run: |
+        python scripts/Copilot_block_tracker.py
+        echo "Test=$Test" >> $GITHUB_OUTPUT
       
     - name: Step4 - print
       run: |
