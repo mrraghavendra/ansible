@@ -30,7 +30,6 @@ public class SampleClass {
         }
     }
 
-    // # Copilot start
     public static void main(String[] args) {
         SampleClass obj = new SampleClass();
         obj.greetUser();
@@ -40,5 +39,4 @@ public class SampleClass {
         String[] countries = {"India", "USA", "Germany", "Brazil"};
         obj.printSortedArray(countries);
     }
-  //# Copilot end
 }
