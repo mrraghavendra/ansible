@@ -26,13 +26,6 @@ class FilterModule(object):
                 'segRulesfilter': self.segRulesfilter
                }
 
-    # Copilot start
-    def test(self):
-          print("Hello world")
-     }
-    # Copilot end
-    
-
     # Copilot suggestion
     def updateDeviceSettings(self, a_variable, b_variable):
         velocloud.configuration.verify_ssl = False
