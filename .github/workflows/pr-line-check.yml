@@ -43,8 +43,8 @@ jobs:
       id: codeCheck
       run: |
         python scripts/Copilot_block_tracker.py
-        echo "Test=$Test" >>  $env:GITHUB_OUTPUT
-        echo "LinesOfCode=$LinesOfCode" >>  $env:GITHUB_OUTPUT
+        echo "Test=$Test" >>  "GITHUB_OUTPUT"
+        echo "LinesOfCode=$LinesOfCode" >>  "$env:GITHUB_OUTPUT"
         echo "CopilotLinesOfCode=$CopilotLinesOfCode" >>  $env:GITHUB_OUTPUT
         
       
