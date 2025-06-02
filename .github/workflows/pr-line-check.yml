@@ -36,11 +36,10 @@ jobs:
         python scripts/Copilot_line_tracker.py
     - name: Sep 2 - Run Copilot Block Line Tracker Script
       id: code_line_check
-      run: |
-        python scripts/Copilot_block_tracker.py
+      run: python scripts/Copilot_block_tracker.py
     - name: Step3 - Update to Jira
       run: |
         python scripts/Update_Jira.py
       env:
-        LOC: ${{ steps.code_line_check.outputs.LinesOfCode }}
-        CopilotLOC: ${{ steps.code_line_check.outputs.CopilotLinesOfCode }}
+        LINE_OF_CODE: ${{ steps.code_line_check.outputs.LinesOfCode }}
+        Copilot_LINE_OF_CODE: ${{ steps.code_line_check.outputs.CopilotLinesOfCode }}
