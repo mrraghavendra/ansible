@@ -41,6 +41,7 @@ jobs:
       run: |
         echo "The previous step said: LINE_OF_CODE: ${{ steps.code_line_check.outputs.LinesOfCode }}"
         echo "The previous step said:Copilot_LINE_OF_CODE: ${{ steps.code_line_check.outputs.CopilotLinesOfCode }}"
+         echo "The previous step said:Copilot_LINE_OF_CODE: ${{ steps.code_line_check.outputs.Test }}"
     - name: Step3 - Update to Jira
       run: |
         python scripts/Update_Jira.py
