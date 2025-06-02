@@ -42,12 +42,7 @@ jobs:
     - name: Sep 2 - Run Copilot Block Line Tracker Script
       id: codeCheck
       run: |
-        python scripts/Copilot_block_tracker.py        
-      
-    - name: Step4 - print
-      run: |
-        echo "LINE_OF_CODE: ${{ steps.codeCheck.outputs.LinesOfCode }}"
-        echo "Copilot_LINE_OF_CODE: ${{ steps.codeCheck.outputs.CopilotLinesOfCode }}"
+        python scripts/Copilot_block_tracker.py
         
     - name: Step3 - Update to Jira
       run: |
