@@ -35,13 +35,13 @@ jobs:
       run: |
         python scripts/Copilot_line_tracker.py
     - name: Sep 2 - Run Copilot Block Line Tracker Script
-      id: code_line_check
+      id: codeCheck
       run: python scripts/Copilot_block_tracker.py
     - name: Step4 - print
       run: |
-        echo "The previous step said: LINE_OF_CODE: ${{ steps.code_line_check.outputs.LinesOfCode }}"
-        echo "The previous step said:Copilot_LINE_OF_CODE: ${{ steps.code_line_check.outputs.CopilotLinesOfCode }}"
-         echo "The previous step said:Copilot_LINE_OF_CODE: ${{ steps.code_line_check.outputs.Test }}"
+        echo "The previous step said: LINE_OF_CODE: ${{ steps.codeCheck.outputs.LinesOfCode }}"
+        echo "The previous step said:Copilot_LINE_OF_CODE: ${{ steps.codeCheck.outputs.CopilotLinesOfCode }}"
+        echo "The previous step said:Test: ${{ steps.codeCheck.outputs.Test }}"
     - name: Step3 - Update to Jira
       run: |
         python scripts/Update_Jira.py
