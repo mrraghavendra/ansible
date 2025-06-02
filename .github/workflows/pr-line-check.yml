@@ -47,7 +47,7 @@ jobs:
       
     - name: Step4 - print
       run: |
-        echo LINE_OF_CODE: ${{ steps.codeCheck.outputs.LinesOfCode }}"
+        echo "LINE_OF_CODE: ${{ steps.codeCheck.outputs.LinesOfCode }}"
         echo "Copilot_LINE_OF_CODE: ${{ steps.codeCheck.outputs.CopilotLinesOfCode }}"
         echo "Test : ${{ steps.codeCheck.outputs.Test }}"
         
