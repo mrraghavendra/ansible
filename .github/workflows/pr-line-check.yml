@@ -19,29 +19,36 @@ jobs:
       uses: actions/checkout@v3
       with:
         fetch-depth: 0  # Ensures Git diff can work correctly
+        
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: "3.x"
+        
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        
     - name: Run Line Tracker Script
       run: |
         python scripts/line_tracker.py
+        
     - name: Run Copilot Line Tracker Script
       run: |
         python scripts/Copilot_line_tracker.py
+        
     - name: Sep 2 - Run Copilot Block Line Tracker Script
       id: codeCheck
       run: python scripts/Copilot_block_tracker.py
+      
     - name: Step4 - print
       run: |
-        echo "The previous step said: LINE_OF_CODE: ${{ steps.codeCheck.outputs.LinesOfCode }}"
-        echo "The previous step said:Copilot_LINE_OF_CODE: ${{ steps.codeCheck.outputs.CopilotLinesOfCode }}"
-        echo "The previous step said:Test: ${{ steps.codeCheck.outputs.Test }}"
+        echo LINE_OF_CODE: ${{ steps.codeCheck.outputs.LinesOfCode }}"
+        echo "Copilot_LINE_OF_CODE: ${{ steps.codeCheck.outputs.CopilotLinesOfCode }}"
+        cat $Test
+        
     - name: Step3 - Update to Jira
       run: |
         python scripts/Update_Jira.py
