@@ -39,5 +39,5 @@ copilot_like = [line for line in comment_lines if 'copilot' in line.lower()]
 # print("\nTotal added comment lines:", len(comment_lines))
 # print("\nLikely Copilot-generated comment lines:", len(copilot_like))
 # print("\nExample lines:\n", "\n".join(copilot_like[:5]))
-print("\nLinesOfCode={len(added_lines) - len(comment_lines)}")
-print("\nCopilotLinesOfCode={copilot_line_count}")
+print(f"LinesOfCode={len(added_lines) - len(comment_lines)}")
+print(f"\nCopilotLinesOfCode={copilot_line_count}")
