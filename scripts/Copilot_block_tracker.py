@@ -40,3 +40,4 @@ copilot_like = [line for line in comment_lines if 'copilot' in line.lower()]
 # print("\nExample lines:\n", "\n".join(copilot_like[:5]))
 print(f"LinesOfCode={len(added_lines) - len(comment_lines)}")
 print(f"CopilotLinesOfCode={copilot_line_count}")
+print("Test=123")
