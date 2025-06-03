@@ -16,6 +16,16 @@ public class HelloWorld {
         return a + b;
     }
 
+    // # Copilot start
+    public int addNumber123s(int a, int b) {
+        return a + b;
+    }
+     // # Copilot end
+
+     public int addNumber1234567(int a, int b) {
+        return a + b;
+    }
+
     // Method 3: Check if a number is even
     public boolean isEven(int number) {
         return number % 2 == 0;
