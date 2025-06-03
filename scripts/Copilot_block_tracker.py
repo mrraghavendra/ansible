@@ -17,7 +17,7 @@ else:
 
 
 in_copilot_block = False
-copilot_line_count = 0
+copilot_lines_count = 0
 
 for line in added_lines:
     if '# Copilot start' in line:
@@ -28,7 +28,7 @@ for line in added_lines:
         continue
 
     if in_copilot_block:
-        copilot_line_count += 1
+        copilot_lines_count += 1
 
 # Filter only comment lines (Python-style comments)
 comment_lines = [line for line in added_lines if '#' in line]
@@ -42,4 +42,4 @@ copilot_like = [line for line in comment_lines if 'copilot' in line.lower()]
 # Write to GitHub Actions output
 with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
   print(f"LinesOfCode={len(added_lines) - len(comment_lines)}", file=fh)
-  print(f"CopilotLinesOfCode={copilot_line_count}", file=fh)
+  print(f"CopilotLinesOfCode={copilot_lines_count}", file=fh)
