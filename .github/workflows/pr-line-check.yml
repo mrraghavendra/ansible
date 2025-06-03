@@ -48,5 +48,5 @@ jobs:
       run: |
         python scripts/Update_Jira.py
       env:
-        LINES_OF_CODE: ${{ steps.code_line_check.outputs.LinesOfCode }}
-        COPILOT_LINES_OF_CODE: ${{ steps.code_line_check.outputs.CopilotLinesOfCode }}
+        LINES_OF_CODE: ${{ steps.codeCheck.outputs.LinesOfCode }}
+        COPILOT_LINES_OF_CODE: ${{ steps.codeCheck.outputs.CopilotLinesOfCode }}
