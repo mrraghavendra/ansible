@@ -49,4 +49,4 @@ jobs:
         python scripts/Update_Jira.py
       env:
         LINES_OF_CODE: ${{ steps.code_line_check.outputs.LinesOfCode }}
-        Copilot_LINE_OF_CODE: ${{ steps.code_line_check.outputs.CopilotLinesOfCode }}
+        COPILOT_LINES_OF_CODE: ${{ steps.code_line_check.outputs.CopilotLinesOfCode }}
