@@ -9,6 +9,7 @@ result = subprocess.run(['git', 'diff', 'origin/master...HEAD'],
 if result.returncode != 0:
     print("Git error:", result.stderr)
 else:
+    print("Git out:", result.stdout)
     added_lines = [
         line for line in result.stdout.splitlines()
         if line.startswith('+') and not line.startswith('+++')  # Exclude diff metadata
