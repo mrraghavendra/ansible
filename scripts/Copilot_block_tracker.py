@@ -7,6 +7,9 @@ result = subprocess.run(['git', 'diff', 'origin/master...HEAD'],
                         stderr=subprocess.PIPE, 
                         text=True)
 
+resultBranch = subprocess.run(['git', 'rev-parse', '--abbrev-ref', 'HEAD'], capture_output=True, text=True)
+branch_name = resultBranch.stdout.strip()
+
 if result.returncode != 0:
     print("Git error:", result.stderr)
 else:
