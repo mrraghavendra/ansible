@@ -25,6 +25,10 @@ public class HelloWorld {
     public String addNumberNew() {
         return "Hello";
     }
+    
+    public String addNumberNew123() {
+        return "Hello";
+    }
      // # Copilot end
 
     // Method 4: Sort and print an array of strings
