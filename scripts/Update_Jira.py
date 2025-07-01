@@ -9,8 +9,6 @@ print(f"Copilot Line Of Code: {CopilotLOC}")
 
 branch = os.environ.get('GITHUB_HEAD_REF', '') or os.environ.get("GITHUB_REF", "")
 
-print(f"GITHUB_REF: {github_ref}")
-
 # If you want just the branch name:
 if branch.startswith("refs/heads/"):
     branch = branch.replace("refs/heads/", "")
