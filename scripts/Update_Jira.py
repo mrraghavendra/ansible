@@ -34,7 +34,7 @@ JIRA_TOKEN = os.getenv("JIRA_TOKEN")
 # Payload to update custom field
 payload = {
     "fields": {
-        "customfield_33491": 10,
+        "customfield_33491": CopilotLOC,
         "customfield_19938":[ { "value": "GitHub Co-Pilot" } ]
     }
 }
