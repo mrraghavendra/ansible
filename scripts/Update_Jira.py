@@ -43,7 +43,7 @@ payload = {
 }
 
 # Headers and Auth
-headers = { "Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " }
+headers = { "Accept": "application/json", "Content-Type": "application/json", "Authorization": f"Bearer {JIRA_TOKEN}" }
 
 if CopilotLOC > 0:
     # Check if issue exists
