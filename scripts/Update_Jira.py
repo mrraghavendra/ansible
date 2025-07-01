@@ -30,7 +30,6 @@ print(f"Issue Key Detected: {issue_key}")
 # ******************* Update JIRA ****************************************
 JIRA_DOMAIN = os.getenv("JIRA_DOMAIN")
 JIRA_TOKEN = os.getenv("JIRA_TOKEN")
-custom_field_id = "customfield_10042"  # Replace with your actual custom field ID
 
 # Jira API endpoint
 url = f"https://{JIRA_DOMAIN}/rest/api/2/issue/{issue_key}"
@@ -46,16 +45,19 @@ payload = {
 # Headers and Auth
 headers = { "Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " }
 
-# Check if issue exists
-get_url = f"{url}/rest/api/2/issue/{issue_key}"
-get_response = requests.get(get_url, headers=headers)
-
-if get_response.status_code == 200:
-    print(f"Issue {issue_key} exists. Proceeding with update...")    
-    response = requests.put(url, json=payload, headers=headers)
-    if response.status_code == 204:
-        print(f"Successfully updated Jira issue: {issue_key}")
+if CopilotLOC > 0:
+    # Check if issue exists
+    get_url = f"{url}/rest/api/2/issue/{issue_key}"
+    get_response = requests.get(get_url, headers=headers)
+    
+    if get_response.status_code == 200:
+        print(f"Issue {issue_key} exists. Proceeding with update...")    
+        response = requests.put(url, json=payload, headers=headers)
+        if response.status_code == 204:
+            print(f"Successfully updated Jira issue: {issue_key}")
+        else:
+            print(f"Failed to update Jira: {response.status_code} - {response.text}")
     else:
-        print(f"Failed to update Jira: {response.status_code} - {response.text}")
+        print(f"Issue {issue_key} not found. Status: {get_response.status_code}")
 else:
-    print(f"Issue {issue_key} not found. Status: {get_response.status_code}")
+    print("No CopilotLOC changes detected, skipping Jira update.")
