@@ -18,6 +18,15 @@ if branch.startswith("refs/heads/"):
 
 print(f"Branch Name: {branch}")
 
+# Extract Jira issue key (e.g., "ABC-123") from branch
+match = re.search(r'([A-Z]+-\d+)', branch)
+if not match:
+    print("No Jira issue key found in branch name.")
+    exit(1)
+
+issue_key = match.group(1)
+print(f"Issue Key Detected: {issue_key}")
+
 # ******************* Update JIRA ****************************************
 JIRA_DOMAIN = os.getenv("JIRA_DOMAIN")
 JIRA_TOKEN = os.getenv("JIRA_TOKEN")
