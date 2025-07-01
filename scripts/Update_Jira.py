@@ -7,7 +7,7 @@ print(f"Line Of Code: {LOC}")
 CopilotLOC = int(os.getenv("COPILOT_LINES_OF_CODE", "0"))
 print(f"Copilot Line Of Code: {CopilotLOC}")
 
-branch = os.environ.get('GITHUB_HEAD_REF', '') or or os.environ.get("GITHUB_REF", "")
+branch = os.environ.get('GITHUB_HEAD_REF', '') or os.environ.get("GITHUB_REF", "")
 
 print(f"GITHUB_REF: {github_ref}")
 
