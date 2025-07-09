@@ -31,24 +31,21 @@ print(f"Issue Key Detected: {issue_key}")
 JIRA_DOMAIN = os.getenv("JIRA_DOMAIN")
 JIRA_TOKEN = os.getenv("JIRA_TOKEN")
 
-# Jira API endpoint
-url = f"https://{JIRA_DOMAIN}/rest/api/2/issue/{issue_key}"
-
 # Payload to update custom field
 payload = {
     "fields": {
-        "customfield_33491": 10,
+        "customfield_33491": CopilotLOC,
         "customfield_19938":[ { "value": "GitHub Co-Pilot" } ]
     }
 }
 
 # Headers and Auth
-headers = { "Accept": "application/json", "Content-Type": "application/json", "Authorization": "Bearer " }
+headers = { "Accept": "application/json", "Content-Type": "application/json", "Authorization": f"Bearer {JIRA_TOKEN}" }
 
 if CopilotLOC > 0:
     # Check if issue exists
-    get_url = f"{url}/rest/api/2/issue/{issue_key}"
-    get_response = requests.get(get_url, headers=headers)
+    url = f"https://{JIRA_DOMAIN}/rest/api/2/issue/{issue_key}"
+    get_response = requests.get(url, headers=headers)
     
     if get_response.status_code == 200:
         print(f"Issue {issue_key} exists. Proceeding with update...")    
