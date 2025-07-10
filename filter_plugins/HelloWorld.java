@@ -29,6 +29,9 @@ public class HelloWorld {
         for (String item : items) {
             System.out.println(item);
             System.out.println(item123);
+            LocalDate currentDate = LocalDate.now(); 
+            // @ Copilot
+            System.out.println("Current Date: " + currentDate);
         }
     }
      // # Copilot end
