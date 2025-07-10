@@ -22,19 +22,18 @@ public class HelloWorld {
         return number % 2 == 0;
     }
 
-    // # Copilot start
     public void printSortedArray1234(String[] items) {
         Arrays.sort(items);
         System.out.println("Sorted items:");
         for (String item : items) {
             System.out.println(item);
             System.out.println(item123);
+             // # Copilot start
             LocalDate currentDate = LocalDate.now(); 
-            // # Copilot
             System.out.println("Current Date: " + currentDate);
+            // # Copilot end
         }
     }
-     // # Copilot end
 
     // Method 4: Sort and print an array of strings
     public void printSortedArray(String[] items) {
