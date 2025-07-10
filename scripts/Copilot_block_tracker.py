@@ -42,4 +42,4 @@ copilot_like = [line for line in comment_lines if 'copilot' in line.lower()]
 # Write to GitHub Actions output
 with open(os.environ["GITHUB_OUTPUT"], "a") as fh:
   print(f"LinesOfCode={len(added_lines) - len(comment_lines)}", file=fh)
-  print(f"CopilotLinesOfCode={copilot_lines_count}", file=fh)
+  print(f"CopilotLinesOfCode={copilot_lines_count + len(comment_lines)}", file=fh)
