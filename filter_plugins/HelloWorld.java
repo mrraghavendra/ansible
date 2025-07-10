@@ -27,6 +27,7 @@ public class HelloWorld {
         System.out.println("Sorted items:");
         for (String item : items) {
             System.out.println(item);
+            System.out.println(item123);
         }
     }
      // # Copilot end
