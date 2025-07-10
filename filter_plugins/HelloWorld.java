@@ -7,6 +7,7 @@ public class HelloWorld {
     public void greetUser() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your name: ");
+        System.out.print("Enter your name 123: ");
         String name = scanner.nextLine();
         System.out.println("Hello, " + name + "!");
     }
