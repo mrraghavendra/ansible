@@ -21,13 +21,13 @@ public class HelloWorld {
         return number % 2 == 0;
     }
 
-     // # Copilot start
-    public String addNumberNew() {
-        return "Hello";
-    }
-    
-    public String addNumberNew123() {
-        return "Hello";
+    // # Copilot start
+    public void printSortedArray1234(String[] items) {
+        Arrays.sort(items);
+        System.out.println("Sorted items:");
+        for (String item : items) {
+            System.out.println(item);
+        }
     }
      // # Copilot end
 
