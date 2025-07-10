@@ -7,6 +7,7 @@ public class HelloWorld {
     public void greetUser() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your name: ");
+        System.out.print("Enter your name 123: ");
         String name = scanner.nextLine();
         System.out.println("Hello, " + name + "!");
     }
@@ -21,13 +22,14 @@ public class HelloWorld {
         return number % 2 == 0;
     }
 
-     // # Copilot start
-    public String addNumberNew() {
-        return "Hello";
-    }
-    
-    public String addNumberNew123() {
-        return "Hello";
+    // # Copilot start
+    public void printSortedArray1234(String[] items) {
+        Arrays.sort(items);
+        System.out.println("Sorted items:");
+        for (String item : items) {
+            System.out.println(item);
+            System.out.println(item123);
+        }
     }
      // # Copilot end
 
